@@ -5,17 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="이상권의 기술블로그">
-    <title>Archives - 이상권의 기술블로그</title>
+    <meta name="generator" content="이상권의 개발노트">
+    <title>Archives - 이상권의 개발노트</title>
     <meta name="author" content="이상권">
     
     
     
     <script type="application/ld+json">{}</script>
     <meta property="og:type" content="blog">
-<meta property="og:title" content="이상권의 기술블로그">
+<meta property="og:title" content="이상권의 개발노트">
 <meta property="og:url" content="http://example.com/archives/index.html">
-<meta property="og:site_name" content="이상권의 기술블로그">
+<meta property="og:site_name" content="이상권의 개발노트">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="이상권">
 <meta name="twitter:card" content="summary">
@@ -23,6 +23,8 @@
     
         
     
+    
+        <meta property="og:image" content="http://example.com/assets/images/profile.jpg"/>
     
     
     
@@ -54,8 +56,12 @@
 
 
     
+        
+            
+        
+    
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="2">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a
@@ -63,7 +69,7 @@
             href="/"
             aria-label=""
         >
-            이상권의 기술블로그
+            이상권의 개발노트
         </a>
     </div>
     
@@ -75,6 +81,8 @@
             >
         
         
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
         </a>
     
 </header>
@@ -82,8 +90,26 @@
             <!-- Define author's picture -->
 
 
-<nav id="sidebar" data-behavior="1">
+
+        
+    
+
+<nav id="sidebar" data-behavior="2">
     <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
+</h5>
+                
+            </div>
         
         
             <ul class="sidebar-buttons">
@@ -106,13 +132,13 @@
                     
                         <a
                             class="sidebar-button-link "
-                            href="/all-categories"
+                            href="/project"
                             
                             rel="noopener"
-                            title="Categories"
+                            title="global.project"
                         >
-                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Categories</span>
+                        <i class="sidebar-button-icon fa fa-save" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">global.project</span>
                     </a>
             </li>
             
@@ -120,13 +146,13 @@
                     
                         <a
                             class="sidebar-button-link "
-                            href="/all-tags"
+                            href="/develop"
                             
                             rel="noopener"
-                            title="Tags"
+                            title="global.develop"
                         >
-                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Tags</span>
+                        <i class="sidebar-button-icon fa fa-clipboard" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">global.develop</span>
                     </a>
             </li>
             
@@ -139,36 +165,8 @@
                             rel="noopener"
                             title="Archives"
                         >
-                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Archives</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link open-algolia-search"
-                            href="#search"
-                            
-                            rel="noopener"
-                            title="Search"
-                        >
-                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Search</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="#about"
-                            
-                            rel="noopener"
-                            title="About"
-                        >
-                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">About</span>
                     </a>
             </li>
             
@@ -180,7 +178,7 @@
                     
                         <a
                             class="sidebar-button-link "
-                            href="https://github.com/"
+                            href="https://github.com/Earth-KOR"
                             
                                 target="_blank"
                             
@@ -196,15 +194,15 @@
                     
                         <a
                             class="sidebar-button-link "
-                            href="http://stackoverflow.com/users"
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
                             
                                 target="_blank"
                             
                             rel="noopener"
-                            title="Stack Overflow"
+                            title="global.instagram"
                         >
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">global.instagram</span>
                     </a>
             </li>
             
@@ -212,23 +210,7 @@
                     
                         <a
                             class="sidebar-button-link "
-                            href="https://twitter.com/"
-                            
-                                target="_blank"
-                            
-                            rel="noopener"
-                            title="Twitter"
-                        >
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="https://facebook.com/"
+                            href="https://www.facebook.com/LeeSangGwon"
                             
                                 target="_blank"
                             
@@ -244,39 +226,9 @@
                     
                         <a
                             class="sidebar-button-link "
-                            href="https://plus.google.com/"
+                            href="mailto:lsk941017@naver.com"
                             
                                 target="_blank"
-                            
-                            rel="noopener"
-                            title="Google +"
-                        >
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="https://www.linkedin.com/profile/"
-                            
-                                target="_blank"
-                            
-                            rel="noopener"
-                            title="LinkedIn"
-                        >
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="/mailto"
                             
                             rel="noopener"
                             title="Mail"
@@ -288,29 +240,11 @@
             
         </ul>
         
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="/atom.xml"
-                            
-                            rel="noopener"
-                            title="RSS"
-                        >
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
     </div>
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="2"
                  class="
                         hasCoverMetaIn
                         ">
@@ -326,192 +260,32 @@
                     
                         <a
                             class="link-unstyled"
-                            href="/2020/09/21/test/"
-                            aria-label=": test"
+                            href="/2020/09/20/Hexo-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EA%B9%83%ED%97%88%EB%B8%8C-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EA%B8%B0/"
+                            aria-label=": Hexo 설치 및 깃허브 업로드하기"
                         >
-                            test
+                            Hexo 설치 및 깃허브 업로드하기
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2020-09-21T04:27:03-07:00">
-	
-		    Sep 21, 2020
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/09/21/test/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/09/21/Hexo-%EC%84%A4%EC%B9%98-%EB%B0%8F-Github-%EC%97%B0%EB%8F%99/"
-                            aria-label=": Hexo 설치 및 Github 연동"
-                        >
-                            Hexo 설치 및 Github 연동
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-09-21T04:14:31-07:00">
-	
-		    Sep 21, 2020
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/09/21/Hexo-%EC%84%A4%EC%B9%98-%EB%B0%8F-Github-%EC%97%B0%EB%8F%99/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/09/21/%EC%A0%9C%EB%AA%A9/"
-                            aria-label=": 제목"
-                        >
-                            제목
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-09-21T00:53:49-07:00">
-	
-		    Sep 21, 2020
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/09/21/%EC%A0%9C%EB%AA%A9/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/09/20/hello-world/"
-                            aria-label=": Hello World !!!!!"
-                        >
-                            Hello World !!!!!
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-09-20T23:09:23-07:00">
+    <time datetime="2020-09-20T16:47:22-07:00">
 	
 		    Sep 20, 2020
     	
     </time>
     
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Hexo-%EB%B8%94%EB%A1%9C%EA%B7%B8/">Hexo 블로그</a>
+
+
+    
 </div>
 
             </div>
             
                 <div class="postShorten-content">
-                    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+                    <h2 id="Hexo-및-Node-JS-설치하기"><a href="#Hexo-및-Node-JS-설치하기" class="headerlink" title="Hexo 및 Node.JS 설치하기"></a>Hexo 및 Node.JS 설치하기</h2>
                     
                         
 
@@ -520,7 +294,7 @@
                     
                         <p>
                             <a
-                                href="/2020/09/20/hello-world/#post-footer"
+                                href="/2020/09/20/Hexo-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EA%B9%83%ED%97%88%EB%B8%8C-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EA%B8%B0/#post-footer"
                                 class="postShorten-excerpt_link link"
                                 aria-label=""
                             >
@@ -558,11 +332,17 @@
         
 
 
+    
+        
+    
+
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
             <i class="fa fa-times"></i>
         </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
         
             <h4 id="about-card-name">이상권</h4>
         
@@ -578,12 +358,18 @@
             </div>
         
         
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
     </div>
 </div>
 
         
         
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
         <!--SCRIPTS-->
 
 <script src="/assets/js/jquery.js"></script>
