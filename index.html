@@ -243,6 +243,603 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/2020/10/12/Community/"
+                            aria-label=": Doosan Bear Site"
+                        >
+                            Doosan Bear Site
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-12T11:21:49-07:00">
+	
+		    Oct 12, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Project/">Project</a>, <a class="category-link" href="/categories/Project/Private-Project/">Private-Project</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="Doosan-Bears-커뮤니티-amp-쇼핑몰-Site"><a href="#Doosan-Bears-커뮤니티-amp-쇼핑몰-Site" class="headerlink" title="Doosan Bears 커뮤니티 &amp; 쇼핑몰 Site"></a>Doosan Bears 커뮤니티 &amp; 쇼핑몰 Site</h1><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95829103-c787dc00-0d70-11eb-9dd9-cc9c21e7d3aa.png" width="600px"> </p>
+<br><br><br>
+<hr>
+<br><br>
+
+<h2 id="프로젝트-설명"><a href="#프로젝트-설명" class="headerlink" title="프로젝트 설명"></a>프로젝트 설명</h2><ul>
+<li><strong>웹 페이지 제작 시 기본적인 기능들을 구현</strong> <br><br></li>
+<li><strong>재고관리 프로그램 (재고변경, 가격변경) 제작</strong> <br><br></li>
+<li><strong>포인트 충전, 구매, 구매리스트 관리 등 부가기능 제작</strong> <br>
+
+</li>
+</ul>
+<h2 id="개발환경"><a href="#개발환경" class="headerlink" title="개발환경"></a>개발환경</h2><ul>
+<li>개발도구<ul>
+<li>Eclipse</li>
+<li>MySQL WorkBench<br></li>
+</ul>
+</li>
+<li>언어<ul>
+<li>JAVA SE1.8 <code>JDK 8</code></li>
+<li>JSP <code>model 1</code></li>
+<li>HTML5/CSS3</li>
+<li>JavaScript<br></li>
+</ul>
+</li>
+<li>커뮤니티/서버(WAS)<ul>
+<li>Github</li>
+<li>Apache Tomcat <code>v8.0</code><br></li>
+</ul>
+</li>
+<li>FrameWork<ul>
+<li>Jquery</li>
+</ul>
+</li>
+</ul>
+<br>  
+
+<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95851036-89ee6900-0d06-11eb-985e-ff5a68e64ffb.png" width="600px"></p>
+<br><br>
+
+
+<h2 id="기능구현"><a href="#기능구현" class="headerlink" title="기능구현"></a>기능구현</h2><ul>
+<li><a href="#%EB%A1%9C%EA%B7%B8%EC%9D%B8">로그인</a></li>
+<li><a href="#%ED%9A%8C%EC%9B%90%EC%A0%95%EB%B3%B4-%EC%88%98%EC%A0%95">회원정보 수정</a></li>
+<li><a href="#%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85">회원가입</a></li>
+<li><a href="#%EB%8C%93%EA%B8%80-%EC%9E%91%EC%84%B1">댓글 작성</a></li>
+<li><a href="#%EA%B0%A4%EB%9F%AC%EB%A6%AC-%EA%B2%8C%EC%8B%9C%ED%8C%90">갤러리 게시판</a></li>
+<li><a href="#%EC%98%A8%EB%9D%BC%EC%9D%B8-%EC%87%BC%ED%95%91%EB%AA%B0">온라인 쇼핑몰</a></li>
+<li><a href="#%EC%9E%AC%EA%B3%A0%EA%B4%80%EB%A6%AC-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8">재고관리 프로그램</a></li>
+<li><a href="#%EA%B2%8C%EC%8B%9C%ED%8C%90">게시판</a></li>
+<li><a href="#%EC%9E%90%EB%A3%8C%EC%8B%A4">자료실</a></li>
+</ul>
+<p><br><br></p>
+<h3 id="로그인"><a href="#로그인" class="headerlink" title="로그인"></a>로그인</h3><br>
+
+<ul>
+<li><strong>ID 값과 PW 값을 받아서 DB에 부합하는 정보가 있는지 판단</strong> <br><br></li>
+<li><strong>부합하는 값이 존재하면 메인 페이지로 돌아가면서 해당 회원의 정보가 Header에 남도록 구현</strong></li>
+</ul>
+<p><br><br><br></p>
+<p align="center">< 로그인 화면 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95829101-c6ef4580-0d70-11eb-9620-d04400366c7f.png"> </p>
+<br><br>
+<p align="center">< 로그인 성공시 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95829099-c5be1880-0d70-11eb-965c-dbf7a1c6709b.png" width="600px"> </p>
+
+<hr><br>
+
+<h3 id="회원정보-수정"><a href="#회원정보-수정" class="headerlink" title="회원정보 수정"></a>회원정보 수정</h3><br>
+
+<ul>
+<li><strong>수정 할 비밀번호와 수정 비밀번호 Check의 값이 다르면 경고창 출력</strong> <br><br></li>
+<li><strong>수정 할 비밀번호가 일치하면 데이터를 받아 DB에 접근하여 해당 아이디에 부합하는 비밀번호를 수정함</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 회원 정보 수정 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95830199-492c3980-0d72-11eb-8d3b-74d6e69d6834.png" width="600px"> </p>
+<br><br>
+<p align="center">< 수정완료 알림 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95830202-4a5d6680-0d72-11eb-94b5-6e950156193a.png" width="600px"> </p>
+<br><br>
+<hr><br>
+
+<h3 id="회원가입"><a href="#회원가입" class="headerlink" title="회원가입"></a>회원가입</h3><br>
+
+<ul>
+<li><strong>회원가입 창에서 필요한 정보를 받아옴</strong> <br><br></li>
+<li><strong>다음 주소 API를 사용하여 주소목록을 받아옴</strong> <br><br></li>
+<li><strong>JavaScript의 AJax 기술을 이용하여 비동기 방식으로 아이디 중복 확인을 실행함</strong></li>
+</ul>
+<p><br><br></p>
+<p align="center">< 회원가입 기본 창 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95830804-32d2ad80-0d73-11eb-931a-dbcaddb1f398.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 다음 주소 API ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95830802-323a1700-0d73-11eb-9a83-1b9251cec4fc.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< Ajax 작동 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95830795-3108ea00-0d73-11eb-8361-ce33d879e950.png" width="600px"> </p>
+<br><br>
+
+<hr><br>
+
+<h3 id="댓글-작성"><a href="#댓글-작성" class="headerlink" title="댓글 작성"></a>댓글 작성</h3><br>
+
+<ul>
+<li><strong>게시판 바로 밑에 새로운 테이블을 만들어서 댓글창을 구성함</strong> <br><br></li>
+<li><strong>자료실, 게시판 댓글을 구분하기 위해서 식별자를 DB에 저장함</strong> <br><br></li>
+<li><strong>댓글은 시간별로 오름차순 정렬을 실시하여 제일 최신 댓글을 위로 올라오도록 구현함.</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 게시판 댓글 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95837932-24d55a80-0d7c-11eb-81c2-f58227636d21.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 자료실 댓글 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95837926-23a42d80-0d7c-11eb-8a31-c93a40d709d7.png" width="600px"> </p>
+
+<br>
+
+<hr>
+
+<br>
+
+<h3 id="갤러리-게시판"><a href="#갤러리-게시판" class="headerlink" title="갤러리 게시판"></a>갤러리 게시판</h3><br>
+
+<ul>
+<li><strong>갤러리를 게시 할 때, 대분류를 미리 설정하여 특정 대분류에 따라서 뜨는 이미지를 다르게 구현함</strong> <br><br></li>
+<li><strong>이미지를 클릭 할 때, 이미지 업로드 시 작성했던 정보들이 나타나게 구현함.</strong> <br><br></li>
+<li><strong>이미지를 클릭 할 때, 이미지 삭제 기능을 구현함.</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 갤러리 메인화면 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95838273-8ac1e200-0d7c-11eb-85b7-e03bd3a3d179.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 이미지 등록 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95838266-88f81e80-0d7c-11eb-8f74-99ad1f837ed7.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 이미지 상세정보 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95838270-8a294b80-0d7c-11eb-853e-6359227407d6.png" width="600px"> </p>
+
+<p><br><br></p>
+<h3 id="온라인-쇼핑몰"><a href="#온라인-쇼핑몰" class="headerlink" title="온라인 쇼핑몰"></a>온라인 쇼핑몰</h3><br>
+
+<ul>
+<li><strong>회원이 가진 포인트를 이용하여 원하는 상품을 구매 할 수 있도록 구현함.</strong> <br><br></li>
+<li><strong>구매한 물품은 구매 리스트에 최신순으로 정렬하여 리스트로 나타나도록 구현함.</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 온라인 쇼핑몰 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95839694-459eaf80-0d7e-11eb-8326-988ba17e988f.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 구매 리스트 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95839696-459eaf80-0d7e-11eb-8f97-cd4ac35da626.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 구매 후 재고 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95839691-446d8280-0d7e-11eb-8fa5-afd12caf5dfc.png" width="600px"> </p>
+
+<br>
+
+<h3 id="재고관리-프로그램"><a href="#재고관리-프로그램" class="headerlink" title="재고관리 프로그램"></a>재고관리 프로그램</h3><br>
+
+<ul>
+<li><strong>Admin으로 접속하면 쇼핑몰 물픔의 재고의 수량과 가격을 변경 할 수 있도록 구현함.</strong> <br><br></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 재고관리 프로그램 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95840259-e55c3d80-0d7e-11eb-84b4-8d16bbd17e8f.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 변경된 재고 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95840263-e5f4d400-0d7e-11eb-9359-d8e0f8c903be.png" width="600px"> </p>
+
+<p><br><br></p>
+<h3 id="게시판"><a href="#게시판" class="headerlink" title="게시판"></a>게시판</h3><br>
+
+<ul>
+<li><strong>글 쓰기, 글 수정, 글 삭제 기능 구현함.</strong> <br><br></li>
+<li><strong>각 게시물 마다 댓글기능 구현함.</strong> <br><br></li>
+<li><strong>최신 게시물을 제일 위로 올라가게 시간대 별로 오름차순으로 정렬함.</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 게시판 메인화면 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95840539-39672200-0d7f-11eb-9878-9005f41941c3.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 게시판 - 글 쓰기 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95840542-39672200-0d7f-11eb-9550-1510307067a0.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 게시판 - 글 작성 완료 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95840537-38ce8b80-0d7f-11eb-9a56-070e2e29e626.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 게시판 - 글 삭제 완료 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95840533-379d5e80-0d7f-11eb-9ae9-215e63a0b240.png" width="600px"> </p>
+
+<h3 id="자료실"><a href="#자료실" class="headerlink" title="자료실"></a>자료실</h3><br>
+
+<ul>
+<li><strong>업로드 파일 클릭 시, 다운로드 기능 추가</strong> <br><br></li>
+<li><strong>각 게시물 마다 댓글기능 구현함.</strong> &lt;</li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 자료실 메인화면 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95841216-0f622f80-0d80-11eb-9389-902e6769193f.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center">< 자료실 다운로드 기능 ></p> <br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95841224-10935c80-0d80-11eb-8bd1-f5a7d86fa508.png" width="600px"> </p>
+
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/12/Community/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/10/12/Medicine-Service/"
+                            aria-label=": Medicine-Service"
+                        >
+                            Medicine-Service
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-12T11:21:49-07:00">
+	
+		    Oct 12, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Project/">Project</a>, <a class="category-link" href="/categories/Project/Team-Project/">Team-Project</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="Medicine-Service-약-복용-알리미"><a href="#Medicine-Service-약-복용-알리미" class="headerlink" title="Medicine-Service - 약 복용 알리미"></a>Medicine-Service - 약 복용 알리미</h1><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682260-4bca4a00-0c1f-11eb-800a-84f91a25a2f6.png" width="600px"> </p>
+<br><br><br>
+
+<h2 id="프로젝트-주제"><a href="#프로젝트-주제" class="headerlink" title="프로젝트 주제"></a>프로젝트 주제</h2><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682342-a4014c00-0c1f-11eb-91d7-18b6c80a4f13.png" width="600px"> </p>
+<br><br><hr>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682353-b54a5880-0c1f-11eb-8e22-72d23b91ccbe.png" width="600px"> </p>
+<br><br>
+
+<ul>
+<li><strong>아날로그 방식 개선 목적 : 식사시간을 기준으로 정하는 아날로그 방식에서 <code>복용알림 서비스로의 개선 목적.</code></strong> <br><br></li>
+<li><strong>복용효과 100% 받기 : 약 동력의 기반하여 <code>최적의 재 복용 시간</code>을 알려 줌.</strong> <br><br></li>
+<li><strong>체내 약 효능 시기 인지하기 : 체내에 약의 효과가 작용하고 있는 것을 <code>시각적 그래프</code>로 알려 줌.</strong> </li>
+</ul>
+<hr><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682371-d448ea80-0c1f-11eb-9302-b83d753c297a.png" width="600px"> </p>
+<br><br><hr><br>
+
+<h2 id="개발환경"><a href="#개발환경" class="headerlink" title="개발환경"></a>개발환경</h2><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682372-d57a1780-0c1f-11eb-9523-b3c31a51424a.png" width="600px"> </p>
+<br><br>
+
+<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95739084-39a2e700-0cc5-11eb-9577-6fb907f23a17.png" width="600px"> </p>
+<br><br>
+
+
+<h2 id="기능구현"><a href="#기능구현" class="headerlink" title="기능구현"></a>기능구현</h2><ul>
+<li><p><a href="#%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5">검색 기능</a></p>
+</li>
+<li><p><a href="#%EB%B3%B5%EC%9A%A9-%EC%8B%9C%EC%9E%91">복용 시작</a></p>
+</li>
+<li><p><a href="#%EB%B3%B5%EC%9A%A9-%EA%B8%B0%EB%A1%9D">복용 기록</a></p>
+</li>
+<li><p><a href="#%EB%B3%B5%EC%9A%A9-%EA%B7%B8%EB%9E%98%ED%94%84">복용 그래프</a></p>
+</li>
+<li><p><a href="#%EC%95%BD%EA%B5%AD-%EC%B0%BE%EA%B8%B0-%EC%A7%80%EB%8F%84">약국 찾기 지도</a></p>
+</li>
+<li><p><a href="#%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85-%EC%83%81%EB%8B%B4">실시간 채팅 상담</a><br><br><br></p>
+<h3 id="검색-기능"><a href="#검색-기능" class="headerlink" title="검색 기능"></a>검색 기능</h3><br>
+</li>
+<li><p><strong>공공데이터 에서 약 <code>53000개</code>의 약 정보를 파싱하여 DB에 저장함.</strong> <br><br></p>
+</li>
+<li><p><strong>공공데이터 에서 약 <code>100개</code>의 약 부작용 정보를 파싱하여 DB에 저장함.</strong> <br><br></p>
+</li>
+<li><p><strong>Jquery의 AutoComplete 기능을 이용하여 검색 시 <code>자동완성</code> 기능을 추가함.</strong></p>
+</li>
+</ul>
+<p><br><br><br></p>
+<p align="center">< 검색 시 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734699-c72f0880-0cbe-11eb-9620-288b8ee81c3f.png" width="600px"> </p>
+<br>
+<p align="center">< 검색 완료 시 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734692-c4ccae80-0cbe-11eb-8866-29d24a3352ad.png" width="600px"> </p>
+<br><br>
+
+<hr><br>
+
+<h3 id="복용-시작"><a href="#복용-시작" class="headerlink" title="복용 시작"></a>복용 시작</h3><br>
+
+<ul>
+<li><strong>원하는 약을 선택한 후, 처방받은 <code>복용주기를 입력함.</code></strong> <br><br></li>
+<li><strong>입력한 약의 이름을 <code>정보 테이블 , 부작용 테이블에 접근</code>하여 부합하는 정보를 가져와서 리스트로 나타냄.</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 주기 입력 창 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734698-c6967200-0cbe-11eb-8860-1502c735bc64.png" width="600px"> </p>
+<br><br>
+<p align="center">< 복용 리스트 출력 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734722-cbf3bc80-0cbe-11eb-9557-fc9114361a22.png" width="600px"> </p>
+<br><br>
+<hr><br>
+
+<h3 id="복용-기록"><a href="#복용-기록" class="headerlink" title="복용 기록"></a>복용 기록</h3><br>
+
+<ul>
+<li><strong>복용이 완료된 약들은 복용 리스트에서 지워지고, <code>History 페이지에 자동으로 이동하여 저장</code>됨.</strong></li>
+</ul>
+<p><br><br></p>
+<p align="center">< History ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734717-ca29f900-0cbe-11eb-81a3-e14d9739f9bb.png" width="600px"> </p>
+<br><br>
+<hr><br>
+
+<h3 id="복용-그래프"><a href="#복용-그래프" class="headerlink" title="복용 그래프"></a>복용 그래프</h3><br>
+
+<ul>
+<li><strong>임의로 만든 약 동력 그래프를 시간에 따라 그리게 되고, 복용주기가 끝나면 그래프는 멈추도록 설계함.</strong> <br><br></li>
+<li><strong>약의 효과가 발현하는 55% 지점부터 (임의로 지정) 약 효과가 발현하고 있다는 신호를 주기위해 <code>gif 이미지를 띄워 표시함.</code></strong> <br><br></li>
+<li><strong>입력한 재복용 주기만큼 시간이 지나면 사용자의 휴대전화로 <code>재복용 알람 문자 메세지를 전송함.</code></strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734719-cb5b2600-0cbe-11eb-9382-84f5afa0208d.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95845701-7c2bf880-0d85-11eb-8e5b-875c68f72fca.png" width="600px"> </p>
+
+<p><br><br><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95844973-8a2d4980-0d84-11eb-9401-8014d9958a8e.gif" width="600px"> </p>
+
+<p><br><br><br><br> </p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734742-d2823400-0cbe-11eb-9437-dc2633fc547e.png" width="600px"> </p>
+
+<p><br><br></p>
+<hr>
+
+
+<br>
+
+<h3 id="약국-찾기-지도"><a href="#약국-찾기-지도" class="headerlink" title="약국 찾기 지도"></a>약국 찾기 지도</h3><br>
+
+<ul>
+<li><strong>공공데이터에서 약 <code>22000개</code>의 전국 약국정보를 파싱하여 DB에 저장함.</strong> <br><br></li>
+<li><strong>해당 약국의 위치를 표시하기 위해서<code> Marker</code> 기능을 사용하였고, 해당 마커의 정보를 표기하기 위해 <code>InfoWindow</code> 기능을 사용함.</strong> <br><br></li>
+<li><strong>Marker가 한 곳에 밀집되어 있을 때, 밀집된 Marker의 수를 표시하기 위해서 <code>Clusterer</code> 기능을 구현함.</strong> <br><br></li>
+<li><strong>광역시 시청을 기준으로 버튼 클릭 시 , <code>해당 좌표로 바로 이동</code>할 수 있도록 구현함.</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95738785-c00af900-0cc4-11eb-9c86-5a2b74e67851.png" width="600px"> </p>
+<br><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95738771-ba151800-0cc4-11eb-8096-8fca86454a9c.png" width="600px"> </p>
+<br><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734753-d57d2480-0cbe-11eb-8e79-d81428cd699b.png" width="600px"> </p>
+<br><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95738780-be413580-0cc4-11eb-9d40-2c987a2aa8cd.png" width="600px"> </p>
+<br><br>
+<hr><br>
+
+<h3 id="실시간-채팅"><a href="#실시간-채팅" class="headerlink" title="실시간 채팅"></a>실시간 채팅</h3><br>
+
+<ul>
+<li><strong>Admin으로 접속 했을 때에는 관리자 채팅 표시가 나타나게 하고, 일반 유저일 경우 실시간 상담 로고만 나타나도록 설정함.</strong> <br><br></li>
+<li><strong>관리자 채팅으로 접속 시, 일반 유저들이 작성 한 채팅창이 뜨게 작성하였고 <code>실시간 채팅</code>이 가능하도록 구현함.</strong> <br><br></li>
+<li><strong>일반 유저가 실시간 상담을 종료하면 관리자 채팅에서의 <code>채팅방도 사라지게 구현함.</code></strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734757-d615bb00-0cbe-11eb-85e5-083338798c82.png" width="600px"> </p>
+<br><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734763-d7df7e80-0cbe-11eb-858b-cd1bae9a5081.png" width="600px"> </p>
+<br><br>
+
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/12/Medicine-Service/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/10/04/line/"
+                            aria-label=": Next VS Nextline"
+                        >
+                            Next VS Nextline
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-04T13:36:53-07:00">
+	
+		    Oct 04, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>이번 포스팅에서는 Nextline와 line의 차이에 대해서 공부한걸 정리해보겠습니다.</p>
+<h1 id="Next-Vs-Next"><a href="#Next-Vs-Next" class="headerlink" title="Next Vs Next"></a>Next Vs Next</h1><h2 id="1-Next"><a href="#1-Next" class="headerlink" title="1. Next"></a>1. Next</h2><p>문자 또는 문자열을 공백 기준으로 한 단어 또는 한 문자 씩 입력 받는다<br><br><img src="/image/3a.png" alt="코드구현"></p>
+<h2 id="2-Nextline"><a href="#2-Nextline" class="headerlink" title="2. Nextline"></a>2. Nextline</h2><p>문자 또는 문장 한 라인 전체를 입력받는다<br><br><img src="/image/3b.png" alt="코드구현"><br><br><br></p>
+<p><strong>결론 : 입력한 문자열을 띄어뜨기, 줄바꿈을 모두 입력하고 싶으면 nextline을 사용한다!</strong></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/04/line/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/10/04/%EC%B0%BE%EA%B8%B0/"
+                            aria-label=": 알파벳 찾기"
+                        >
+                            알파벳 찾기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-04T12:31:48-07:00">
+	
+		    Oct 04, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="알파벳-찾기"><a href="#알파벳-찾기" class="headerlink" title="알파벳 찾기"></a>알파벳 찾기</h1><p><img src="/image/2a.png" alt="문제"></p>
+<p>이번 포스팅은 백준 사이트에 있는 알파벳 찾기에 대해서 포스팅하겠습니다.<br><Br><br>해당 문제는 입력한 문자열 중에 a - z 까지의 알파벳의 위치를 찾고 찾지 못하면 -1를 출력하는 문제입니다.<br><br><br>처음 문제를 접하였을 때에는 반복문을 여러번 돌려서 문제를 해결 하였으나, 해당 코드의 효율성이 떨어진다고 판단했습니다.<br><br><br><img src="/image/2b.png" alt="문제"><br>다음과 같은 코드로 보다 간단하게 해결하였습니다!<br><br><br><br></p>
+<p><strong>결론 : indexof 문법은 찾으려는 char를 해당 문자열의 어느 위치에(index)에 위치하는지 알려주고 해당 값이 없으면 -1를 반환한다!</strong></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/04/%EC%B0%BE%EA%B8%B0/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/2020/10/04/Scanner/"
                             aria-label=": BufferReader VS Scanner"
                         >
@@ -269,9 +866,9 @@
             
                 <div class="postShorten-content">
                     <p>이번 포스팅에서는 BufferedReader와 Scanner의 차이에 대해서 공부한걸 정리해보겠습니다.</p>
-<h1 id="1-BufferedReader"><a href="#1-BufferedReader" class="headerlink" title="1. BufferedReader"></a>1. BufferedReader</h1><p>BufferedReader는<br>InputStreamReader에 버퍼링 기능이 추가된것이다.  <br><br>사용자가 요청 할 때마다 데이터를 읽어 온느 것이 아니라 일정한 크기의 데이터를 한번에 읽어와 버퍼에 보관 한 후, 사용자의 요청이 있을 때 버퍼에서 데이터를 읽어오는 방식으로 동작한다.<br><br><br></p>
-<h1 id="2-Scanner"><a href="#2-Scanner" class="headerlink" title="2. Scanner"></a>2. Scanner</h1><p>공란의 줄바꿈을 모두 입력값의 경계로 인식하기 때문에 좀 더 쉽게 데이터를 입력 받을 수 있도록 해줍니다.<br><br><br></p>
-<h1 id="3-BufferedReader-vs-Scanner"><a href="#3-BufferedReader-vs-Scanner" class="headerlink" title="3. BufferedReader vs Scanner"></a>3. BufferedReader vs Scanner</h1><table>
+<h2 id="1-BufferedReader"><a href="#1-BufferedReader" class="headerlink" title="1. BufferedReader"></a>1. BufferedReader</h2><p>BufferedReader는<br>InputStreamReader에 버퍼링 기능이 추가된것이다.  <br><br>사용자가 요청 할 때마다 데이터를 읽어 온느 것이 아니라 일정한 크기의 데이터를 한번에 읽어와 버퍼에 보관 한 후, 사용자의 요청이 있을 때 버퍼에서 데이터를 읽어오는 방식으로 동작한다.<br><br><br></p>
+<h2 id="2-Scanner"><a href="#2-Scanner" class="headerlink" title="2. Scanner"></a>2. Scanner</h2><p>공란의 줄바꿈을 모두 입력값의 경계로 인식하기 때문에 좀 더 쉽게 데이터를 입력 받을 수 있도록 해줍니다.<br><br><br></p>
+<h2 id="3-BufferedReader-vs-Scanner"><a href="#3-BufferedReader-vs-Scanner" class="headerlink" title="3. BufferedReader vs Scanner"></a>3. BufferedReader vs Scanner</h2><table>
 <thead>
 <tr>
 <th>분류</th>
@@ -305,7 +902,7 @@
 <td align="right"></td>
 </tr>
 </tbody></table>
-<h1 id="4-코드구현"><a href="#4-코드구현" class="headerlink" title="4. 코드구현"></a>4. 코드구현</h1><p><img src="/image/asd.png" alt="코드구현"><br><br>br&gt;br&gt;<br><strong>결론 : 알고리즘 테스트를 풀 때는 속도가 보다 빠른 BufferedReader를 사용하도록 하자!</strong></p>
+<h2 id="4-코드구현"><a href="#4-코드구현" class="headerlink" title="4. 코드구현"></a>4. 코드구현</h2><p><img src="/image/asd.png" alt="코드구현"><br><br>br&gt;br&gt;<br><strong>결론 : 알고리즘 테스트를 풀 때는 속도가 보다 빠른 BufferedReader를 사용하도록 하자!</strong></p>
 
                     
                         
@@ -316,291 +913,6 @@
                         <p>
                             <a
                                 href="/2020/10/04/Scanner/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/09/25/%EB%91%90%EC%82%B0vs%EC%82%BC%EC%84%B1/"
-                            aria-label=": 두산vs삼성"
-                        >
-                            두산vs삼성
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-09-25T07:12:01-07:00">
-	
-		    Sep 25, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%BC%EC%83%81/">일상</a>, <a class="category-link" href="/categories/%EC%9D%BC%EC%83%81/%EC%95%BC%EA%B5%AC/">야구</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/09/25/%EB%91%90%EC%82%B0vs%EC%82%BC%EC%84%B1/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/09/25/%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/"
-                            aria-label=": 공공데이터 API 사용하기"
-                        >
-                            공공데이터 API 사용하기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-09-25T07:08:47-07:00">
-	
-		    Sep 25, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0/">이론</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0/Java/">Java</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/09/25/%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/09/25/%EC%A3%BC%EC%9E%85/"
-                            aria-label=": 의존성 주입"
-                        >
-                            의존성 주입
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-09-25T07:03:49-07:00">
-	
-		    Sep 25, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0/">이론</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0/Spring/">Spring</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/09/25/%EC%A3%BC%EC%9E%85/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/09/21/%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/"
-                            aria-label=": 공공데이터 Open API Java로 가져오기"
-                        >
-                            공공데이터 Open API Java로 가져오기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-09-21T06:27:15-07:00">
-	
-		    Sep 21, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0/">이론</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0/Java/">Java</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/09/21/%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/09/20/%EC%9E%85%EB%8B%88%EB%8B%A4/"
-                            aria-label=": 안녕하세요. 백엔드 개발자 이상권의 기술 블로그 입니다"
-                        >
-                            안녕하세요. 백엔드 개발자 이상권의 기술 블로그 입니다
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-09-20T18:27:38-07:00">
-	
-		    Sep 20, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%BC%EC%83%81/">일상</a>, <a class="category-link" href="/categories/%EC%9D%BC%EC%83%81/%EC%86%8C%EA%B0%9C%EA%B8%80/">소개글</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/09/20/%EC%9E%85%EB%8B%88%EB%8B%A4/#post-footer"
                                 class="postShorten-excerpt_link link"
                                 aria-label=""
                             >

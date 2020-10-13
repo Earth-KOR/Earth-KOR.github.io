@@ -6,27 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="이상권의 개발노트">
-    <title>BufferReader VS Scanner - 이상권의 개발노트</title>
+    <title>Medicine-Service - 이상권의 개발노트</title>
     <meta name="author" content="이상권">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"이번 포스팅에서는 BufferedReader와 Scanner의 차이에 대해서 공부한걸 정리해보겠습니다.\n1. BufferedReaderBufferedReader는InputStreamReader에 버퍼링 기능이 추가된것이다.  사용자가 요청 할 때마다 데이터를 읽어 온느 것이 아니라 일정한 크기의 데이터를 한번에 읽어와 버퍼에 보관 한 후, 사용자의 요청이 있을 때 버퍼에서 데이터를 읽어오는 방식으로 동작한다.\n2. Scanner공란의 줄바꿈을 모두 입력값의 경계로 인식하기 때문에 좀 더 쉽게 데이터를 입력 받을 수 있도록 해줍니다.\n3. BufferedReader vs Scanner\n\n\n분류\nBufferedReader\nScanner\n\n\n\nBuffer Size\n8192\n1024\n\n\nSyncronized\nO\nX\n\n\n문자열 파싱\n단순히 읽어 들임\n문자열 파싱 가능\n\n\nException\nIO 던짐\nIO 숨김\n\n\n\n\n\n\n\n4. 코드구현br&gt;br&gt;결론 : 알고리즘 테스트를 풀 때는 속도가 보다 빠른 BufferedReader를 사용하도록 하자!\n","dateCreated":"2020-10-04T11:52:55-07:00","dateModified":"2020-10-13T03:29:15-07:00","datePublished":"2020-10-04T11:52:55-07:00","description":"","headline":"BufferReader VS Scanner","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/04/Scanner/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/04/Scanner/","keywords":"알고리즘, 20.10.05"}</script>
-    <meta name="description" content="이번 포스팅에서는 BufferedReader와 Scanner의 차이에 대해서 공부한걸 정리해보겠습니다. 1. BufferedReaderBufferedReader는InputStreamReader에 버퍼링 기능이 추가된것이다.  사용자가 요청 할 때마다 데이터를 읽어 온느 것이 아니라 일정한 크기의 데이터를 한번에 읽어와 버퍼에 보관 한 후, 사용자의 요청이">
-<meta property="og:type" content="blog">
-<meta property="og:title" content="BufferReader VS Scanner">
-<meta property="og:url" content="https://earth-kor.github.io/2020/10/04/Scanner/index.html">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"Website","@id":"https://earth-kor.github.io","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"name":"이상권의 개발노트","description":null,"url":"https://earth-kor.github.io"}</script>
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="Medicine-Service">
+<meta property="og:url" content="https://earth-kor.github.io/Medicine-Service/index.html">
 <meta property="og:site_name" content="이상권의 개발노트">
-<meta property="og:description" content="이번 포스팅에서는 BufferedReader와 Scanner의 차이에 대해서 공부한걸 정리해보겠습니다. 1. BufferedReaderBufferedReader는InputStreamReader에 버퍼링 기능이 추가된것이다.  사용자가 요청 할 때마다 데이터를 읽어 온느 것이 아니라 일정한 크기의 데이터를 한번에 읽어와 버퍼에 보관 한 후, 사용자의 요청이">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://earth-kor.github.io/image/asd.png">
-<meta property="article:published_time" content="2020-10-04T18:52:55.000Z">
-<meta property="article:modified_time" content="2020-10-13T10:29:15.204Z">
+<meta property="article:published_time" content="2020-10-12T18:20:20.000Z">
+<meta property="article:modified_time" content="2020-10-13T10:20:20.065Z">
 <meta property="article:author" content="이상권">
-<meta property="article:tag" content="알고리즘">
-<meta property="article:tag" content="20.10.05">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://earth-kor.github.io/image/asd.png">
     
     
         
@@ -71,7 +65,7 @@
         
     
 
-<header id="header" data-behavior="5">
+<header id="header" data-behavior="2">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a
@@ -104,7 +98,7 @@
         
     
 
-<nav id="sidebar" data-behavior="5">
+<nav id="sidebar" data-behavior="2">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -238,7 +232,7 @@
 </nav>
 
             
-            <div id="main" data-behavior="5"
+            <div id="main" data-behavior="2"
                  class="
                         hasCoverMetaIn
                         ">
@@ -249,22 +243,16 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            BufferReader VS Scanner
+            Medicine-Service
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2020-10-04T11:52:55-07:00">
+    <time datetime="2020-10-12T11:20:20-07:00">
 	
-		    Oct 04, 2020
+		    Oct 12, 2020
     	
     </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
-
-
     
 </div>
 
@@ -274,45 +262,7 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>이번 포스팅에서는 BufferedReader와 Scanner의 차이에 대해서 공부한걸 정리해보겠습니다.</p>
-<h2 id="1-BufferedReader"><a href="#1-BufferedReader" class="headerlink" title="1. BufferedReader"></a>1. BufferedReader</h2><p>BufferedReader는<br>InputStreamReader에 버퍼링 기능이 추가된것이다.  <br><br>사용자가 요청 할 때마다 데이터를 읽어 온느 것이 아니라 일정한 크기의 데이터를 한번에 읽어와 버퍼에 보관 한 후, 사용자의 요청이 있을 때 버퍼에서 데이터를 읽어오는 방식으로 동작한다.<br><br><br></p>
-<h2 id="2-Scanner"><a href="#2-Scanner" class="headerlink" title="2. Scanner"></a>2. Scanner</h2><p>공란의 줄바꿈을 모두 입력값의 경계로 인식하기 때문에 좀 더 쉽게 데이터를 입력 받을 수 있도록 해줍니다.<br><br><br></p>
-<h2 id="3-BufferedReader-vs-Scanner"><a href="#3-BufferedReader-vs-Scanner" class="headerlink" title="3. BufferedReader vs Scanner"></a>3. BufferedReader vs Scanner</h2><table>
-<thead>
-<tr>
-<th>분류</th>
-<th align="center">BufferedReader</th>
-<th align="right">Scanner</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Buffer Size</td>
-<td align="center">8192</td>
-<td align="right">1024</td>
-</tr>
-<tr>
-<td>Syncronized</td>
-<td align="center">O</td>
-<td align="right">X</td>
-</tr>
-<tr>
-<td>문자열 파싱</td>
-<td align="center">단순히 읽어 들임</td>
-<td align="right">문자열 파싱 가능</td>
-</tr>
-<tr>
-<td>Exception</td>
-<td align="center">IO 던짐</td>
-<td align="right">IO 숨김</td>
-</tr>
-<tr>
-<td><br><br></td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-</tbody></table>
-<h2 id="4-코드구현"><a href="#4-코드구현" class="headerlink" title="4. 코드구현"></a>4. 코드구현</h2><p><img src="/image/asd.png" alt="코드구현"><br><br>br&gt;br&gt;<br><strong>결론 : 알고리즘 테스트를 풀 때는 속도가 보다 빠른 BufferedReader를 사용하도록 하자!</strong></p>
-
+            
             
 
 
@@ -320,27 +270,17 @@
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
         
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
-                
-    <a class="tag tag--primary tag--small t-none-link" href="/tags/20-10-05/" rel="tag">20.10.05</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>
-
-            </div>
-        
         
             <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/10/04/%EC%B0%BE%EA%B8%B0/"
-                    data-tooltip="알파벳 찾기"
-                    aria-label="PREVIOUS: 알파벳 찾기"
-                >
-                    
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
                     </a>
@@ -399,66 +339,6 @@
 </footer>
 
             </div>
-            
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
-                    <div class="post-actions-wrap">
-    <nav>
-        <ul class="post-actions post-action-nav">
-            <li class="post-action">
-                
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/10/04/%EC%B0%BE%EA%B8%B0/"
-                    data-tooltip="알파벳 찾기"
-                    aria-label="PREVIOUS: 알파벳 찾기"
-                >
-                    
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                    </a>
-            </li>
-            <li class="post-action">
-                
-                    <a
-                        class="post-action-btn btn btn--disabled"
-                        aria-hidden="true"
-                    >
-                        
-                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="post-actions post-action-share">
-        <li class="post-action hide-lg hide-md hide-sm">
-            <a
-                class="post-action-btn btn btn--default btn-open-shareoptions"
-                href="#btn-open-shareoptions"
-                aria-label="Share this post"
-            >
-                <i class="fa fa-share-alt" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-        
-            
-        
-        <li class="post-action">
-            
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
-            
-                <i class="fa fa-list" aria-hidden="true"></i>
-            </a>
-        </li>
-    </ul>
-</div>
-
-
-                </div>
-                
-
             
         </div>
         

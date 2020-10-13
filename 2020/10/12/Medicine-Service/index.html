@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>Medicine-Service - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"Medicine-Service - 약 복용 알리미\n  \n\n\n프로젝트 주제\n  \n\n  \n\n\n\n아날로그 방식 개선 목적 : 식사시간을 기준으로 정하는 아날로그 방식에서 복용알림 서비스로의 개선 목적. \n복용효과 100% 받기 : 약 동력의 기반하여 최적의 재 복용 시간을 알려 줌. \n체내 약 효능 시기 인지하기 : 체내에 약의 효과가 작용하고 있는 것을 시각적 그래프로 알려 줌. \n\n\n\n  \n\n\n개발환경\n  \n\n\nDatabase\n  \n\n\n\n기능구현\n검색 기능\n\n복용 시작\n\n복용 기록\n\n복용 그래프\n\n약국 찾기 지도\n\n실시간 채팅 상담\n검색 기능\n\n공공데이터 에서 약 53000개의 약 정보를 파싱하여 DB에 저장함. \n\n공공데이터 에서 약 100개의 약 부작용 정보를 파싱하여 DB에 저장함. \n\nJquery의 AutoComplete 기능을 이용하여 검색 시 자동완성 기능을 추가함.\n\n\n\n< 검색 시 >\n  \n\n< 검색 완료 시 >\n  \n\n\n\n\n복용 시작\n\n\n원하는 약을 선택한 후, 처방받은 복용주기를 입력함. \n입력한 약의 이름을 정보 테이블 , 부작용 테이블에 접근하여 부합하는 정보를 가져와서 리스트로 나타냄.\n\n\n< 주기 입력 창 >\n  \n\n< 복용 리스트 출력 >\n  \n\n\n\n복용 기록\n\n\n복용이 완료된 약들은 복용 리스트에서 지워지고, History 페이지에 자동으로 이동하여 저장됨.\n\n\n< History >\n  \n\n\n\n복용 그래프\n\n\n임의로 만든 약 동력 그래프를 시간에 따라 그리게 되고, 복용주기가 끝나면 그래프는 멈추도록 설계함. \n약의 효과가 발현하는 55% 지점부터 (임의로 지정) 약 효과가 발현하고 있다는 신호를 주기위해 gif 이미지를 띄워 표시함. \n입력한 재복용 주기만큼 시간이 지나면 사용자의 휴대전화로 재복용 알람 문자 메세지를 전송함.\n\n\n  \n\n\n  \n\n\n  \n\n \n  \n\n\n\n\n\n\n\n약국 찾기 지도\n\n\n공공데이터에서 약 22000개의 전국 약국정보를 파싱하여 DB에 저장함. \n해당 약국의 위치를 표시하기 위해서 Marker 기능을 사용하였고, 해당 마커의 정보를 표기하기 위해 InfoWindow 기능을 사용함. \nMarker가 한 곳에 밀집되어 있을 때, 밀집된 Marker의 수를 표시하기 위해서 Clusterer 기능을 구현함. \n광역시 시청을 기준으로 버튼 클릭 시 , 해당 좌표로 바로 이동할 수 있도록 구현함.\n\n\n  \n\n  \n\n  \n\n  \n\n\n\n실시간 채팅\n\n\nAdmin으로 접속 했을 때에는 관리자 채팅 표시가 나타나게 하고, 일반 유저일 경우 실시간 상담 로고만 나타나도록 설정함. \n관리자 채팅으로 접속 시, 일반 유저들이 작성 한 채팅창이 뜨게 작성하였고 실시간 채팅이 가능하도록 구현함. \n일반 유저가 실시간 상담을 종료하면 관리자 채팅에서의 채팅방도 사라지게 구현함.\n\n\n  \n\n  \n\n\n","dateCreated":"2020-10-12T11:21:49-07:00","dateModified":"2020-10-13T03:37:45-07:00","datePublished":"2020-10-12T11:21:49-07:00","description":"","headline":"Medicine-Service","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/12/Medicine-Service/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/12/Medicine-Service/","keywords":"Project, Team-Project"}</script>
+    <meta name="description" content="Medicine-Service - 약 복용 알리미      프로젝트 주제           아날로그 방식 개선 목적 : 식사시간을 기준으로 정하는 아날로그 방식에서 복용알림 서비스로의 개선 목적.  복용효과 100% 받기 : 약 동력의 기반하여 최적의 재 복용 시간을 알려 줌.  체내 약 효능 시기 인지하기 : 체내에 약의 효과가 작용하고 있는 것을 시각적">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Medicine-Service">
+<meta property="og:url" content="https://earth-kor.github.io/2020/10/12/Medicine-Service/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:description" content="Medicine-Service - 약 복용 알리미      프로젝트 주제           아날로그 방식 개선 목적 : 식사시간을 기준으로 정하는 아날로그 방식에서 복용알림 서비스로의 개선 목적.  복용효과 100% 받기 : 약 동력의 기반하여 최적의 재 복용 시간을 알려 줌.  체내 약 효능 시기 인지하기 : 체내에 약의 효과가 작용하고 있는 것을 시각적">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95682260-4bca4a00-0c1f-11eb-800a-84f91a25a2f6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95682342-a4014c00-0c1f-11eb-91d7-18b6c80a4f13.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95682353-b54a5880-0c1f-11eb-8e22-72d23b91ccbe.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95682371-d448ea80-0c1f-11eb-9302-b83d753c297a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95682372-d57a1780-0c1f-11eb-9523-b3c31a51424a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95739084-39a2e700-0cc5-11eb-9577-6fb907f23a17.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734699-c72f0880-0cbe-11eb-9620-288b8ee81c3f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734692-c4ccae80-0cbe-11eb-8866-29d24a3352ad.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734698-c6967200-0cbe-11eb-8860-1502c735bc64.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734722-cbf3bc80-0cbe-11eb-9557-fc9114361a22.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734717-ca29f900-0cbe-11eb-81a3-e14d9739f9bb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734719-cb5b2600-0cbe-11eb-9382-84f5afa0208d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95845701-7c2bf880-0d85-11eb-8e5b-875c68f72fca.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95844973-8a2d4980-0d84-11eb-9401-8014d9958a8e.gif">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734742-d2823400-0cbe-11eb-9437-dc2633fc547e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95738785-c00af900-0cc4-11eb-9c86-5a2b74e67851.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95738771-ba151800-0cc4-11eb-8096-8fca86454a9c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734753-d57d2480-0cbe-11eb-8e79-d81428cd699b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95738780-be413580-0cc4-11eb-9d40-2c987a2aa8cd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734757-d615bb00-0cbe-11eb-85e5-083338798c82.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95734763-d7df7e80-0cbe-11eb-858b-cd1bae9a5081.png">
+<meta property="article:published_time" content="2020-10-12T18:21:49.000Z">
+<meta property="article:modified_time" content="2020-10-13T10:37:45.795Z">
+<meta property="article:author" content="이상권">
+<meta property="article:tag" content="Project">
+<meta property="article:tag" content="Team-Project">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/62025746/95682260-4bca4a00-0c1f-11eb-800a-84f91a25a2f6.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Medicine-Service
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2020-10-12T11:21:49-07:00">
+	
+		    Oct 12, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Project/">Project</a>, <a class="category-link" href="/categories/Project/Team-Project/">Team-Project</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="Medicine-Service-약-복용-알리미"><a href="#Medicine-Service-약-복용-알리미" class="headerlink" title="Medicine-Service - 약 복용 알리미"></a>Medicine-Service - 약 복용 알리미</h1><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682260-4bca4a00-0c1f-11eb-800a-84f91a25a2f6.png" width="600px"> </p>
+<br><br><br>
+
+<h2 id="프로젝트-주제"><a href="#프로젝트-주제" class="headerlink" title="프로젝트 주제"></a>프로젝트 주제</h2><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682342-a4014c00-0c1f-11eb-91d7-18b6c80a4f13.png" width="600px"> </p>
+<br><br><hr>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682353-b54a5880-0c1f-11eb-8e22-72d23b91ccbe.png" width="600px"> </p>
+<br><br>
+
+<ul>
+<li><strong>아날로그 방식 개선 목적 : 식사시간을 기준으로 정하는 아날로그 방식에서 <code>복용알림 서비스로의 개선 목적.</code></strong> <br><br></li>
+<li><strong>복용효과 100% 받기 : 약 동력의 기반하여 <code>최적의 재 복용 시간</code>을 알려 줌.</strong> <br><br></li>
+<li><strong>체내 약 효능 시기 인지하기 : 체내에 약의 효과가 작용하고 있는 것을 <code>시각적 그래프</code>로 알려 줌.</strong> </li>
+</ul>
+<hr><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682371-d448ea80-0c1f-11eb-9302-b83d753c297a.png" width="600px"> </p>
+<br><br><hr><br>
+
+<h2 id="개발환경"><a href="#개발환경" class="headerlink" title="개발환경"></a>개발환경</h2><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95682372-d57a1780-0c1f-11eb-9523-b3c31a51424a.png" width="600px"> </p>
+<br><br>
+
+<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95739084-39a2e700-0cc5-11eb-9577-6fb907f23a17.png" width="600px"> </p>
+<br><br>
+
+
+<h2 id="기능구현"><a href="#기능구현" class="headerlink" title="기능구현"></a>기능구현</h2><ul>
+<li><p><a href="#%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5">검색 기능</a></p>
+</li>
+<li><p><a href="#%EB%B3%B5%EC%9A%A9-%EC%8B%9C%EC%9E%91">복용 시작</a></p>
+</li>
+<li><p><a href="#%EB%B3%B5%EC%9A%A9-%EA%B8%B0%EB%A1%9D">복용 기록</a></p>
+</li>
+<li><p><a href="#%EB%B3%B5%EC%9A%A9-%EA%B7%B8%EB%9E%98%ED%94%84">복용 그래프</a></p>
+</li>
+<li><p><a href="#%EC%95%BD%EA%B5%AD-%EC%B0%BE%EA%B8%B0-%EC%A7%80%EB%8F%84">약국 찾기 지도</a></p>
+</li>
+<li><p><a href="#%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85-%EC%83%81%EB%8B%B4">실시간 채팅 상담</a><br><br><br></p>
+<h3 id="검색-기능"><a href="#검색-기능" class="headerlink" title="검색 기능"></a>검색 기능</h3><br>
+</li>
+<li><p><strong>공공데이터 에서 약 <code>53000개</code>의 약 정보를 파싱하여 DB에 저장함.</strong> <br><br></p>
+</li>
+<li><p><strong>공공데이터 에서 약 <code>100개</code>의 약 부작용 정보를 파싱하여 DB에 저장함.</strong> <br><br></p>
+</li>
+<li><p><strong>Jquery의 AutoComplete 기능을 이용하여 검색 시 <code>자동완성</code> 기능을 추가함.</strong></p>
+</li>
+</ul>
+<p><br><br><br></p>
+<p align="center">< 검색 시 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734699-c72f0880-0cbe-11eb-9620-288b8ee81c3f.png" width="600px"> </p>
+<br>
+<p align="center">< 검색 완료 시 ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734692-c4ccae80-0cbe-11eb-8866-29d24a3352ad.png" width="600px"> </p>
+<br><br>
+
+<hr><br>
+
+<h3 id="복용-시작"><a href="#복용-시작" class="headerlink" title="복용 시작"></a>복용 시작</h3><br>
+
+<ul>
+<li><strong>원하는 약을 선택한 후, 처방받은 <code>복용주기를 입력함.</code></strong> <br><br></li>
+<li><strong>입력한 약의 이름을 <code>정보 테이블 , 부작용 테이블에 접근</code>하여 부합하는 정보를 가져와서 리스트로 나타냄.</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center">< 주기 입력 창 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734698-c6967200-0cbe-11eb-8860-1502c735bc64.png" width="600px"> </p>
+<br><br>
+<p align="center">< 복용 리스트 출력 ></p><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734722-cbf3bc80-0cbe-11eb-9557-fc9114361a22.png" width="600px"> </p>
+<br><br>
+<hr><br>
+
+<h3 id="복용-기록"><a href="#복용-기록" class="headerlink" title="복용 기록"></a>복용 기록</h3><br>
+
+<ul>
+<li><strong>복용이 완료된 약들은 복용 리스트에서 지워지고, <code>History 페이지에 자동으로 이동하여 저장</code>됨.</strong></li>
+</ul>
+<p><br><br></p>
+<p align="center">< History ></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734717-ca29f900-0cbe-11eb-81a3-e14d9739f9bb.png" width="600px"> </p>
+<br><br>
+<hr><br>
+
+<h3 id="복용-그래프"><a href="#복용-그래프" class="headerlink" title="복용 그래프"></a>복용 그래프</h3><br>
+
+<ul>
+<li><strong>임의로 만든 약 동력 그래프를 시간에 따라 그리게 되고, 복용주기가 끝나면 그래프는 멈추도록 설계함.</strong> <br><br></li>
+<li><strong>약의 효과가 발현하는 55% 지점부터 (임의로 지정) 약 효과가 발현하고 있다는 신호를 주기위해 <code>gif 이미지를 띄워 표시함.</code></strong> <br><br></li>
+<li><strong>입력한 재복용 주기만큼 시간이 지나면 사용자의 휴대전화로 <code>재복용 알람 문자 메세지를 전송함.</code></strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734719-cb5b2600-0cbe-11eb-9382-84f5afa0208d.png" width="600px"> </p>
+
+<p><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95845701-7c2bf880-0d85-11eb-8e5b-875c68f72fca.png" width="600px"> </p>
+
+<p><br><br><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95844973-8a2d4980-0d84-11eb-9401-8014d9958a8e.gif" width="600px"> </p>
+
+<p><br><br><br><br> </p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734742-d2823400-0cbe-11eb-9437-dc2633fc547e.png" width="600px"> </p>
+
+<p><br><br></p>
+<hr>
+
+
+<br>
+
+<h3 id="약국-찾기-지도"><a href="#약국-찾기-지도" class="headerlink" title="약국 찾기 지도"></a>약국 찾기 지도</h3><br>
+
+<ul>
+<li><strong>공공데이터에서 약 <code>22000개</code>의 전국 약국정보를 파싱하여 DB에 저장함.</strong> <br><br></li>
+<li><strong>해당 약국의 위치를 표시하기 위해서<code> Marker</code> 기능을 사용하였고, 해당 마커의 정보를 표기하기 위해 <code>InfoWindow</code> 기능을 사용함.</strong> <br><br></li>
+<li><strong>Marker가 한 곳에 밀집되어 있을 때, 밀집된 Marker의 수를 표시하기 위해서 <code>Clusterer</code> 기능을 구현함.</strong> <br><br></li>
+<li><strong>광역시 시청을 기준으로 버튼 클릭 시 , <code>해당 좌표로 바로 이동</code>할 수 있도록 구현함.</strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95738785-c00af900-0cc4-11eb-9c86-5a2b74e67851.png" width="600px"> </p>
+<br><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95738771-ba151800-0cc4-11eb-8096-8fca86454a9c.png" width="600px"> </p>
+<br><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734753-d57d2480-0cbe-11eb-8e79-d81428cd699b.png" width="600px"> </p>
+<br><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95738780-be413580-0cc4-11eb-9d40-2c987a2aa8cd.png" width="600px"> </p>
+<br><br>
+<hr><br>
+
+<h3 id="실시간-채팅"><a href="#실시간-채팅" class="headerlink" title="실시간 채팅"></a>실시간 채팅</h3><br>
+
+<ul>
+<li><strong>Admin으로 접속 했을 때에는 관리자 채팅 표시가 나타나게 하고, 일반 유저일 경우 실시간 상담 로고만 나타나도록 설정함.</strong> <br><br></li>
+<li><strong>관리자 채팅으로 접속 시, 일반 유저들이 작성 한 채팅창이 뜨게 작성하였고 <code>실시간 채팅</code>이 가능하도록 구현함.</strong> <br><br></li>
+<li><strong>일반 유저가 실시간 상담을 종료하면 관리자 채팅에서의 <code>채팅방도 사라지게 구현함.</code></strong></li>
+</ul>
+<p><br><br><br><br></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734757-d615bb00-0cbe-11eb-85e5-083338798c82.png" width="600px"> </p>
+<br><br>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95734763-d7df7e80-0cbe-11eb-858b-cd1bae9a5081.png" width="600px"> </p>
+<br><br>
+
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Project/" rel="tag">Project</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Team-Project/" rel="tag">Team-Project</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/12/Community/"
+                    data-tooltip="Doosan Bear Site"
+                    aria-label="PREVIOUS: Doosan Bear Site"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/04/line/"
+                    data-tooltip="Next VS Nextline"
+                    aria-label="NEXT: Next VS Nextline"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2020 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/12/Community/"
+                    data-tooltip="Doosan Bear Site"
+                    aria-label="PREVIOUS: Doosan Bear Site"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/04/line/"
+                    data-tooltip="Next VS Nextline"
+                    aria-label="NEXT: Next VS Nextline"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>
