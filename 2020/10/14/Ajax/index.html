@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>Ajax - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"AJAX\n\nAsynchronous 비동기 JavaScript And Xml\n\n\n\n\n\n\n초창기 웹?\n\n  \n\n\n\n\n\n\n\nAjax의 장점 - 1\n\n  \n\n\n\n\n\n\n\n\nAjax의 장점 - 2비동기 방식으로 페이지를 새로고침 하지 않고도 필요한 데이터를 받아와서 내용을 업데이트 하기 때문에 클라이언트의 대기시간을 줄일 수 있다.\n\n\n  \n\n\n동기/비동기 방식의 차이점\n\n\n동기(synchronous : 동시에 일어나는)\n\n동기는 말 그대로 동시에 일어난다는 뜻입니다. 요청과 그 결과가 동시에 일어난다는 약속인데요. 바로 요청을 하면 시간이 얼마가 걸리던지 요청한 자리에서 결과가 주어져야 합니다. \n요청과 결과가 한 자리에서 동시에 일어남 \nA노드와 B노드 사이의 작업 처리 단위(transaction)를 동시에 맞추겠다.\n\n\n비동기(Asynchronous : 동시에 일어나지 않는)\n\n비동기는 동시에 일어나지 않는다를 의미합니다. 요청과 결과가 동시에 일어나지 않을거라는 약속입니다. \n요청한 그 자리에서 결과가 주어지지 않음 \n노드 사이의 작업 처리 단위를 동시에 맞추지 않아도 된다. \n\n\n\n\n동기/비동기 방식의 장단점\n\n 동기와 비동기는 상황에 따라서 각각의 장단점이 있습니다.  \n 동기방식은 설계가 매우 간단하고 직관적이지만 결과가 주어질 때까지 아무것도 못하고 대기해야 하는 단점이 있고,  \n 비동기방식은 동기보다 복잡하지만 결과가 주어지는데 시간이 걸리더라도 그 시간 동안 다른 작업을 할 수 있으므로 자원을 효율적으로 사용할 수 있는 장점이 있습니다.\n\n\n\n\n\n\n비동기 방식의 종류\n$(“ “).load( )\n\n$.get( ),$.post( )\n\n$.getJSON( )\n\n$.ajax( )\n\n\n\n\n\n\n비동기 방식의 종류 - $(“ “).load( )\n\n  \n\n\n\n\n\n\n\n비동기 방식의 종류 - $.get( ),$.post( )\n\n  \n\n\n\n\n\n\n\n비동기 방식의 종류 - $.getJSON( )\n\n  \n\n\n\n\n\n\n\n비동기 방식의 종류 - $.ajax( )\n\n  \n\n\n\n\n\n","dateCreated":"2020-10-14T03:24:31-07:00","dateModified":"2020-10-14T19:25:44-07:00","datePublished":"2020-10-14T03:24:31-07:00","description":"","headline":"Ajax","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/14/Ajax/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/14/Ajax/","keywords":"이론노트, Ajax"}</script>
+    <meta name="description" content="AJAX  Asynchronous 비동기 JavaScript And Xml       초창기 웹?            Ajax의 장점 - 1             Ajax의 장점 - 2비동기 방식으로 페이지를 새로고침 하지 않고도 필요한 데이터를 받아와서 내용을 업데이트 하기 때문에 클라이언트의 대기시간을 줄일 수 있다.        동기&#x2F;비동기 방식의 차">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Ajax">
+<meta property="og:url" content="https://earth-kor.github.io/2020/10/14/Ajax/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:description" content="AJAX  Asynchronous 비동기 JavaScript And Xml       초창기 웹?            Ajax의 장점 - 1             Ajax의 장점 - 2비동기 방식으로 페이지를 새로고침 하지 않고도 필요한 데이터를 받아와서 내용을 업데이트 하기 때문에 클라이언트의 대기시간을 줄일 수 있다.        동기&#x2F;비동기 방식의 차">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95962124-efdf0b80-0e40-11eb-9aa8-be93a96b077b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95962129-f077a200-0e40-11eb-918c-7f60936d888d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95962130-f1103880-0e40-11eb-92d4-4293d0195a00.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95962119-ef467500-0e40-11eb-8305-f1fb54d35871.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95962111-ece41b00-0e40-11eb-9905-5fa594ad517a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95962114-eeadde80-0e40-11eb-9cd2-26a7cc660dd6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95962116-eeadde80-0e40-11eb-9e40-fe92eeee4c07.png">
+<meta property="article:published_time" content="2020-10-14T10:24:31.000Z">
+<meta property="article:modified_time" content="2020-10-15T02:25:44.011Z">
+<meta property="article:author" content="이상권">
+<meta property="article:tag" content="이론노트">
+<meta property="article:tag" content="Ajax">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/62025746/95962124-efdf0b80-0e40-11eb-9aa8-be93a96b077b.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Ajax
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2020-10-14T03:24:31-07:00">
+	
+		    Oct 14, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/Ajax/">Ajax</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><br>
+
+<p><strong><code>A</code>synchronous 비동기</strong> <br><br><br><strong><code>J</code>avaScript</strong> <br><br><br><strong><code>A</code>nd</strong> <br><br><br><strong><code>X</code>ml</strong></p>
+<br>
+
+<hr>
+
+<br>
+
+<h2 id="초창기-웹"><a href="#초창기-웹" class="headerlink" title="초창기 웹?"></a>초창기 웹?</h2><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95962124-efdf0b80-0e40-11eb-9aa8-be93a96b077b.png" width="600px"> </p>
+
+<br>
+
+<hr>
+
+<br>
+
+<h2 id="Ajax의-장점-1"><a href="#Ajax의-장점-1" class="headerlink" title="Ajax의 장점 - 1"></a>Ajax의 장점 - 1</h2><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95962129-f077a200-0e40-11eb-918c-7f60936d888d.png" width="600px"> </p>
+
+<br>
+
+<hr>
+
+<br>
+
+
+<h2 id="Ajax의-장점-2"><a href="#Ajax의-장점-2" class="headerlink" title="Ajax의 장점 - 2"></a>Ajax의 장점 - 2</h2><p><strong>비동기 방식으로 페이지를 새로고침 하지 않고도 필요한 데이터를 받아와서 내용을 업데이트 하기 때문에 클라이언트의 대기시간을 줄일 수 있다.</strong></p>
+<br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95962130-f1103880-0e40-11eb-92d4-4293d0195a00.png" width="600px"> </p>
+
+<p><br><br></p>
+<h3 id="동기-비동기-방식의-차이점"><a href="#동기-비동기-방식의-차이점" class="headerlink" title="동기/비동기 방식의 차이점"></a>동기/비동기 방식의 차이점</h3><br>
+
+<ul>
+<li><p>동기(synchronous : 동시에 일어나는)</p>
+<ul>
+<li>동기는 말 그대로 동시에 일어난다는 뜻입니다. 요청과 그 결과가 동시에 일어난다는 약속인데요. 바로 요청을 하면 시간이 얼마가 걸리던지 요청한 자리에서 결과가 주어져야 합니다. <br><br></li>
+<li>요청과 결과가 한 자리에서 동시에 일어남 <br><br></li>
+<li>A노드와 B노드 사이의 작업 처리 단위(transaction)를 동시에 맞추겠다.</li>
+</ul>
+</li>
+<li><p>비동기(Asynchronous : 동시에 일어나지 않는)</p>
+<ul>
+<li>비동기는 동시에 일어나지 않는다를 의미합니다. 요청과 결과가 동시에 일어나지 않을거라는 약속입니다. <br><br></li>
+<li>요청한 그 자리에서 결과가 주어지지 않음 <br><br></li>
+<li>노드 사이의 작업 처리 단위를 동시에 맞추지 않아도 된다. </li>
+</ul>
+<p><br><br></p>
+</li>
+</ul>
+<h3 id="동기-비동기-방식의-장단점"><a href="#동기-비동기-방식의-장단점" class="headerlink" title="동기/비동기 방식의 장단점"></a>동기/비동기 방식의 장단점</h3><br>
+
+<p> <strong>동기와 비동기는 상황에 따라서 각각의 장단점이 있습니다.</strong>  <br><br></p>
+<p> <strong>동기방식은 설계가 매우 간단하고 직관적이지만 결과가 주어질 때까지 아무것도 못하고 대기해야 하는 단점이 있고,</strong>  <br><br></p>
+<p> <strong>비동기방식은 동기보다 복잡하지만 결과가 주어지는데 시간이 걸리더라도 그 시간 동안 다른 작업을 할 수 있으므로 자원을 효율적으로 사용할 수 있는 장점이 있습니다.</strong></p>
+<br>
+
+<hr>
+
+<br>
+
+<h2 id="비동기-방식의-종류"><a href="#비동기-방식의-종류" class="headerlink" title="비동기 방식의 종류"></a>비동기 방식의 종류</h2><ul>
+<li><p><strong>$(“ “).load( )</strong></p>
+</li>
+<li><p><strong>$.get( ),$.post( )</strong></p>
+</li>
+<li><p><strong>$.getJSON( )</strong></p>
+</li>
+<li><p><strong>$.ajax( )</strong></p>
+<br>
+
+<hr>
+
+</li>
+</ul>
+<h3 id="비동기-방식의-종류-“-“-load"><a href="#비동기-방식의-종류-“-“-load" class="headerlink" title="비동기 방식의 종류 - $(“ “).load( )"></a>비동기 방식의 종류 - $(“ “).load( )</h3><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95962119-ef467500-0e40-11eb-8305-f1fb54d35871.png" width="600px"> </p>
+
+<br>
+
+<hr>
+
+<br>
+
+<h3 id="비동기-방식의-종류-get-post"><a href="#비동기-방식의-종류-get-post" class="headerlink" title="비동기 방식의 종류 - $.get( ),$.post( )"></a>비동기 방식의 종류 - $.get( ),$.post( )</h3><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95962111-ece41b00-0e40-11eb-9905-5fa594ad517a.png" width="600px"> </p>
+
+<br>
+
+<hr>
+
+<br>
+
+<h3 id="비동기-방식의-종류-getJSON"><a href="#비동기-방식의-종류-getJSON" class="headerlink" title="비동기 방식의 종류 - $.getJSON( )"></a>비동기 방식의 종류 - $.getJSON( )</h3><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95962114-eeadde80-0e40-11eb-9cd2-26a7cc660dd6.png" width="600px"> </p>
+
+<br>
+
+<hr>
+
+<br>
+
+<h3 id="비동기-방식의-종류-ajax"><a href="#비동기-방식의-종류-ajax" class="headerlink" title="비동기 방식의 종류 - $.ajax( )"></a>비동기 방식의 종류 - $.ajax( )</h3><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95962116-eeadde80-0e40-11eb-9e40-fe92eeee4c07.png" width="600px"> </p>
+
+<br>
+
+<hr>
+
+<br>
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Ajax/" rel="tag">Ajax</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/" rel="tag">이론노트</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/14/%EC%A3%BC%EC%9E%85-DI/"
+                    data-tooltip="의존성 주입(DI)"
+                    aria-label="PREVIOUS: 의존성 주입(DI)"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/14/REST/"
+                    data-tooltip="REST"
+                    aria-label="NEXT: REST"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2020 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/14/%EC%A3%BC%EC%9E%85-DI/"
+                    data-tooltip="의존성 주입(DI)"
+                    aria-label="PREVIOUS: 의존성 주입(DI)"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/14/REST/"
+                    data-tooltip="REST"
+                    aria-label="NEXT: REST"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>
