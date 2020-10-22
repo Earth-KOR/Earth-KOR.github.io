@@ -11,27 +11,27 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"REST\n\nREpresentational 표현 State 상태 Transfer 전달\n\n\n\n\n\n\n초창기 웹?\n\n  \n\n\n\n\n\n\n\nREST API란 - 1\n\n  \n\n\n\n\n\n\n\nREST API란 - 2\n\n  \n\n\n\n\n\n\n\n다양한 API 명령어들\n\n  \n\n\n\n\n\n\n\n왜 REST API를 쓰는가 ?\n분산 시스템을 찾기 위해서\n모듈, 기능별로 분리하기 쉬워졌다. \n어떤 다른 모듈 또는 애플리케이션들이라도 RESTful API 를 통해 상호간에 통신을 할 수 있기 때문\n\n\nWEB 브라우저 외의 클라이언트를 위해서 (멀티 플랫폼)\n데이터만 주고받기 때문에 여러 클라이언트가 자유롭고 부담없이 데이터를 이용 할 수있다.\n\n\n\n\n\n\n\n\n\nRESTful 이란 ?REST의 제약조건을 모두 만족하는 구조를 가진 시스템을 Restful 이라고 함\n\n\n\n\n\n\nRESTful의 제약조건 ?  \n\n\n\n\n\n\n\nRichardson Maturity Model ?  \n\n\n레너드 리처드슨(Leonard Richardson)은 REST가 얼마나 성숙했는지 알 수 있는 아주 유용한 모델을 제시했습니다. 이 모델에 따르면 REST의 성숙도는 다음 4단계로 구분됩니다.\n\n레벨 0: 클라이언트는 서비스별로 유일한 URL 끝점에 HTTP POST 요청을 하여 서비스를 호출합니다. 요청을 할 때마다 어떤 액션을 수행할지, 그 대상(예: 비즈니스 객체)은 무엇인지 지정합니다. 필요한 매개변수도 함께 전달합니다. \n레벨 1: 서비스는 리소스 개념을 지원합니다. 클라이언트는 수행할 액션과 매개변수가 지정된 POST 요청을 합니다. \n레벨 2: 서비스는 HTTP 동사를 이용해서 액션을 수행하고(예: GET은 조회, POST는 생성, PUT은 수정), 요청 쿼리 매개변수 및 본문, 필요 시 매개변수를 지정합니다. 덕분에 서비스는 GET 요청을 캐싱하는 등 웹 인프라를 활용할 수 있습니다.\n레벨 3: 서비스를 HATEOAS(Hypertext As The Engine Of Application State, 애플리케이션 상태 엔진으로서의 하이퍼미디어) 원칙에 기반하여 설계합니다. HATEOAS는 GET 요청으로 반환된 리소스 표현형에 그 리소스에 대한 액션의 링크도 함께 태워 보내자는 생각입니다. 가령 클라이언트는 GET 요청으로 주문 데이터를 조회하고 이때 반환된 표현형 내부 링크를 이용해서 해당 주문을 취소할 수도 있습니다. HATEOAS를 사용하면 하드 코딩한 URL을 클라이언트 코드에 욱여넣지 않아도 됩니다\n\n\n\n","dateCreated":"2020-10-14T03:23:15-07:00","dateModified":"2020-10-22T03:17:00-07:00","datePublished":"2020-10-14T03:23:15-07:00","description":"","headline":"REST","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/14/REST/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/14/REST/","keywords":"이론노트, REST"}</script>
-    <meta name="description" content="REST  REpresentational 표현 State 상태 Transfer 전달       초창기 웹?            REST API란 - 1            REST API란 - 2            다양한 API 명령어들            왜 REST API를 쓰는가 ? 분산 시스템을 찾기 위해서 모듈, 기능별로 분리하기 쉬워졌다.  어">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"REST\n\nREpresentational 표현 State 상태 Transfer 전달\n\n\n\n\n\n\n초창기 웹?사용자가 원하는 정보를 Request에 담아 전달하면 \n서버에서 HTTP 문서 형태로 반환함\n\n\n  \n\n\n\n\n\n\n\nREST API란 - 1\n\nHTTP Protocol을 더 유연하게 사용하기 위한 목적. 서버의 자원을 추가, 수정, 삭제, 업데이트 할 수 있도록 하는 것\n  \n\n\n\n\n\n\n\nREST API란 - 2\n\nURL로 내가 하고자 하는 작업을 서버에 요청함. 서버는 이에 맞는 동작을 수행하고 그 결과를 JSON/XML 형태로 반환함.\n  \n\n\n\n\n\n\n\n다양한 API 명령어들\n\n  \n\n\n\n\n\n\n\n왜 REST API를 쓰는가 ?\n분산 시스템을 찾기 위해서\n모듈, 기능별로 분리하기 쉬워졌다. \n어떤 다른 모듈 또는 애플리케이션들이라도 RESTful API 를 통해 상호간에 통신을 할 수 있기 때문\n\n\nWEB 브라우저 외의 클라이언트를 위해서 (멀티 플랫폼)\n데이터만 주고받기 때문에 여러 클라이언트가 자유롭고 부담없이 데이터를 이용 할 수있다.\n\n\n\n\n\n\n\n\n\nRESTful 이란 ?REST의 제약조건을 모두 만족하는 구조를 가진 시스템을 Restful 이라고 함\n\n\n\n\n\n\nRESTful의 제약조건 ?  \n\n\n\n\n\n\n\nRichardson Maturity Model ?  \n\n\n레너드 리처드슨(Leonard Richardson)은 REST가 얼마나 성숙했는지 알 수 있는 아주 유용한 모델을 제시했습니다. 이 모델에 따르면 REST의 성숙도는 다음 4단계로 구분됩니다.\n\n레벨 0: 클라이언트는 서비스별로 유일한 URL 끝점에 HTTP POST 요청을 하여 서비스를 호출합니다. 요청을 할 때마다 어떤 액션을 수행할지, 그 대상(예: 비즈니스 객체)은 무엇인지 지정합니다. 필요한 매개변수도 함께 전달합니다. \n레벨 1: 서비스는 리소스 개념을 지원합니다. 클라이언트는 수행할 액션과 매개변수가 지정된 POST 요청을 합니다. \n레벨 2: 서비스는 HTTP 동사를 이용해서 액션을 수행하고(예: GET은 조회, POST는 생성, PUT은 수정), 요청 쿼리 매개변수 및 본문, 필요 시 매개변수를 지정합니다. 덕분에 서비스는 GET 요청을 캐싱하는 등 웹 인프라를 활용할 수 있습니다.\n레벨 3: 서비스를 HATEOAS(Hypertext As The Engine Of Application State, 애플리케이션 상태 엔진으로서의 하이퍼미디어) 원칙에 기반하여 설계합니다. HATEOAS는 GET 요청으로 반환된 리소스 표현형에 그 리소스에 대한 액션의 링크도 함께 태워 보내자는 생각입니다. 가령 클라이언트는 GET 요청으로 주문 데이터를 조회하고 이때 반환된 표현형 내부 링크를 이용해서 해당 주문을 취소할 수도 있습니다. HATEOAS를 사용하면 하드 코딩한 URL을 클라이언트 코드에 욱여넣지 않아도 됩니다\n\n\n\n","dateCreated":"2020-10-14T03:23:15-07:00","dateModified":"2020-10-22T03:47:54-07:00","datePublished":"2020-10-14T03:23:15-07:00","description":"","headline":"REST","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/14/REST/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/14/REST/","keywords":"이론노트, REST"}</script>
+    <meta name="description" content="REST  REpresentational 표현 State 상태 Transfer 전달       초창기 웹?사용자가 원하는 정보를 Request에 담아 전달하면  서버에서 HTTP 문서 형태로 반환함             REST API란 - 1  HTTP Protocol을 더 유연하게 사용하기 위한 목적. 서버의 자원을 추가, 수정, 삭제, 업데이트 할 수">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="REST">
 <meta property="og:url" content="https://earth-kor.github.io/2020/10/14/REST/index.html">
 <meta property="og:site_name" content="이상권의 개발노트">
-<meta property="og:description" content="REST  REpresentational 표현 State 상태 Transfer 전달       초창기 웹?            REST API란 - 1            REST API란 - 2            다양한 API 명령어들            왜 REST API를 쓰는가 ? 분산 시스템을 찾기 위해서 모듈, 기능별로 분리하기 쉬워졌다.  어">
+<meta property="og:description" content="REST  REpresentational 표현 State 상태 Transfer 전달       초창기 웹?사용자가 원하는 정보를 Request에 담아 전달하면  서버에서 HTTP 문서 형태로 반환함             REST API란 - 1  HTTP Protocol을 더 유연하게 사용하기 위한 목적. 서버의 자원을 추가, 수정, 삭제, 업데이트 할 수">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95959070-f79cb100-0e3c-11eb-9654-89188a561dec.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95959060-f53a5700-0e3c-11eb-87f6-5d37f022acf3.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95959064-f66b8400-0e3c-11eb-9c60-c175fa1ebdc6.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95959066-f7041a80-0e3c-11eb-8fc2-b43b09093c6b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/96861271-b72ecb80-1418-11eb-98e0-85ed586b7c81.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/96861273-b7c76200-1418-11eb-9698-f52412365c12.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/96861275-b7c76200-1418-11eb-85bb-1d3c3f41f372.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/96861278-b85ff880-1418-11eb-85c9-6a1eae486298.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95960292-8b22b180-0e3e-11eb-8378-566482f7084d.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/62025746/95960618-e81e6780-0e3e-11eb-9e67-f14579dff511.png">
 <meta property="article:published_time" content="2020-10-14T10:23:15.000Z">
-<meta property="article:modified_time" content="2020-10-22T10:17:00.096Z">
+<meta property="article:modified_time" content="2020-10-22T10:47:54.656Z">
 <meta property="article:author" content="이상권">
 <meta property="article:tag" content="이론노트">
 <meta property="article:tag" content="REST">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/62025746/95959070-f79cb100-0e3c-11eb-9654-89188a561dec.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/62025746/96861271-b72ecb80-1418-11eb-98e0-85ed586b7c81.png">
     
     
         
@@ -288,9 +288,11 @@
 
 <br>
 
-<h2 id="초창기-웹"><a href="#초창기-웹" class="headerlink" title="초창기 웹?"></a>초창기 웹?</h2><br>
+<h2 id="초창기-웹"><a href="#초창기-웹" class="headerlink" title="초창기 웹?"></a>초창기 웹?</h2><p>사용자가 원하는 정보를 Request에 담아 전달하면 <br></p>
+<p>서버에서 <code>HTTP 문서</code> 형태로 반환함</p>
+<br>
 
-<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95959070-f79cb100-0e3c-11eb-9654-89188a561dec.png" width="600px"> </p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96861271-b72ecb80-1418-11eb-98e0-85ed586b7c81.png" width="600px"> </p>
 
 <br>
 
@@ -300,7 +302,8 @@
 
 <h2 id="REST-API란-1"><a href="#REST-API란-1" class="headerlink" title="REST API란 - 1"></a>REST API란 - 1</h2><br>
 
-<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95959060-f53a5700-0e3c-11eb-87f6-5d37f022acf3.png" width="600px"> </p>
+<p>HTTP Protocol을 <code>더 유연하게 사용</code>하기 위한 목적. <br><br>서버의 자원을 추가, 수정, 삭제, 업데이트 할 수 있도록 하는 것</p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96861273-b7c76200-1418-11eb-9698-f52412365c12.png" width="600px"> </p>
 
 <br>
 
@@ -310,7 +313,8 @@
 
 <h2 id="REST-API란-2"><a href="#REST-API란-2" class="headerlink" title="REST API란 - 2"></a>REST API란 - 2</h2><br>
 
-<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95959064-f66b8400-0e3c-11eb-9c60-c175fa1ebdc6.png" width="600px"> </p>
+<p>URL로 내가 하고자 하는 작업을 서버에 요청함. <br><br>서버는 이에 맞는 동작을 수행하고 그 결과를 <code>JSON/XML</code> 형태로 반환함.</p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96861275-b7c76200-1418-11eb-85bb-1d3c3f41f372.png" width="600px"> </p>
 
 <br>
 
@@ -320,7 +324,7 @@
 
 <h2 id="다양한-API-명령어들"><a href="#다양한-API-명령어들" class="headerlink" title="다양한 API 명령어들"></a>다양한 API 명령어들</h2><br>
 
-<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95959066-f7041a80-0e3c-11eb-8fc2-b43b09093c6b.png" width="600px"> </p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96861278-b85ff880-1418-11eb-85c9-6a1eae486298.png" width="600px"> </p>
 
 <br>
 
