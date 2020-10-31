@@ -6,28 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="이상권의 개발노트">
-    <title>문자열 - 이상권의 개발노트</title>
+    <title>AOP - 이상권의 개발노트</title>
     <meta name="author" content="이상권">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"문제\n\n\n접근 방법주어진 A를 B와 일치하는 알파벳이 가장 많은 곳에 위치시키고, 나머지를 B와 동일한 알파벳으로 채우면 차이가 최소가 된다.A의 앞뒤를 B와 동일하게 만들면 새로 추가한 부분에 대한 차이값은 0이므로, 별도로 고려해주지 않아도 된다.즉, A와 B가 가장 많이 일치하는 위치를 찾고, 그 때의 차이값을 출력해주면 된다.B에서 A의 길이만큼의 부분문자열을 얻어와 A와 비교하는 방법을 사용한다\n코드1234567891011121314151617181920212223242526272829303132package org.coding.twoten;import java.util.*;public class String_3 &#123;    public static void main(String [] args)&#123;        Scanner scanner &#x3D; new Scanner(System.in);        String a &#x3D; scanner.next();        String b &#x3D; scanner.next();        int result &#x3D; a.length();        for(int i&#x3D;0;i&lt;b.length()-a.length()+1;i++)&#123;            int tmp&#x3D;0;            for(int j&#x3D;0;j&lt;a.length();j++)&#123;                if(a.charAt(j)!&#x3D;b.charAt(j+i))&#123;                    tmp++;                &#125;            &#125;            if(result &gt; tmp)&#123;                result &#x3D; tmp;            &#125;        &#125;        System.out.println(result);    &#125;&#125; \n\n\n\n\n\n요약\nA와 B의 가장 공통적인 위치 찾기\n\n","dateCreated":"2020-10-23T12:01:12-07:00","dateModified":"2020-10-27T04:29:24-07:00","datePublished":"2020-10-23T12:01:12-07:00","description":"","headline":"문자열","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/23/%EB%AC%B8%EC%9E%90%EC%97%B4/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/23/%EB%AC%B8%EC%9E%90%EC%97%B4/","keywords":"알고리즘, 20.10.24"}</script>
-    <meta name="description" content="문제   접근 방법주어진 A를 B와 일치하는 알파벳이 가장 많은 곳에 위치시키고, 나머지를 B와 동일한 알파벳으로 채우면 차이가 최소가 된다.A의 앞뒤를 B와 동일하게 만들면 새로 추가한 부분에 대한 차이값은 0이므로, 별도로 고려해주지 않아도 된다.즉, A와 B가 가장 많이 일치하는 위치를 찾고, 그 때의 차이값을 출력해주면 된다.B에서 A의 길이만큼의">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"AOP목차\n\nAOP의 도입배경 &amp; 사용하는 이유\nAOP의 구성요소\nSpring에서의 AOP\n\n\n\n1. AOP의 도입배경 &amp; 사용하는 이유\n\n어떻게 하면 더 간편하고 효율적으로 기능 구현에 충실할 수 있을까?\n기존의 OOP (Object Oriented Programming)를 대체하는 개념이 아닌 보완하는 역할의 AOP(Aspect Oriented Programming) 등장 !\n\n\n\n\n2. AOP의 구성요소\n\n  \n\n\n기존의 방식에서는 핵심 관심(Core)을 설계 할 때 필수적으로 기능 해야하는 기능들을 하나하나 클래스 안에 객체를 만들어서 사용하였음!\n이렇게 설계하게 되면 같은 기능을 가진 코드를 여러번 써야하기 때문에 불편함을 겪는 경우가 많았다.\nAOP의 등장으로 필수적인 코드들을 미리 만들어두고 이것들을 필요한 클래스가 외부에서 호출하여 (Weaving) 사용하는 식으로 만들어졌고, 훨신 코드의 양을 줄일 수가 있었음!\n\n\n\nAOP 용어정리\n  \n\n\n\n우리는 Spirng 내에서 Aspect을 여러개 만들어서 사용함!\n\n\n3. Spring에서의 AOP\n\n  \n\n클래스 위에 @Aspect를 선언 함으로써 Aspect를 구현함을 표시하고 @Before를 선언 함으로써 타켓의 메서드보다 전에 먼저 실행되게 할 코드임을 표시한다 마지막으로 execution은 Pointcut을 위한 표현식이며 Advice의 대상으로 지정한다!\n|분류| 어노테이션 ||—|:—:|—:||@Before | JointPoint 호출 전 실행 될 코드 ||@After | 정상 실행 or 예외 발생 상관없이 동작 할 코드||@Around | 메서드를 직접 호출 가능한 강력한 코드 ||@AfterReturning | 모든 메서드 정상 실행 이후 동작하는 코드||@AfterThrowing | 예외 발생 이후 동작하는 코드 |\n\n\n|분류| Pointcut 설정 기준 ||—|:—:|—:||execution | 메서드를 기준 ||within | 특정한 타입(클래스)을 기준||this | 주어진 인터페이스 구현 객체를 대상 ||args | 특정 파라미터 가진 대상 기준||@annotation | 특정 어노테이션이 적용 대상 기준 |\n","dateCreated":"2020-10-30T07:08:31-07:00","dateModified":"2020-10-30T23:46:57-07:00","datePublished":"2020-10-30T07:08:31-07:00","description":"","headline":"AOP","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/30/AOP/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/30/AOP/","keywords":"이론노트, AOP"}</script>
+    <meta name="description" content="AOP목차  AOP의 도입배경 &amp; 사용하는 이유 AOP의 구성요소 Spring에서의 AOP    1. AOP의 도입배경 &amp; 사용하는 이유  어떻게 하면 더 간편하고 효율적으로 기능 구현에 충실할 수 있을까? 기존의 OOP (Object Oriented Programming)를 대체하는 개념이 아닌 보완하는 역할의 AOP(Aspect Orien">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="문자열">
-<meta property="og:url" content="https://earth-kor.github.io/2020/10/23/%EB%AC%B8%EC%9E%90%EC%97%B4/index.html">
+<meta property="og:title" content="AOP">
+<meta property="og:url" content="https://earth-kor.github.io/2020/10/30/AOP/index.html">
 <meta property="og:site_name" content="이상권의 개발노트">
-<meta property="og:description" content="문제   접근 방법주어진 A를 B와 일치하는 알파벳이 가장 많은 곳에 위치시키고, 나머지를 B와 동일한 알파벳으로 채우면 차이가 최소가 된다.A의 앞뒤를 B와 동일하게 만들면 새로 추가한 부분에 대한 차이값은 0이므로, 별도로 고려해주지 않아도 된다.즉, A와 B가 가장 많이 일치하는 위치를 찾고, 그 때의 차이값을 출력해주면 된다.B에서 A의 길이만큼의">
+<meta property="og:description" content="AOP목차  AOP의 도입배경 &amp; 사용하는 이유 AOP의 구성요소 Spring에서의 AOP    1. AOP의 도입배경 &amp; 사용하는 이유  어떻게 하면 더 간편하고 효율적으로 기능 구현에 충실할 수 있을까? 기존의 OOP (Object Oriented Programming)를 대체하는 개념이 아닌 보완하는 역할의 AOP(Aspect Orien">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97293071-60a30200-1809-11eb-96ee-c1bcd4e74a2d.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97293072-60a30200-1809-11eb-9aa5-40b6359580fe.png">
-<meta property="article:published_time" content="2020-10-23T19:01:12.000Z">
-<meta property="article:modified_time" content="2020-10-27T11:29:24.750Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97772870-318dd880-1b08-11eb-873c-f059646db3f5.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97772873-32bf0580-1b08-11eb-8d2f-360697ea459e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97772874-33579c00-1b08-11eb-8410-4b2326e9611c.png">
+<meta property="article:published_time" content="2020-10-30T14:08:31.000Z">
+<meta property="article:modified_time" content="2020-10-31T06:46:57.799Z">
 <meta property="article:author" content="이상권">
-<meta property="article:tag" content="알고리즘">
-<meta property="article:tag" content="20.10.24">
+<meta property="article:tag" content="이론노트">
+<meta property="article:tag" content="AOP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/62025746/97293071-60a30200-1809-11eb-96ee-c1bcd4e74a2d.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/62025746/97772870-318dd880-1b08-11eb-873c-f059646db3f5.png">
     
     
         
@@ -250,20 +251,20 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            문자열
+            AOP
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2020-10-23T12:01:12-07:00">
+    <time datetime="2020-10-30T07:08:31-07:00">
 	
-		    Oct 23, 2020
+		    Oct 30, 2020
     	
     </time>
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-24/">20.10.24</a>
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
 
 
     
@@ -275,19 +276,50 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/97293071-60a30200-1809-11eb-96ee-c1bcd4e74a2d.png" alt="문자열"></p>
+            <h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><p>목차</p>
+<ol>
+<li>AOP의 도입배경 &amp; 사용하는 이유</li>
+<li>AOP의 구성요소</li>
+<li>Spring에서의 AOP</li>
+</ol>
 <br>
 
-<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>주어진 A를 B와 일치하는 알파벳이 가장 많은 곳에 위치시키고, 나머지를 B와 동일한 알파벳으로 채우면 차이가 최소가 된다.<br><br><br>A의 앞뒤를 B와 동일하게 만들면 새로 추가한 부분에 대한 차이값은 0이므로, 별도로 고려해주지 않아도 된다.<br>즉, A와 B가 가장 많이 일치하는 위치를 찾고, 그 때의 차이값을 출력해주면 된다.<br><br><br>B에서 A의 길이만큼의 부분문자열을 얻어와 A와 비교하는 방법을 사용한다</p>
-<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.twoten;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class String_3 &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String [] args)&#123;</span><br><span class="line">        Scanner scanner &#x3D; new Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        String a &#x3D; scanner.next();</span><br><span class="line">        String b &#x3D; scanner.next();</span><br><span class="line"></span><br><span class="line">        int result &#x3D; a.length();</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;0;i&lt;b.length()-a.length()+1;i++)&#123;</span><br><span class="line">            int tmp&#x3D;0;</span><br><span class="line"></span><br><span class="line">            for(int j&#x3D;0;j&lt;a.length();j++)&#123;</span><br><span class="line">                if(a.charAt(j)!&#x3D;b.charAt(j+i))&#123;</span><br><span class="line">                    tmp++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(result &gt; tmp)&#123;</span><br><span class="line">                result &#x3D; tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h3 id="1-AOP의-도입배경-amp-사용하는-이유"><a href="#1-AOP의-도입배경-amp-사용하는-이유" class="headerlink" title="1. AOP의 도입배경 &amp; 사용하는 이유"></a>1. AOP의 도입배경 &amp; 사용하는 이유</h3><br>
+
+<p>어떻게 하면 더 간편하고 효율적으로 기능 구현에 충실할 수 있을까?</p>
+<p>기존의 OOP (Object Oriented Programming)를 대체하는 개념이 아닌 보완하는 역할의 AOP(Aspect Oriented Programming) 등장 !</p>
 <br>
 
-<p><img src="https://user-images.githubusercontent.com/62025746/97293072-60a30200-1809-11eb-9aa5-40b6359580fe.png" alt="문자열 답"></p>
+
+
+<h3 id="2-AOP의-구성요소"><a href="#2-AOP의-구성요소" class="headerlink" title="2. AOP의 구성요소"></a>2. AOP의 구성요소</h3><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/97772870-318dd880-1b08-11eb-873c-f059646db3f5.png" width="600px"> </p>
+
+
+<p>기존의 방식에서는 핵심 관심(Core)을 설계 할 때 필수적으로 기능 해야하는 기능들을 하나하나 클래스 안에 객체를 만들어서 사용하였음!</p>
+<p>이렇게 설계하게 되면 같은 기능을 가진 코드를 여러번 써야하기 때문에 불편함을 겪는 경우가 많았다.</p>
+<p>AOP의 등장으로 필수적인 코드들을 미리 만들어두고 이것들을 필요한 클래스가 외부에서 호출하여 (Weaving) 사용하는 식으로 만들어졌고, 훨신 코드의 양을 줄일 수가 있었음!</p>
 <br>
 
-<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
-<li>A와 B의 가장 공통적인 위치 찾기</li>
-</ul>
+
+<p>AOP 용어정리</p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/97772873-32bf0580-1b08-11eb-8d2f-360697ea459e.png" width="600px"> </p>
+
+<br>
+
+<p><strong>우리는 Spirng 내에서 Aspect을 여러개 만들어서 사용함!</strong></p>
+<br>
+
+<h3 id="3-Spring에서의-AOP"><a href="#3-Spring에서의-AOP" class="headerlink" title="3. Spring에서의 AOP"></a>3. Spring에서의 AOP</h3><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/97772874-33579c00-1b08-11eb-8410-4b2326e9611c.png" width="600px"> </p>
+
+<p>클래스 위에 @Aspect를 선언 함으로써 Aspect를 구현함을 표시하고 @Before를 선언 함으로써 타켓의 메서드보다 전에 먼저 실행되게 할 코드임을 표시한다 마지막으로 execution은 Pointcut을 위한 표현식이며 Advice의 대상으로 지정한다!</p>
+<p>|분류| 어노테이션 |<br>|—|:—:|—:|<br>|@Before | JointPoint 호출 전 실행 될 코드 |<br>|@After | 정상 실행 or 예외 발생 상관없이 동작 할 코드|<br>|@Around | 메서드를 직접 호출 가능한 강력한 코드 |<br>|@AfterReturning | 모든 메서드 정상 실행 이후 동작하는 코드|<br>|@AfterThrowing | 예외 발생 이후 동작하는 코드 |</p>
+<br>
+
+<p>|분류| Pointcut 설정 기준 |<br>|—|:—:|—:|<br>|execution | 메서드를 기준 |<br>|within | 특정한 타입(클래스)을 기준|<br>|this | 주어진 인터페이스 구현 객체를 대상 |<br>|args | 특정 파라미터 가진 대상 기준|<br>|@annotation | 특정 어노테이션이 적용 대상 기준 |</p>
 
             
 
@@ -299,7 +331,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-none-link" href="/tags/20-10-24/" rel="tag">20.10.24</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/AOP/" rel="tag">AOP</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/" rel="tag">이론노트</a>
 
             </div>
         
@@ -312,9 +344,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/10/30/AOP/"
-                    data-tooltip="AOP"
-                    aria-label="PREVIOUS: AOP"
+                    href="/2020/10/30/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/"
+                    data-tooltip="트랜잭션"
+                    aria-label="PREVIOUS: 트랜잭션"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -326,9 +358,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/10/23/ROT13/"
-                    data-tooltip="ROT13"
-                    aria-label="NEXT: ROT13"
+                    href="/2020/10/23/%EB%AC%B8%EC%9E%90%EC%97%B4/"
+                    data-tooltip="문자열"
+                    aria-label="NEXT: 문자열"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
@@ -388,9 +420,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/10/30/AOP/"
-                    data-tooltip="AOP"
-                    aria-label="PREVIOUS: AOP"
+                    href="/2020/10/30/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/"
+                    data-tooltip="트랜잭션"
+                    aria-label="PREVIOUS: 트랜잭션"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -402,9 +434,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/10/23/ROT13/"
-                    data-tooltip="ROT13"
-                    aria-label="NEXT: ROT13"
+                    href="/2020/10/23/%EB%AC%B8%EC%9E%90%EC%97%B4/"
+                    data-tooltip="문자열"
+                    aria-label="NEXT: 문자열"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
