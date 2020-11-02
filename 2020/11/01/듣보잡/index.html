@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>듣보잡 - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"문제\n\n\n접근 방법입력한 값에 띄어쓰기를 하기 때문에 split 함수를 이용해서 띄어쓰기 양 옆의 값을 가져온 뒤, int 타입으로 변경함양 옆의 값을 이용하여 A타입 B타입의 갯수를 정하고, 각 타입의 String 타입을 입력한다.두 타입의 String을 배열에 넣은 뒤, 하나의 배열에서 하나씩 꺼내어 다른 타입에 들어있는 String의 값과 같은지 파악하고 같다면 count를 늘려주고 list 변수에 담아준다!마지막으로 list를 sort 함수로 사전식을 배열하고 list의 size만큼 반복문을 돌려 안의 요소들을 전부 출력한다\n\n\n코드123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263package org.coding.eleven;import java.io.BufferedReader;import java.io.IOException;import java.io.InputStreamReader;import java.util.ArrayList;import java.util.Arrays;import java.util.Collections;import java.util.List;public class Main &#123; \tpublic static void main(String[] args) throws IOException &#123;\t\tBufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));\t\t\tString N  &#x3D; br.readLine();\tint count &#x3D; 0;\tList&lt;String&gt; result &#x3D; new ArrayList&lt;String&gt;();\tString[] list ;\t\tlist &#x3D; N.split(&quot; &quot;);\t\tint N_1 &#x3D; Integer.parseInt(list[0]);    int N_2 &#x3D; Integer.parseInt(list[1]);    \tString[] check &#x3D; new String[N_1]  ;\tString[] check2 &#x3D; new String[N_2]  ;        for(int i &#x3D; 0 ; i &lt; N_1 ; i++) &#123;    check[i] &#x3D;\tbr.readLine();    \t    &#125;        for(int i &#x3D; 0 ; i &lt; N_2 ; i++) &#123;    \t    \t check2[i] &#x3D; br.readLine();    &#125;\t\tfor(int i &#x3D; 0 ; i &lt; N_1 ; i++) &#123;\t\tfor(int j &#x3D; 0 ; j &lt; N_2 ; j++) &#123;\t\t\t\t\t\tif(check[i].equals(check2[j])) &#123;\t\t\t\tcount++;\t\t\t\tresult.add(check[i]);\t\t\t&#125;\t\t&#125;\t&#125;\t\tCollections.sort(result);\tSystem.out.println(count);\tfor(int i &#x3D; 0 ; i &lt; result.size() ; i ++) &#123;\t\tSystem.out.println(result.get(i));\t&#125;\t\t&#125;&#125;\n\n\n\n\n\n요약\nCollections.sort 함수를 이용하여 정렬하기\n두 개의 String 배열을 만들어서 서로를 비교하여 true false 판단하기\n\n","dateCreated":"2020-11-01T05:12:01-08:00","dateModified":"2020-11-01T22:18:14-08:00","datePublished":"2020-11-01T05:12:01-08:00","description":"","headline":"듣보잡","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/11/01/%EB%93%A3%EB%B3%B4%EC%9E%A1/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/11/01/%EB%93%A3%EB%B3%B4%EC%9E%A1/","keywords":"알고리즘, 20.11.01"}</script>
+    <meta name="description" content="문제   접근 방법입력한 값에 띄어쓰기를 하기 때문에 split 함수를 이용해서 띄어쓰기 양 옆의 값을 가져온 뒤, int 타입으로 변경함양 옆의 값을 이용하여 A타입 B타입의 갯수를 정하고, 각 타입의 String 타입을 입력한다.두 타입의 String을 배열에 넣은 뒤, 하나의 배열에서 하나씩 꺼내어 다른 타입에 들어있는 String의 값과 같은지 파악">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="듣보잡">
+<meta property="og:url" content="https://earth-kor.github.io/2020/11/01/%EB%93%A3%EB%B3%B4%EC%9E%A1/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:description" content="문제   접근 방법입력한 값에 띄어쓰기를 하기 때문에 split 함수를 이용해서 띄어쓰기 양 옆의 값을 가져온 뒤, int 타입으로 변경함양 옆의 값을 이용하여 A타입 B타입의 갯수를 정하고, 각 타입의 String 타입을 입력한다.두 타입의 String을 배열에 넣은 뒤, 하나의 배열에서 하나씩 꺼내어 다른 타입에 들어있는 String의 값과 같은지 파악">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97835632-76904700-1c8f-11eb-93ca-8299d8ac7168.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97835634-77c17400-1c8f-11eb-8164-64793bcbbefa.png">
+<meta property="article:published_time" content="2020-11-01T13:12:01.000Z">
+<meta property="article:modified_time" content="2020-11-02T06:18:14.167Z">
+<meta property="article:author" content="이상권">
+<meta property="article:tag" content="알고리즘">
+<meta property="article:tag" content="20.11.01">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/62025746/97835632-76904700-1c8f-11eb-93ca-8299d8ac7168.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            듣보잡
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2020-11-01T05:12:01-08:00">
+	
+		    Nov 01, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-11-01/">20.11.01</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/97835632-76904700-1c8f-11eb-93ca-8299d8ac7168.png" alt="듣보잡"></p>
+<br>
+
+<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>입력한 값에 띄어쓰기를 하기 때문에 split 함수를 이용해서 띄어쓰기 양 옆의 값을 가져온 뒤, int 타입으로 변경함<br><br>양 옆의 값을 이용하여 A타입 B타입의 갯수를 정하고, 각 타입의 String 타입을 입력한다.<br><br>두 타입의 String을 배열에 넣은 뒤, 하나의 배열에서 하나씩 꺼내어 다른 타입에 들어있는 String의 값과 같은지 파악하고 같다면 count를 늘려주고 list 변수에 담아준다!<br><br><br>마지막으로 list를 sort 함수로 사전식을 배열하고 list의 size만큼 반복문을 돌려 안의 요소들을 전부 출력한다</p>
+<br>
+
+<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.eleven;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Collections;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"> </span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">	</span><br><span class="line">	BufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">		</span><br><span class="line">	String N  &#x3D; br.readLine();</span><br><span class="line">	int count &#x3D; 0;</span><br><span class="line">	List&lt;String&gt; result &#x3D; new ArrayList&lt;String&gt;();</span><br><span class="line">	String[] list ;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	list &#x3D; N.split(&quot; &quot;);</span><br><span class="line">	</span><br><span class="line">	int N_1 &#x3D; Integer.parseInt(list[0]);</span><br><span class="line">    int N_2 &#x3D; Integer.parseInt(list[1]);</span><br><span class="line">    </span><br><span class="line">	String[] check &#x3D; new String[N_1]  ;</span><br><span class="line">	String[] check2 &#x3D; new String[N_2]  ;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    for(int i &#x3D; 0 ; i &lt; N_1 ; i++) &#123;</span><br><span class="line">    check[i] &#x3D;	br.readLine();</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    for(int i &#x3D; 0 ; i &lt; N_2 ; i++) &#123;</span><br><span class="line">    	</span><br><span class="line">    	 check2[i] &#x3D; br.readLine();</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	for(int i &#x3D; 0 ; i &lt; N_1 ; i++) &#123;</span><br><span class="line">		for(int j &#x3D; 0 ; j &lt; N_2 ; j++) &#123;</span><br><span class="line">			</span><br><span class="line">			if(check[i].equals(check2[j])) &#123;</span><br><span class="line">				count++;</span><br><span class="line">				result.add(check[i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Collections.sort(result);</span><br><span class="line">	</span><br><span class="line">System.out.println(count);</span><br><span class="line">	for(int i &#x3D; 0 ; i &lt; result.size() ; i ++) &#123;</span><br><span class="line">		System.out.println(result.get(i));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br>
+
+<p><img src="https://user-images.githubusercontent.com/62025746/97835634-77c17400-1c8f-11eb-8164-64793bcbbefa.png" alt="듣보잡 답"></p>
+<br>
+
+<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
+<li>Collections.sort 함수를 이용하여 정렬하기</li>
+<li>두 개의 String 배열을 만들어서 서로를 비교하여 true false 판단하기</li>
+</ul>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/20-11-01/" rel="tag">20.11.01</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/11/01/list/"
+                    data-tooltip="Linked list"
+                    aria-label="PREVIOUS: Linked list"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/30/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/"
+                    data-tooltip="트랜잭션"
+                    aria-label="NEXT: 트랜잭션"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2020 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/11/01/list/"
+                    data-tooltip="Linked list"
+                    aria-label="PREVIOUS: Linked list"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2020/10/30/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/"
+                    data-tooltip="트랜잭션"
+                    aria-label="NEXT: 트랜잭션"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>

@@ -244,6 +244,79 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/2020/10/17/%EC%84%B8%EB%A1%9C%EC%9D%BD%EA%B8%B0/"
+                            aria-label=": 세로읽기"
+                        >
+                            세로읽기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-17T10:48:12-07:00">
+	
+		    Oct 17, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-17/">20.10.17</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/96364610-3312d600-10f0-11eb-83a3-879d83144755.png" alt="괄호"></p>
+<br>
+
+<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>이미 문제에서 5개의 문자열과 15개 이하의 길이를 정해주었다. <br><br>나중에 하나하나 문자열을 가져오기 위해서 char를 2차원 배열로 미리 생성해둔다 <br><br>미리 저장된 char에서 가로방향이 아닌 세로 방향으로 반복문을 실행 함으로써, str라는  String에 추가 시키고, 혹시 빈 문자열 (== 0)이 있다면 그냥 건너뛰고 실행하도록 설계해준다!</p>
+<br>
+
+<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.seventen;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line">public class Main3 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">		String[] Arr;</span><br><span class="line">		char[][] input &#x3D; new char[5][15];</span><br><span class="line">		String str &#x3D; &quot;&quot;;</span><br><span class="line"></span><br><span class="line">		BufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line"></span><br><span class="line">		for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">			String s &#x3D; br.readLine();</span><br><span class="line">			for (int j &#x3D; 0; j &lt; s.length(); j++) &#123;</span><br><span class="line">				input[i][j] &#x3D; s.charAt(j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		for (int i &#x3D; 0; i &lt; 15; i++) &#123;</span><br><span class="line">			for (int j &#x3D; 0; j &lt; 5; j++) &#123;</span><br><span class="line"></span><br><span class="line">				if (input[j][i] &#x3D;&#x3D; &#39;\0&#39;) &#123;</span><br><span class="line">					continue;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				str +&#x3D; input[j][i];</span><br><span class="line"></span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br>
+
+<p><img src="https://user-images.githubusercontent.com/62025746/96364782-2478ee80-10f1-11eb-9773-0730e9965ca8.png" alt="괄호답"></p>
+<br>
+
+<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
+<li>하나의 문자열을 다루는 것이 아닌, 여러개의 문자열을 다룰 수 있는지 묻는 문제!</li>
+<li>2차원 배열에 대한 이해가 필요한 문제</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/17/%EC%84%B8%EB%A1%9C%EC%9D%BD%EA%B8%B0/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/2020/10/17/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/"
                             aria-label=": 명령 프롬프트"
                         >
