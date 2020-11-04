@@ -243,6 +243,298 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/2020/10/17/%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/"
+                            aria-label=": 공공데이터 가져오기"
+                        >
+                            공공데이터 가져오기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-17T06:57:05-07:00">
+	
+		    Oct 17, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EA%B0%9C%EB%B0%9C%EB%85%B8%ED%8A%B8/">개발노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2 id="태그-안의-값-및-태그-내부의-값-가져오기"><a href="#태그-안의-값-및-태그-내부의-값-가져오기" class="headerlink" title="태그 안의 값 및 태그 내부의 값 가져오기"></a>태그 안의 값 및 태그 내부의 값 가져오기</h2><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96097411-deaf0100-0f0b-11eb-9ac5-b9f710c463b7.png" width="600px"> </p>
+
+<br>
+
+<p><strong>다음과 같은 tag안의 값을 가져오는 방법과 tag 내부에 있는 값을 가져오는걸 배워보겠습니다!</strong></p>
+<br>
+<hr>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96097413-df479780-0f0b-11eb-87ea-8386354c8c7f.png" width="600px"> </p>
+
+<br>
+
+<p><strong>DocumentURL 변수에 데이터를 가져올 주소를 넣어주고 태그에 접근하기 위한 xpath를 생성하고 특정 태그의 값을 담을 변수를 선언해줍니다!</strong></p>
+<br>
+<hr>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96097398-dc4ca700-0f0b-11eb-8fc0-7d7f80f12888.png" width="600px"> </p>
+
+<br>
+
+<p><strong>URL 변수에 원하는 데이터만 가져오기 위해 파라미터를 추가한 URL 값을 넣습니다</strong> <br><br></p>
+<p><strong>그 후 앞서 사용한 Document 변수안에 현재 페이지의 데이터를 담습니다.</strong> <br></p>
+<p><strong>evaluate 매서드에 원하는 태그까지 접근함으로써 원하는 데이터를 nodeList안에 리스트 형태로 저장합니다</strong></p>
+<br>
+<hr>
+
+<br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96097402-dd7dd400-0f0b-11eb-8c35-c5556446e8f9.png" width="600px"> </p>
+
+<br>
+
+<p><strong>가져온 데이터 중에서 SECTION 태그의 갯수를 파악하여 그 수만큼 반복문을 돌리고 가져온 값은 result 변수에 추가시킵니다.</strong></p>
+<br>
+
+<hr>
+<br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96097405-dd7dd400-0f0b-11eb-9743-9ed850c3ab77.png" width="600px"> </p>
+
+<br>
+
+<p><strong>가져온 데이터 중에서 ARTICLE 태그의 갯수를 파악하여 그 수만큼 반복문을 돌리고 가져온 값은 result 변수에 추가시킵니다.</strong></p>
+<hr>
+<br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96097408-de166a80-0f0b-11eb-9c5b-22780425fed7.png" width="600px"> </p>
+
+<br>
+
+<p><strong>가져온 데이터 중에서 PARAGRAPH 태그의 갯수를 파악하여 그 수만큼 반복문을 돌리고 가져온 값은 result 변수에 추가시킵니다.</strong></p>
+<hr>
+<br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96097409-deaf0100-0f0b-11eb-9008-3a32920d6576.png" width="600px"> </p>
+
+<br>
+
+<p><strong>모든 데이터를 가지고있는 result값을 DB에 저장하여 데이터를 사용합니다!</strong></p>
+<h2 id="태그-안-Value-값-가져오기"><a href="#태그-안-Value-값-가져오기" class="headerlink" title="태그 안 Value 값 가져오기"></a>태그 안 Value 값 가져오기</h2><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96095045-0fda0200-0f09-11eb-9912-2c9dc29a6f37.png" width="600px"> </p>
+
+<br>
+
+<p><strong>다음과 같은 tag안의 데이터들 중에서 가지고오고 싶은 데이터만 파싱하는 방법을 알아보겠습니다.</strong><br><br></p>
+<hr>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96095046-0fda0200-0f09-11eb-8fab-e67a9ff173f8.png" width="600px"> </p>
+
+<br>
+
+<p><strong>url 변수에 데이터를 가져올 주소와 파라미터 값을 넣어주고 DocumentBuilderFactory , DocumentBuilder, Document 를 이용하여 전체 페이지를 파싱한 데이터를 담는다.</strong></p>
+<br>
+<hr>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96095049-10729880-0f09-11eb-9387-f552486d3434.png" width="600px"> </p>
+
+<br>
+
+<p><strong>root 태그로 접근한 다음, 파싱을 시작 할 시작태그의 변수를 넣어 가져올 데이터의 범위를 좁혀준다!</strong> <br><br></p>
+<p><strong>좁혀진 데이터들을 Nodelist 변수에 list 형태로 담은 후, Nodelist가 가지고 있는 모든 데이터를 for 반복문과 item 메서드를 이용하여 list 안의 각각의 데이터를 Node 변수에 모두 담아준다.</strong> <br><br></p>
+<p><strong>getNodeType() 메서드에 가지고 오고 싶은 태그이름을 매개변수에 넣음으로써 해당 태그안의 데이터를 가지고 올 수 있음!</strong></p>
+<br>
+
+
+<p align="center"> <img src="(https://user-images.githubusercontent.com/62025746/96095042-0ea8d500-0f09-11eb-8ffa-2b806c2085bd.png" width="600px"> </p>
+
+<br>
+<hr>
+
+<br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96095054-110b2f00-0f09-11eb-9a66-dd7877e58155.png" width="600px"> </p>
+
+<br>
+
+<p><strong>getNodeType으로 가져온 데이터를 List 변수에 저장함.</strong></p>
+<br>
+
+<hr>
+
+<br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/96095057-110b2f00-0f09-11eb-90c6-42998052f599.png" width="600px"> </p>
+
+<br>
+
+<p><strong>List안에 들어있는 데이터를 DB안에 저장해서 사용함 !</strong></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/17/%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/10/14/%EC%A3%BC%EC%9E%85-DI/"
+                            aria-label=": 의존성 주입(DI)"
+                        >
+                            의존성 주입(DI)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-14T03:25:24-07:00">
+	
+		    Oct 14, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="의존성-주입-DI"><a href="#의존성-주입-DI" class="headerlink" title="의존성 주입 (DI)"></a>의존성 주입 (DI)</h1><p><br><br></p>
+<h2 id="Dependency-Injection-이란"><a href="#Dependency-Injection-이란" class="headerlink" title="Dependency Injection 이란?"></a>Dependency Injection 이란?</h2><p><strong>객체 자체가 아니라 Framework에 의해 객체의 의존성이 주입되는 설계 패턴</strong></p>
+<br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95982681-5bce6d80-0e5b-11eb-8aaa-1c304af96423.png" width="600px"> </p>
+
+<p><br><br></p>
+<h2 id="의존성-주입-방법"><a href="#의존성-주입-방법" class="headerlink" title="의존성 주입 방법"></a>의존성 주입 방법</h2><ul>
+<li>Contructor Injection<ul>
+<li>생성자를 통한 전달</li>
+<li><code>&lt;constructor-arg ref=&quot;cat&quot;&gt;&lt;/constructor-arg&gt;</code></li>
+</ul>
+</li>
+<li>Method(Setter) Injection<ul>
+<li>setter()을 통한 전달</li>
+<li><code>&lt;property name=&quot;myName&quot; value=&quot;poodle&quot;&gt;&lt;/property&gt;</code></li>
+</ul>
+</li>
+<li>Field Injection<ul>
+<li>멤버 변수를 통한 전달</li>
+</ul>
+</li>
+</ul>
+<p><br><br></p>
+<h2 id="의존성-주입의-장점"><a href="#의존성-주입의-장점" class="headerlink" title="의존성 주입의 장점"></a>의존성 주입의 장점</h2><ul>
+<li>재사용성을 높여줍니다. <br> </li>
+<li>테스트에 용이합니다. <br></li>
+<li>코드도 단순화 시켜줍니다. <br></li>
+<li>종속적이던 코드의 수도 줄여줍니다. <br></li>
+<li>왜 사용하는 지 파악하기가 수월합니다. 코드를 읽기 쉬워지는 점이 있습니다. <br> </li>
+<li>종속성이 감소합니다. 구성 요소의 종속성이 감소하면, 변경에 민감하지 않습니다. <br></li>
+<li>결합도(coupling)는 낮추면서 유연성과 확장성은 향상시킬 수 있습니다. <br> </li>
+<li>객체간의 의존관계를 설정할 수 있습니다. <br></li>
+<li>객체간의 의존관계를 없애거나 줄일 수 있습니다. <br></li>
+</ul>
+<p><br><br></p>
+<h2 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h2><br>
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/62025746/95982506-26c21b00-0e5b-11eb-894f-b5a31d5db2b4.png" width="600px"> </p>
+
+<br>
+
+<ol>
+<li>AnimalType에 대한 구체적인 Class를 생성한다. <br><ul>
+<li>Dog Class, Cat Class <br><br></li>
+</ul>
+</li>
+<li>PetOwner 객체에 AnimalType 객체를 전달한다. <br><ul>
+<li>Contructor Injection <br><br></li>
+</ul>
+</li>
+<li>생성자를 통한 전달 <br><ul>
+<li><code>&lt;constructor-arg ref=&quot;cat&quot;&gt;&lt;/constructor-arg&gt;</code> <br><br></li>
+</ul>
+</li>
+<li>Method(Setter) Injection <br><ul>
+<li>setter()을 통한 전달 <br></li>
+<li><code>&lt;property name=&quot;myName&quot; value=&quot;poodle&quot;&gt;&lt;/property&gt; </code><br><br></li>
+</ul>
+</li>
+<li>Field Injection <br><ul>
+<li>멤버 변수를 통한 전달 <br></li>
+</ul>
+</li>
+</ol>
+<p>개발자가 할 일은 주입할 것에 대한 Class를 작성(Dog, Cat 등)하는 것 ! <br></p>
+<p>출처 : <a target="_blank" rel="noopener" href="https://gmlwjd9405.github.io/2018/11/09/dependency-injection.html">https://gmlwjd9405.github.io/2018/11/09/dependency-injection.html</a></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/14/%EC%A3%BC%EC%9E%85-DI/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/2020/10/14/Ajax/"
                             aria-label=": Ajax"
                         >
@@ -590,7 +882,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -635,66 +927,6 @@
                     
                         <a
                             class="link-unstyled"
-                            href="/2020/10/04/%EC%B0%BE%EA%B8%B0/"
-                            aria-label=": 알파벳 찾기"
-                        >
-                            알파벳 찾기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-10-04T12:31:48-07:00">
-	
-		    Oct 04, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="알파벳-찾기"><a href="#알파벳-찾기" class="headerlink" title="알파벳 찾기"></a>알파벳 찾기</h1><p><img src="/image/2a.png" alt="문제"></p>
-<p>이번 포스팅은 백준 사이트에 있는 알파벳 찾기에 대해서 포스팅하겠습니다.<br><Br><br>해당 문제는 입력한 문자열 중에 a - z 까지의 알파벳의 위치를 찾고 찾지 못하면 -1를 출력하는 문제입니다.<br><br><br>처음 문제를 접하였을 때에는 반복문을 여러번 돌려서 문제를 해결 하였으나, 해당 코드의 효율성이 떨어진다고 판단했습니다.<br><br><br><img src="/image/2b.png" alt="문제"><br>다음과 같은 코드로 보다 간단하게 해결하였습니다!<br><br><br><br></p>
-<p><strong>결론 : indexof 문법은 찾으려는 char를 해당 문자열의 어느 위치에(index)에 위치하는지 알려주고 해당 값이 없으면 -1를 반환한다!</strong></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/10/04/%EC%B0%BE%EA%B8%B0/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
                             href="/2020/10/04/Scanner/"
                             aria-label=": BufferReader VS Scanner"
                         >
@@ -711,7 +943,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     

@@ -244,6 +244,76 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/2020/10/17/%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/"
+                            aria-label=": 팰린드롬인지 확인하기"
+                        >
+                            팰린드롬인지 확인하기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-17T10:48:36-07:00">
+	
+		    Oct 17, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/96364769-204cd100-10f1-11eb-8525-5442c59d512e.png" alt="괄호"></p>
+<br>
+
+<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>입력한 글자를 인덱스 위치 0부터 출력하고, 인데스 끝번호부터 0까지 출력한다.<br><br><br>그리고 두 문자열을 비교하여 같으면 1을 출력하고 다르면 0을 출력한다!</p>
+<br>
+
+<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.seventen;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line">public class Main4 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">		BufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">		String test &#x3D; &quot;&quot; ;</span><br><span class="line">		String test_re &#x3D; &quot;&quot; ;</span><br><span class="line">		String input &#x3D; br.readLine();</span><br><span class="line">		</span><br><span class="line">		for(int i &#x3D; 0 ; i&lt; input.length(); i ++) &#123;</span><br><span class="line">			test +&#x3D; input.charAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		for(int i &#x3D; input.length()-1 ; i &gt; -1 ; i --) &#123;</span><br><span class="line">			test_re +&#x3D; input.charAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		if( test.equals(test_re)) &#123;</span><br><span class="line">			System.out.println(1);</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			System.out.println(0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br>
+
+<p><img src="https://user-images.githubusercontent.com/62025746/96364772-217dfe00-10f1-11eb-8748-21b97c65da49.png" alt="괄호답"></p>
+<br>
+
+<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><p>Charat 메서드와 for 반복문을 이용하여 정순, 역순으로 출력하여 비교하기.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/17/%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/2020/10/17/%EC%84%B8%EB%A1%9C%EC%9D%BD%EA%B8%B0/"
                             aria-label=": 세로읽기"
                         >
@@ -260,7 +330,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-17/">20.10.17</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EA%B7%B8%EB%A6%AC%EB%94%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">그리디 알고리즘</a>
 
 
     
@@ -333,7 +403,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-17/">20.10.17</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -403,7 +473,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-17/">20.10.17</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -476,7 +546,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -521,66 +591,6 @@
                     
                         <a
                             class="link-unstyled"
-                            href="/2020/10/04/%EC%B0%BE%EA%B8%B0/"
-                            aria-label=": 알파벳 찾기"
-                        >
-                            알파벳 찾기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-10-04T12:31:48-07:00">
-	
-		    Oct 04, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="알파벳-찾기"><a href="#알파벳-찾기" class="headerlink" title="알파벳 찾기"></a>알파벳 찾기</h1><p><img src="/image/2a.png" alt="문제"></p>
-<p>이번 포스팅은 백준 사이트에 있는 알파벳 찾기에 대해서 포스팅하겠습니다.<br><Br><br>해당 문제는 입력한 문자열 중에 a - z 까지의 알파벳의 위치를 찾고 찾지 못하면 -1를 출력하는 문제입니다.<br><br><br>처음 문제를 접하였을 때에는 반복문을 여러번 돌려서 문제를 해결 하였으나, 해당 코드의 효율성이 떨어진다고 판단했습니다.<br><br><br><img src="/image/2b.png" alt="문제"><br>다음과 같은 코드로 보다 간단하게 해결하였습니다!<br><br><br><br></p>
-<p><strong>결론 : indexof 문법은 찾으려는 char를 해당 문자열의 어느 위치에(index)에 위치하는지 알려주고 해당 값이 없으면 -1를 반환한다!</strong></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/10/04/%EC%B0%BE%EA%B8%B0/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
                             href="/2020/10/04/Scanner/"
                             aria-label=": BufferReader VS Scanner"
                         >
@@ -597,7 +607,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-05/">20.10.05</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     

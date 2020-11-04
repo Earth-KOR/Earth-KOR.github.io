@@ -244,6 +244,154 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/2020/11/03/%EB%AC%B8%EC%A0%9C/"
+                            aria-label=": Linked List 문제"
+                        >
+                            Linked List 문제
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-11-03T04:39:36-08:00">
+	
+		    Nov 03, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="단방향-LinkedList의-끝에서-k번째-노드를-찾는-알고리즘을-구현하시오"><a href="#단방향-LinkedList의-끝에서-k번째-노드를-찾는-알고리즘을-구현하시오" class="headerlink" title="단방향 LinkedList의 끝에서 k번째 노드를 찾는 알고리즘을 구현하시오."></a>단방향 LinkedList의 끝에서 k번째 노드를 찾는 알고리즘을 구현하시오.</h1><h2 id="2-gt-3-gt-1-gt-4"><a href="#2-gt-3-gt-1-gt-4" class="headerlink" title="2 -&gt; 3 -&gt; 1 -&gt; 4"></a>2 -&gt; 3 -&gt; 1 -&gt; 4</h2><br>
+
+<p><strong>방법1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int k &#x3D; 2;</span><br><span class="line">Node kth &#x3D; kthToLast(first, k) ;</span><br><span class="line">Node kthToLast(Node first, int k) &#123;</span><br><span class="line"></span><br><span class="line"> Node n &#x3D; first ;</span><br><span class="line"> int total &#x3D; 1 ;</span><br><span class="line"></span><br><span class="line"> while (n.next !&#x3D; null) &#123;</span><br><span class="line"></span><br><span class="line"> total ++ ;</span><br><span class="line"> n &#x3D; n.next ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> n &#x3D; first;</span><br><span class="line"> for ( int i &#x3D; 0 ; i &lt; total - k + 1 ; i ++ ) &#123;</span><br><span class="line"></span><br><span class="line"> n &#x3D; n.next ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">return n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>방법 2 재귀호출</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int k &#x3D; 1;</span><br><span class="line">KthToLast( ll.getFirst(), k ) ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Reference &#123;</span><br><span class="line"> public int count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private static void KthToLast(Node n, int k, Reference r) &#123;</span><br><span class="line">if ( in &#x3D;&#x3D; null ) &#123;</span><br><span class="line">return null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int k &#x3D;2;</span><br><span class="line">Reference r &#x3D; new Reference();</span><br><span class="line"></span><br><span class="line">Node found &#x3D; KthToLas(n.next, k, r) ;</span><br><span class="line">r.count ++ ;</span><br><span class="line">if ( r.count &#x3D;&#x3D; k) &#123;</span><br><span class="line">return n;</span><br><span class="line">&#125;</span><br><span class="line">return found;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>방법 3 포인터</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static Node KthToLast( Node first, int k) &#123;</span><br><span class="line">Node p1 &#x3D; first;</span><br><span class="line">Node p2 &#x3D; first;</span><br><span class="line"></span><br><span class="line">for ( int i &#x3D; 0 ; i &lt; k ; i++ ) &#123;</span><br><span class="line">if ( p1 &#x3D;&#x3D; null;) return null;</span><br><span class="line">p1 &#x3D; p1.next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">while ( p1 !&#x3D; null) &#123;</span><br><span class="line">p1 &#x3D; p1.next;</span><br><span class="line">p2 &#x3D; p2.next;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return p2</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><br><br></p>
+<h3 id="단방향-Linked-List에서-중간에-있는-노드를-삭제하시오-단-당신은-첫번째-노드가-어딨는지-모르고-오직-삭제-할-노드만-가지고-있다"><a href="#단방향-Linked-List에서-중간에-있는-노드를-삭제하시오-단-당신은-첫번째-노드가-어딨는지-모르고-오직-삭제-할-노드만-가지고-있다" class="headerlink" title="단방향 Linked List에서 중간에 있는 노드를 삭제하시오 (단, 당신은 첫번째 노드가 어딨는지 모르고, 오직 삭제 할 노드만 가지고 있다)"></a>단방향 Linked List에서 중간에 있는 노드를 삭제하시오 (단, 당신은 첫번째 노드가 어딨는지 모르고, 오직 삭제 할 노드만 가지고 있다)</h3><p><br><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">deleteNode ( ll.get(2));</span><br><span class="line">ll.retrieve();</span><br><span class="line"></span><br><span class="line">private static boolean deleteNode(Node n) &#123;</span><br><span class="line"> if ( n &#x3D;&#x3D; null || n.next &#x3D;&#x3D; null) &#123;</span><br><span class="line"></span><br><span class="line"> return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Node next &#x3D; n.next</span><br><span class="line">n.data &#x3D; next.data;</span><br><span class="line">n.next &#x3D; next.next;</span><br><span class="line">return true;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/11/03/%EB%AC%B8%EC%A0%9C/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/11/02/%EC%B0%BE%EA%B8%B0-1/"
+                            aria-label=": 자음 찾기"
+                        >
+                            자음 찾기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-11-02T05:44:19-08:00">
+	
+		    Nov 02, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/97954610-df8fc180-1d58-11eb-944a-6d4d14bfc18e.png" alt="자음"></p>
+<br>
+
+<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><ol>
+<li><p>입력받은 글의 길이를 잰다</p>
+</li>
+<li><p>길이 만큼 반복문을 돌리고 각 index의 글자를 가져온다</p>
+</li>
+<li><p>그 글자가 자음인 경우는 count를 올려서 숫자를 센다</p>
+</li>
+</ol>
+<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"> </span><br><span class="line">public class Problem1102 &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        &#x2F;&#x2F; BufferedReader로 입력 받기</span><br><span class="line">        BufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        </span><br><span class="line">       String str &#x3D; br.readLine();</span><br><span class="line">       int result &#x3D; 0 ;</span><br><span class="line">       for (int i &#x3D; 0 ; i &lt; str.length() ; i++) &#123;</span><br><span class="line">    	   </span><br><span class="line">    	   if (str.charAt(i) &#x3D;&#x3D; &#39;a&#39; || str.charAt(i) &#x3D;&#x3D; &#39;e&#39; || str.charAt(i) &#x3D;&#x3D; &#39;o&#39; || str.charAt(i) &#x3D;&#x3D; &#39;i&#39; || str.charAt(i) &#x3D;&#x3D; &#39;u&#39;) </span><br><span class="line">				result ++;</span><br><span class="line">       	 </span><br><span class="line">       	&#125;</span><br><span class="line">       	</span><br><span class="line">       	System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br>
+
+<p><img src="https://user-images.githubusercontent.com/62025746/97954608-de5e9480-1d58-11eb-95b5-e41aeea198b8.png" alt="자음 답"></p>
+<br>
+
+<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
+<li>charat를 사용해서 각 index의 글자를 가져오고 자음과 같은것인지 비교한다.</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/11/02/%EC%B0%BE%EA%B8%B0-1/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/2020/11/01/%EC%A4%84%EC%84%9C%EA%B8%B0/"
                             aria-label=": 줄서기"
                         >
@@ -260,7 +408,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-11-01/">20.11.01</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -376,6 +524,22 @@
 
 <p><strong>LinkedList 활용</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class LinkedList &#123;</span><br><span class="line">Node header ;</span><br><span class="line"></span><br><span class="line">static calss Node &#123;</span><br><span class="line">int data;</span><br><span class="line">Node next &#x3D; null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LinkdList() &#123;</span><br><span class="line">header &#x3D; new Node() ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Linked-List-중복값-삭제"><a href="#Linked-List-중복값-삭제" class="headerlink" title="Linked List 중복값 삭제"></a>Linked List 중복값 삭제</h2><p>정렬되지 않는 LinkedList 노드중 중복값을 제거하시오.<br>(단 , 버퍼는 사용하지 않고!)</p>
+<p>3 -&gt; 2 -&gt; 1 -&gt; 2 -&gt; 4</p>
+<ol>
+<li>버퍼를 사용할 때</li>
+</ol>
+<p>HashSet에 하나의 방에 넣고, 해당 방에 이미 노드가 존재하면 삭제한다.<br>( space : O(N) )<br>( Time : O(N) )</p>
+<ol start="2">
+<li>버퍼를 사용하지 않을 때</li>
+</ol>
+<p>Pointer와 Node를 생성해서 사용한다!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void removeDups() &#123;</span><br><span class="line"> Node n &#x3D; header;</span><br><span class="line">while ( n !&#x3D; null &amp;&amp; n.next !&#x3D; null ) &#123;</span><br><span class="line"> Node r &#x3D; n ;</span><br><span class="line">while ( r.next !&#x3D; null ) &#123;</span><br><span class="line"> if (n.data &#x3D;&#x3D; r.next.data) &#123;</span><br><span class="line"> r.next &#x3D; r.next.next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">	r &#x3D; r.next;</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br><span class="line">	n &#x3D; n.next;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>( space : O(1) )<br>( Time : O(N^2) )</p>
+
                     
                         
 
@@ -423,7 +587,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-11-01/">20.11.01</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -689,7 +853,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-24/">20.10.24</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -759,7 +923,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-24/">20.10.24</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -830,7 +994,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-24/">20.10.24</a>
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
 
 
     
@@ -863,152 +1027,6 @@
                         <p>
                             <a
                                 href="/2020/10/23/%EB%B0%B0%EC%97%B4/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/10/17/%EA%B1%B0%EC%8A%A4%EB%A6%84%EB%8F%88/"
-                            aria-label=": 거스름돈"
-                        >
-                            거스름돈
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-10-17T10:51:05-07:00">
-	
-		    Oct 17, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-17/">20.10.17</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/96821680-41593e80-13dd-11eb-9f06-a549cf52a7e5.png" alt="괄호"></p>
-<br>
-
-<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>이미 정해져 있는 화폐단위들을 배열에 담는다!<br><br><br>1000 - 입력한 값을 통해 거스름돈을 계산하고 그 뒤, 배열의 맨 뒤 자리 단위부터 / 와 %를 이용하여 최소 갯수를 구한다!</p>
-<br>
-
-<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String []args) throws Exception&#123;</span><br><span class="line">		Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">		int money &#x3D; sc.nextInt(); </span><br><span class="line">		int Total &#x3D; 1000 - money; </span><br><span class="line">		int [] changeArr &#x3D; &#123;500,100,50,10,5,1&#125;; </span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">			</span><br><span class="line">		for(int i&#x3D;0; Total &gt; 0; i++)&#123;</span><br><span class="line">			if(Total &lt; changeArr[i]) &#123;continue;&#125; </span><br><span class="line">			sum +&#x3D; Total&#x2F;changeArr[i]; </span><br><span class="line">			Total &#x3D; Total % changeArr[i]; 		</span><br><span class="line">		&#125;					</span><br><span class="line">		System.out.println(sum);</span><br><span class="line">	&#125;</span><br><span class="line">				</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<br>
-
-<p><img src="https://user-images.githubusercontent.com/62025746/96821685-428a6b80-13dd-11eb-8d74-9f675c3573d7.png" alt="괄호답"></p>
-<br>
-
-<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
-<li>주어진 화폐 단위를 배열에 담아 처리하기</li>
-<li>자바의 / (나눗셈) 과 % (나머지) 를 활용하는 문제</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/10/17/%EA%B1%B0%EC%8A%A4%EB%A6%84%EB%8F%88/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/10/17/%ED%9A%8C%EC%9D%98%EC%8B%A4%EB%B0%B0%EC%A0%95/"
-                            aria-label=": 회의실배정"
-                        >
-                            회의실배정
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-10-17T10:50:44-07:00">
-	
-		    Oct 17, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/20-10-17/">20.10.17</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/96822232-72863e80-13de-11eb-9308-b5b0a6a129b7.png" alt="괄호"></p>
-<br>
-
-<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>종료시간이 빠를수록 뒤에 더 많은 회의를 수용할 가능성이 커지기 때문에 <br></p>
-<p>종료시간이 빠른 회의 -&gt; 시작시간이 빠른 회의 순으로 우선 체크해야한다. <br></p>
-<p>우선순위를 비교하기 위해 모든 경우의 수에 맞게 직접 정렬하다 보니 코드가 너무 길기 때문에 java.util 패키지의 Arrays 클래스를 활용하여 비교한다!</p>
-<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Comparator;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String []args) throws Exception&#123;</span><br><span class="line">		Scanner scan &#x3D; new Scanner(System.in);</span><br><span class="line">		int mtTotal &#x3D; scan.nextInt();</span><br><span class="line">		int [][] arr &#x3D; new int[mtTotal][2];</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;0; i&lt;arr.length; i++)&#123;</span><br><span class="line">				arr [i][0] &#x3D; scan.nextInt();</span><br><span class="line">				arr [i][1] &#x3D; scan.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Arrays.sort(arr, new Comparator&lt;int[]&gt;() &#123;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public int compare(int[] o1, int[] o2) &#123;</span><br><span class="line">				if(o1[1] &#x3D;&#x3D; o2[1])&#123;</span><br><span class="line">					return Integer.compare(o1[0], o2[0]);</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">				return Integer.compare(o1[1], o2[1]);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		int time &#x3D; 0;</span><br><span class="line">		int count &#x3D; 0;</span><br><span class="line">		for(int i&#x3D;0; i&lt;mtTotal; i++)&#123;</span><br><span class="line"></span><br><span class="line">			if(arr[i][0] &gt;&#x3D; time)&#123;</span><br><span class="line">				count ++;</span><br><span class="line">				time &#x3D; arr[i][1];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(count);</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	&#125;&#x2F;&#x2F;main</span><br><span class="line">				</span><br><span class="line">		</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<br>
-
-<p><img src="https://user-images.githubusercontent.com/62025746/96822235-73b76b80-13de-11eb-9a5d-fc9ff7993a41.png" alt="괄호답"></p>
-<br>
-
-<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
-<li>시작시간, 회의시간에 따라서 효율적인 루트 생각하기</li>
-<li>java.util 패키지의 Arrays 클래스 사용하기</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/10/17/%ED%9A%8C%EC%9D%98%EC%8B%A4%EB%B0%B0%EC%A0%95/#post-footer"
                                 class="postShorten-excerpt_link link"
                                 aria-label=""
                             >
