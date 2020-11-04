@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="이상권의 개발노트">
-    <title>Tag: Linked list (1) - 이상권의 개발노트</title>
+    <title>Tag: Linked list (2) - 이상권의 개발노트</title>
     <meta name="author" content="이상권">
     
     
@@ -14,7 +14,7 @@
     <script type="application/ld+json">{}</script>
     <meta property="og:type" content="blog">
 <meta property="og:title" content="이상권의 개발노트">
-<meta property="og:url" content="https://earth-kor.github.io/tags/Linked-list-1/index.html">
+<meta property="og:url" content="https://earth-kor.github.io/tags/Linked-list-2/index.html">
 <meta property="og:site_name" content="이상권의 개발노트">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="이상권">
@@ -244,10 +244,81 @@
                     
                         <a
                             class="link-unstyled"
-                            href="/2020/11/01/list/"
-                            aria-label=": Linked list"
+                            href="/2020/11/03/%EB%AC%B8%EC%A0%9C/"
+                            aria-label=": Linked list (2)"
                         >
-                            Linked list
+                            Linked list (2)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-11-03T04:39:36-08:00">
+	
+		    Nov 03, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="단방향-LinkedList의-끝에서-k번째-노드를-찾는-알고리즘을-구현하시오"><a href="#단방향-LinkedList의-끝에서-k번째-노드를-찾는-알고리즘을-구현하시오" class="headerlink" title="단방향 LinkedList의 끝에서 k번째 노드를 찾는 알고리즘을 구현하시오."></a>단방향 LinkedList의 끝에서 k번째 노드를 찾는 알고리즘을 구현하시오.</h1><h2 id="2-gt-3-gt-1-gt-4"><a href="#2-gt-3-gt-1-gt-4" class="headerlink" title="2 -&gt; 3 -&gt; 1 -&gt; 4"></a>2 -&gt; 3 -&gt; 1 -&gt; 4</h2><br>
+
+<p><strong>방법1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int k &#x3D; 2;</span><br><span class="line">Node kth &#x3D; kthToLast(first, k) ;</span><br><span class="line">Node kthToLast(Node first, int k) &#123;</span><br><span class="line"></span><br><span class="line"> Node n &#x3D; first ;</span><br><span class="line"> int total &#x3D; 1 ;</span><br><span class="line"></span><br><span class="line"> while (n.next !&#x3D; null) &#123;</span><br><span class="line"></span><br><span class="line"> total ++ ;</span><br><span class="line"> n &#x3D; n.next ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> n &#x3D; first;</span><br><span class="line"> for ( int i &#x3D; 0 ; i &lt; total - k + 1 ; i ++ ) &#123;</span><br><span class="line"></span><br><span class="line"> n &#x3D; n.next ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">return n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>방법 2 재귀호출</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int k &#x3D; 1;</span><br><span class="line">KthToLast( ll.getFirst(), k ) ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Reference &#123;</span><br><span class="line"> public int count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private static void KthToLast(Node n, int k, Reference r) &#123;</span><br><span class="line">if ( in &#x3D;&#x3D; null ) &#123;</span><br><span class="line">return null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int k &#x3D;2;</span><br><span class="line">Reference r &#x3D; new Reference();</span><br><span class="line"></span><br><span class="line">Node found &#x3D; KthToLas(n.next, k, r) ;</span><br><span class="line">r.count ++ ;</span><br><span class="line">if ( r.count &#x3D;&#x3D; k) &#123;</span><br><span class="line">return n;</span><br><span class="line">&#125;</span><br><span class="line">return found;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>방법 3 포인터</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static Node KthToLast( Node first, int k) &#123;</span><br><span class="line">Node p1 &#x3D; first;</span><br><span class="line">Node p2 &#x3D; first;</span><br><span class="line"></span><br><span class="line">for ( int i &#x3D; 0 ; i &lt; k ; i++ ) &#123;</span><br><span class="line">if ( p1 &#x3D;&#x3D; null;) return null;</span><br><span class="line">p1 &#x3D; p1.next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">while ( p1 !&#x3D; null) &#123;</span><br><span class="line">p1 &#x3D; p1.next;</span><br><span class="line">p2 &#x3D; p2.next;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return p2</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><br><br></p>
+<h3 id="단방향-Linked-List에서-중간에-있는-노드를-삭제하시오-단-당신은-첫번째-노드가-어딨는지-모르고-오직-삭제-할-노드만-가지고-있다"><a href="#단방향-Linked-List에서-중간에-있는-노드를-삭제하시오-단-당신은-첫번째-노드가-어딨는지-모르고-오직-삭제-할-노드만-가지고-있다" class="headerlink" title="단방향 Linked List에서 중간에 있는 노드를 삭제하시오 (단, 당신은 첫번째 노드가 어딨는지 모르고, 오직 삭제 할 노드만 가지고 있다)"></a>단방향 Linked List에서 중간에 있는 노드를 삭제하시오 (단, 당신은 첫번째 노드가 어딨는지 모르고, 오직 삭제 할 노드만 가지고 있다)</h3><p><br><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">deleteNode ( ll.get(2));</span><br><span class="line">ll.retrieve();</span><br><span class="line"></span><br><span class="line">private static boolean deleteNode(Node n) &#123;</span><br><span class="line"> if ( n &#x3D;&#x3D; null || n.next &#x3D;&#x3D; null) &#123;</span><br><span class="line"></span><br><span class="line"> return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Node next &#x3D; n.next</span><br><span class="line">n.data &#x3D; next.data;</span><br><span class="line">n.next &#x3D; next.next;</span><br><span class="line">return true;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/11/03/%EB%AC%B8%EC%A0%9C/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/11/01/list/"
+                            aria-label=": Linked list (2)"
+                        >
+                            Linked list (2)
                         </a>
                     
                 </h1>
