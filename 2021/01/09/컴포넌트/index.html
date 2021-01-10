@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>컴포넌트 - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"컴포넌트 컴포넌트란?\n\n컴포넌트 처음 컴포넌트라는 이름을 들었을때 직관적으로 이해가 잘 안됬지만, 자바의 클래스와 객체로 분리하는 개념처럼 리액트에서는 컴포넌트로 분리한다고 생각하면 됩니다. 레이아웃을 컴포넌트라는 작은 단위로 나누어 코딩합니다. 이로인해 재사용성이 뛰어나고 이들을 모아 View형태로 코드를 짜기 때문에 코드도 이해하기 쉽고 협업에도 좋습니다.React 컴포넌트는 상태 값을 이용해 UI를 표현합니다. 그리고, 컴포넌트 상태는 객체의 인스턴스 속성(Properties)을 이용해 관리하며 컴포넌트간에 단방향으로 데이터를 주고받는 props와 컴포넌트 내부에서 사용하는 state가 있습니다.\n\n - 기능을 단위별로 캡슐화하는 리액트의 기본 단컴포넌트란? - 기능을 단위별로 캡슐화하는 리액트의 기본 단위다.  - 사용자가 보는 뷰는 이 컴포넌트들을 조합하여 만든다. - 자바스크립트 함수 혹은 클래스이며 속성들을 이력받아들이며 내부적으로 각자의 상태를 관리한다.\n리액트 컴포넌트는 요소를 그룹화하는 방법이다. 컴포넌트는 기능, 마크업, 스타일 그리고 기타 UI에 필요한 다른 요소들을 하나로 묶어 그룹화한다. 컴포넌트는 독립적이면서도 재사용이 가능하기 때문에 필요한 기능을 독자적으로 구성할 수 있다. \nData Flow\n\n단방향 데이터 흐름\n데이터흐름 : 부모컴포넌트 =&gt; 자식컴포넌트\n자식컴포넌트에서 직접적으로 부모컴포넌트에 전달하는 것은 불가능하다 - 간접적으로는 가능\n\nprops상위 컴포넌트가 하위 컴포넌트에게 내려주는 데이터 하위컴포넌트는 props를,\n\n단순히 사용만 할 수 있다\n변경할 수 없다\n\n&lt;props 주는법&gt;\nconst App = () =&gt; (      To Do List !    &lt;TodoList todos={[“eat pizza”, “eat rice”]} /&gt;  );\nconst TodoList = props =&gt; (      {props.todos[0]}    {props.todos[1]}  );\nState컴포넌트가 갖는 상태, 객체의 형태로 컴포넌트 내에서 보관하고 관리한다.\n\nclass 컴포넌트로 작성되어야 한다\n값을 변경할 땐 반드시 setState 메서드를 사용해야 한다\nstate 값이 변경되면 render() 함수가 실행된다.\n\nfunctional component vs class component\n함수형 컴포넌트\n\n순수 자바스크립트 함수를 이용하여 컴포넌트를 정의한 것\n선언하기가 편리하다\n단순히 데이터를 받아들여 어떤 형태로 표시하기 때문에 ‘stateless’ 컴포넌트라고도 한다\n주로 UI 렌더링을 담당한다 (예시 : Button 구성 요소)\nstate를 사용할 필요가 없는 경우 함수형 컴포넌트를 사용한다\n클래스형 컴포넌트보다 메모리 자원을 덜 사용한다\n\n\nstate와 life cycle 기능을 사용할 수 없다 - v16.8 업데이트 이후 리액트 훅(Hooks)이라는 기능이 도입되어 사용이 가능하다고 한다..!!\n\n렌더링된 값들을 고정시킨다.\n결과,\n\n함수형 컴포넌트 : Follow 버튼을 누르고 체크박스 옵션을 바꾸면 알림창에 Follow 버튼을 누르기전 옵션값이 알림창에 잘 들어가있다.\n클래스형 컴포넌트 : Fllow 버튼을 누른 후 바꾼 옵션값이 알림창에 들어가있다이 예제에서는 함수형 컴포넌트가 보여주는 패턴이 올바른 케이스이다. 내가 어떤 사람을 팔로우하고 다른 사람의 프로필로 이동했다 하더라도 컴포넌트가 이를 헷갈려서는 안된다.\n\n","dateCreated":"2021-01-09T12:47:49-08:00","dateModified":"2021-01-10T05:51:23-08:00","datePublished":"2021-01-09T12:47:49-08:00","description":"","headline":"컴포넌트","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2021/01/09/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2021/01/09/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8/","keywords":"이론노트, React"}</script>
+    <meta name="description" content="컴포넌트 컴포넌트란?  컴포넌트 처음 컴포넌트라는 이름을 들었을때 직관적으로 이해가 잘 안됬지만, 자바의 클래스와 객체로 분리하는 개념처럼 리액트에서는 컴포넌트로 분리한다고 생각하면 됩니다. 레이아웃을 컴포넌트라는 작은 단위로 나누어 코딩합니다. 이로인해 재사용성이 뛰어나고 이들을 모아 View형태로 코드를 짜기 때문에 코드도 이해하기 쉽고 협업에도 좋습니">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="컴포넌트">
+<meta property="og:url" content="https://earth-kor.github.io/2021/01/09/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:description" content="컴포넌트 컴포넌트란?  컴포넌트 처음 컴포넌트라는 이름을 들었을때 직관적으로 이해가 잘 안됬지만, 자바의 클래스와 객체로 분리하는 개념처럼 리액트에서는 컴포넌트로 분리한다고 생각하면 됩니다. 레이아웃을 컴포넌트라는 작은 단위로 나누어 코딩합니다. 이로인해 재사용성이 뛰어나고 이들을 모아 View형태로 코드를 짜기 때문에 코드도 이해하기 쉽고 협업에도 좋습니">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-09T20:47:49.000Z">
+<meta property="article:modified_time" content="2021-01-10T13:51:23.661Z">
+<meta property="article:author" content="이상권">
+<meta property="article:tag" content="이론노트">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/resume"
+                            
+                            rel="noopener"
+                            title="이력서"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">이력서</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            컴포넌트
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2021-01-09T12:47:49-08:00">
+	
+		    Jan 09, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="컴포넌트"><a href="#컴포넌트" class="headerlink" title="컴포넌트"></a>컴포넌트</h1><p> 컴포넌트란?</p>
+<ul>
+<li>컴포넌트 <br>처음 컴포넌트라는 이름을 들었을때 직관적으로 이해가 잘 안됬지만, 자바의 클래스와 객체로 분리하는 개념처럼 리액트에서는 컴포넌트로 분리한다고 생각하면 됩니다. 레이아웃을 컴포넌트라는 작은 단위로 나누어 코딩합니다. 이로인해 재사용성이 뛰어나고 이들을 모아 View형태로 코드를 짜기 때문에 코드도 이해하기 쉽고 협업에도 좋습니다.<br>React 컴포넌트는 상태 값을 이용해 UI를 표현합니다. 그리고, 컴포넌트 상태는 객체의 인스턴스 속성(Properties)을 이용해 관리하며 컴포넌트간에 단방향으로 데이터를 주고받는 props와 컴포넌트 내부에서 사용하는 state가 있습니다.</li>
+</ul>
+<p> - 기능을 단위별로 캡슐화하는 리액트의 기본 단컴포넌트란?<br> - 기능을 단위별로 캡슐화하는 리액트의 기본 단위다. <br> - 사용자가 보는 뷰는 이 컴포넌트들을 조합하여 만든다.<br> - 자바스크립트 함수 혹은 클래스이며 속성들을 이력받아들이며 내부적으로 각자의 상태를 관리한다.</p>
+<p>리액트 컴포넌트는 요소를 그룹화하는 방법이다. <br>컴포넌트는 기능, 마크업, 스타일 그리고 기타 UI에 필요한 다른 요소들을 하나로 묶어 그룹화한다. <br>컴포넌트는 독립적이면서도 재사용이 가능하기 때문에 필요한 기능을 독자적으로 구성할 수 있다. </p>
+<p>Data Flow</p>
+<ul>
+<li>단방향 데이터 흐름</li>
+<li>데이터흐름 : 부모컴포넌트 =&gt; 자식컴포넌트</li>
+<li>자식컴포넌트에서 직접적으로 부모컴포넌트에 전달하는 것은 불가능하다 - 간접적으로는 가능</li>
+</ul>
+<p>props<br>상위 컴포넌트가 하위 컴포넌트에게 내려주는 데이터 하위컴포넌트는 props를,</p>
+<ul>
+<li>단순히 사용만 할 수 있다</li>
+<li>변경할 수 없다</li>
+</ul>
+<p>&lt;props 주는법&gt;</p>
+<p>const App = () =&gt; (<br>  <div><br>    <h2>To Do List !</h2><br>    &lt;TodoList todos={[“eat pizza”, “eat rice”]} /&gt;<br>  </div><br>);</p>
+<p>const TodoList = props =&gt; (<br>  <ul><br>    <li>{props.todos[0]}</li><br>    <li>{props.todos[1]}</li><br>  </ul><br>);</p>
+<p>State<br>컴포넌트가 갖는 상태, 객체의 형태로 컴포넌트 내에서 보관하고 관리한다.</p>
+<ul>
+<li>class 컴포넌트로 작성되어야 한다</li>
+<li>값을 변경할 땐 반드시 setState 메서드를 사용해야 한다</li>
+<li>state 값이 변경되면 render() 함수가 실행된다.</li>
+</ul>
+<p>functional component vs class component</p>
+<p>함수형 컴포넌트</p>
+<ul>
+<li>순수 자바스크립트 함수를 이용하여 컴포넌트를 정의한 것</li>
+<li>선언하기가 편리하다</li>
+<li>단순히 데이터를 받아들여 어떤 형태로 표시하기 때문에 ‘stateless’ 컴포넌트라고도 한다</li>
+<li>주로 UI 렌더링을 담당한다 (예시 : Button 구성 요소)</li>
+<li>state를 사용할 필요가 없는 경우 함수형 컴포넌트를 사용한다<ul>
+<li>클래스형 컴포넌트보다 메모리 자원을 덜 사용한다</li>
+</ul>
+</li>
+<li>state와 life cycle 기능을 사용할 수 없다 - v16.8 업데이트 이후 리액트 훅(Hooks)이라는 기능이 도입되어 사용이 가능하다고 한다..!!</li>
+</ul>
+<p>렌더링된 값들을 고정시킨다.</p>
+<p>결과,</p>
+<ul>
+<li>함수형 컴포넌트 : Follow 버튼을 누르고 체크박스 옵션을 바꾸면 알림창에 Follow 버튼을 누르기전 옵션값이 알림창에 잘 들어가있다.</li>
+<li>클래스형 컴포넌트 : Fllow 버튼을 누른 후 바꾼 옵션값이 알림창에 들어가있다<br>이 예제에서는 함수형 컴포넌트가 보여주는 패턴이 올바른 케이스이다. 내가 어떤 사람을 팔로우하고 다른 사람의 프로필로 이동했다 하더라도 컴포넌트가 이를 헷갈려서는 안된다.</li>
+</ul>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/React/" rel="tag">React</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/" rel="tag">이론노트</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/01/09/%EB%B0%94%EC%9D%B8%EB%94%A9/"
+                    data-tooltip="바인딩"
+                    aria-label="PREVIOUS: 바인딩"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/01/09/%EB%B9%84%EB%8F%99%EA%B8%B0/"
+                    data-tooltip="동기 비동기"
+                    aria-label="NEXT: 동기 비동기"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2021 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/01/09/%EB%B0%94%EC%9D%B8%EB%94%A9/"
+                    data-tooltip="바인딩"
+                    aria-label="PREVIOUS: 바인딩"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/01/09/%EB%B9%84%EB%8F%99%EA%B8%B0/"
+                    data-tooltip="동기 비동기"
+                    aria-label="NEXT: 동기 비동기"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>

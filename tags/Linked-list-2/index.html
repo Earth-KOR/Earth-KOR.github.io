@@ -118,13 +118,13 @@
                     
                         <a
                             class="sidebar-button-link "
-                            href="/"
+                            href="/resume"
                             
                             rel="noopener"
-                            title="홈"
+                            title="이력서"
                         >
                         <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">홈</span>
+                        <span class="sidebar-button-desc">이력서</span>
                     </a>
             </li>
             
@@ -306,111 +306,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/11/01/list/"
-                            aria-label=": Linked list (2)"
-                        >
-                            Linked list (2)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-11-01T06:06:29-08:00">
-	
-		    Nov 01, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h1><ul>
-<li>컴퓨터의 자료를 저장하는 여러 구조 중 하나<br>일렬로 연결된 데이터를 저장 할 때 사용한다<br>한 데이터의 마지막에 다음 데이터의 주소를 가지고 있음</li>
-</ul>
-<ul>
-<li><p>배열은 방이 정해져있기 때문에 갯수가 제한적임<br>but 이거는 주소를 넣고 빼고를 통해서 조절을 할 수 있음</p>
-</li>
-<li><p>링크를 끊게되면 자바제외 이 데이터가 남기 때문에 저장공간을 쓸데없이차지함!<br>(그래서 이걸 인위적으로 지워줘야함!)</p>
-</li>
-<li><p>이거는 주소를 하나하나 찾아 다니기 때문에 속도가 느릴수가 있음. 그래서 데이터가 정해지지않는 데이터를 넣을 때 유용함!</p>
-</li>
-</ul>
-<p><br><br></p>
-<h1 id="Linked-list-단방향-양방향"><a href="#Linked-list-단방향-양방향" class="headerlink" title="Linked list 단방향 양방향"></a>Linked list 단방향 양방향</h1><p>단방향 : 주소를 타고 한 방향으로만 이동 가능 <br><br>양방향 : 내 앞에 애가 어디있는지 알 수 있도록 앞의 주소를 가지고있음!</p>
-<p><br><br></p>
-<h1 id="Linked-list-단방향-Java-구현"><a href="#Linked-list-단방향-Java-구현" class="headerlink" title="Linked list 단방향 Java 구현"></a>Linked list 단방향 Java 구현</h1><p><strong>Node class 생성</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class node &#123; </span><br><span class="line"> int data;</span><br><span class="line"> Node next &#x3D; null ; </span><br><span class="line"> Node ( int d ) &#123;</span><br><span class="line"> this.data &#x3D; d</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Node추가 하는 메서드</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void append(int d) &#123;</span><br><span class="line">  Node end &#x3D; new Node (d)</span><br><span class="line">  node n &#x3D; this ;</span><br><span class="line">while ( n.next !&#x3D; null ) &#123;</span><br><span class="line">	n &#x3D; n.next</span><br><span class="line">&#125;</span><br><span class="line"> 	n.next &#x3D; end ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Node 삭제하는 메서드</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void delete(int d) &#123;</span><br><span class="line"> Node n &#x3D; this ;</span><br><span class="line"> while ( n.next !&#x3D; null) &#123;</span><br><span class="line">    if ( n.next.data &#x3D;&#x3D; d) &#123;</span><br><span class="line">     n.next &#x3D; n.next.next;	    	</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    n &#x3D; n.next ;</span><br><span class="line">&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><strong>Node속 데이터 호출하는 코드</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void retrieve() &#123;</span><br><span class="line"></span><br><span class="line">Node n &#x3D; this;</span><br><span class="line">while ( n.next !&#x3D; null ) &#123;</span><br><span class="line">system.out.println(n.data + &quot;-&gt;&quot;);</span><br><span class="line">n &#x3D; n.next ;</span><br><span class="line">&#125;</span><br><span class="line">system.put.println(n.data);</span><br></pre></td></tr></table></figure>
-<p><br><br></p>
-<h1 id="LinkedList-활용"><a href="#LinkedList-활용" class="headerlink" title="LinkedList 활용"></a>LinkedList 활용</h1><p>앞서 작성한 단방향 코드작성은 취약점이 있다.<br>첫 번쨰로 시작한 header 노드가 삭제되거나 실행이 불가능하게 된다면 전체의 노드에 영향을 주기 때문이다.</p>
-<p>이를 보완하는 방법이 존재한다. Node Class를 Linked List라는 class로 감싸서 Linked List의 header를 데이터가 아닌 시작을 알리는 용도로만 사용하도록 만든다!</p>
-<p>그리고 그 안에 node class를 만든다!</p>
-<br>
-
-<p><strong>LinkedList 활용</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class LinkedList &#123;</span><br><span class="line">Node header ;</span><br><span class="line"></span><br><span class="line">static calss Node &#123;</span><br><span class="line">int data;</span><br><span class="line">Node next &#x3D; null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LinkdList() &#123;</span><br><span class="line">header &#x3D; new Node() ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Linked-List-중복값-삭제"><a href="#Linked-List-중복값-삭제" class="headerlink" title="Linked List 중복값 삭제"></a>Linked List 중복값 삭제</h2><p>정렬되지 않는 LinkedList 노드중 중복값을 제거하시오.<br>(단 , 버퍼는 사용하지 않고!)</p>
-<p>3 -&gt; 2 -&gt; 1 -&gt; 2 -&gt; 4</p>
-<ol>
-<li>버퍼를 사용할 때</li>
-</ol>
-<p>HashSet에 하나의 방에 넣고, 해당 방에 이미 노드가 존재하면 삭제한다.<br>( space : O(N) )<br>( Time : O(N) )</p>
-<ol start="2">
-<li>버퍼를 사용하지 않을 때</li>
-</ol>
-<p>Pointer와 Node를 생성해서 사용한다!</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void removeDups() &#123;</span><br><span class="line"> Node n &#x3D; header;</span><br><span class="line">while ( n !&#x3D; null &amp;&amp; n.next !&#x3D; null ) &#123;</span><br><span class="line"> Node r &#x3D; n ;</span><br><span class="line">while ( r.next !&#x3D; null ) &#123;</span><br><span class="line"> if (n.data &#x3D;&#x3D; r.next.data) &#123;</span><br><span class="line"> r.next &#x3D; r.next.next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">	r &#x3D; r.next;</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br><span class="line">	n &#x3D; n.next;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>( space : O(1) )<br>( Time : O(N^2) )</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/11/01/list/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -424,7 +319,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 이상권. All Rights Reserved.
+        Copyrights &copy; 2021 이상권. All Rights Reserved.
     </span>
 </footer>
 
