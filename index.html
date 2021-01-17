@@ -243,6 +243,658 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/2021/01/16/%EC%9B%90%EB%A6%AC/"
+                            aria-label=": 자바스크립트 동작 원리"
+                        >
+                            자바스크립트 동작 원리
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-16T08:32:52-08:00">
+	
+		    Jan 16, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="자바스크립트-동작-원리"><a href="#자바스크립트-동작-원리" class="headerlink" title="자바스크립트 동작 원리"></a>자바스크립트 동작 원리</h1><p>‘’’<br>// ex)<br>console.log(‘Start!’)</p>
+<p>setTimeout(() =&gt; {<br>Console.log(’Timeout!’)<br>}, 0)</p>
+<p>Promise.resolve(‘Promise!’)<br>.then(res =&gt; console.log(res))</p>
+<p>console.log(‘End!’)<br>‘’’</p>
+<p>맨 처음 라인에서 엔진은 console.log()를 마주친다 이는 “Start!”라고 값이 콘솔에 찍히고 나서 call stack에 추가된다. 해당 메소드는 call stack에서 빠져나가고 엔진은 계속해서 실행된다.</p>
+<p>그 다음 엔진은 call stack으로 들어간 setTimeout메소드를 맞닥뜨린다.setTimeout 메소드는 브라우저의 native 메소드이다.<br />타이머가 끝날때까지 그것의 콜백 함수인 ()=&gt;console.log(‘In timeout’)은되 Web API에 추가된다.<br>비록 우리는 타이머에 0이라는 값을 넣었지만, 콜백은 먼저 Web API에 들어갈 것이고, 그 다음엔 (macro)task queue에 추가될 것이다. (setTimeout은 <b>macro task</b>이다!)</p>
+<p>그 다음 엔진은 Promise.resolve() 메소드와 마주침<br>Promise.resolve() 메소드는 call stack에 추가되고, 그다음엔 “Promise!” 라는 값으로 resolve된다<br>해당 메소드의 then 콜백 함수가 micro task queue에 추가된것이다</p>
+<p>엔진은 callstack이 비어있는 것을 발견한다<br>Call stack이 비어있기 때문에 엔진은 micro task queue에 작업들이 있는지 체크한다<br>그리고 거기거 promise then의 콜백이 작신의 차례를 기다리고 있는 것을 찾아낸다!<br>그것은 call stack으로 들어가고 promise의 resolve된 값들을 로그로 찍는다.</p>
+<p>이제 엔진은 call stack이 비어진 것을 보고 micro task queue를 다시 한번 체크 할 것이다.<br>하지만 이제 microtask queue에는 아무것도 남아 있지 않다</p>
+<p>이제 macrotask queue를 체크 할 차례이다!<br>앞서 과정을 반복한다!</p>
+<p>출처 : <a target="_blank" rel="noopener" href="https://kkangdda.tistory.com/77">https://kkangdda.tistory.com/77</a></p>
+<h1 id="태스크-큐-vs-마이크로태스크-큐"><a href="#태스크-큐-vs-마이크로태스크-큐" class="headerlink" title="태스크 큐 vs 마이크로태스크 큐"></a>태스크 큐 vs 마이크로태스크 큐</h1><p>2개의 큐 모두 콜백함수가 들어간다는 점에서 동일하지만 어떤 함수를 실행하느냐에 따라 어디로 들어가는지가 달라진다. 또한 명칭은 큐 (Queue) 이지만 실제 우리가 아는 자료구조의 큐와는 다르다. 엄밀히 말하자면 우선순위 큐 (Priority Queue) 라고 할 수 있는데, 이벤트 루프가 2개의 큐에서 태스크를 꺼내는 조건이 “제일 오래된 태스크” 이기 때문이다. (동작방식을 확인하고 싶다면 HTML 스펙 을 보자)<br>그럼 이제 어떤 함수들이 어떤 큐에 들어가는지 살펴보자.</p>
+<ul>
+<li>콜백함수를 태스크 큐에 넣는 함수들<ul>
+<li>setTimeout, setInterval, setImmediate, requestAnimationFrame, I/O, UI 렌더링</li>
+</ul>
+</li>
+<li>콜백함수를 마이크로태스크 큐에 넣는 함수들<ul>
+<li>process.nextTick, Promise, Object.observe, MutationObserver<br>익숙한 함수인 Web API의 setTimeout() 의 콜백함수가 태스크 큐에 들어가고 Promise 의 콜백함수가 마이크로태스크 큐에 들어간다는 것을 알 수 있다. 이벤트 루프는 각 콜백함수를 태스크/마이크로태스크 큐에서 꺼내쓰는 것인데, 그렇다면 어떤게 먼저일까?</li>
+</ul>
+</li>
+</ul>
+<p>누가 먼저인가?<br>결론부터 말하자면, 마이크로태스크가 먼저이다.<br>이벤트 루프는 마이크로태스크 큐의 모든 태스크들을 처리한 다음, 태스크 큐의 태스크들을 처리한다. 따라서, Promise 의 콜백함수가 setTimeout() 의 콜백함수보다 먼저 처리된다. 예시를 보자.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/01/16/%EC%9B%90%EB%A6%AC/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2021/01/16/%EB%B0%A9%EB%B2%95/"
+                            aria-label=": setState 동기화 시키는 방법"
+                        >
+                            setState 동기화 시키는 방법
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-16T08:31:34-08:00">
+	
+		    Jan 16, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EA%B0%9C%EB%B0%9C%EB%85%B8%ED%8A%B8/">개발노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="setState-비동기를-동기화-시키는-방법"><a href="#setState-비동기를-동기화-시키는-방법" class="headerlink" title="setState 비동기를 동기화 시키는 방법"></a>setState 비동기를 동기화 시키는 방법</h1><h3 id="비동기"><a href="#비동기" class="headerlink" title="비동기"></a>비동기</h3><p>‘’’</p>
+<p>state = { count: 0 }<br>this.setState( { count: this.state.count + 1 } );<br>this.setState( { count: this.state.count + 1 } );<br>this.setState( { count: this.state.count + 1 } );</p>
+<p>import produce from ‘immer’;</p>
+<p>‘’’</p>
+<h3 id="동기"><a href="#동기" class="headerlink" title="동기"></a>동기</h3><p>‘’’</p>
+<p>state = { count: 0 }</p>
+<p>this.setState( state =&gt; (<br>  produce( state, draft =&gt; { draft.count = state.count + 1 } )<br>) );<br>this.setState( state =&gt; (<br>  produce( state, draft =&gt; { draft.count = state.count + 1 } )<br>) );<br>this.setState( state =&gt; (<br>  produce( state, draft =&gt; { draft.count = state.count + 1 } )<br>) );</p>
+<p>‘’’</p>
+<h1 id="setState-는-await와-사용이-가능할까"><a href="#setState-는-await와-사용이-가능할까" class="headerlink" title="setState() 는 await와 사용이 가능할까?"></a>setState() 는 await와 사용이 가능할까?</h1><p>결과를 먼저 이야기하자면 setState에는 await를 사용할 수 없다.<br>async / await 의 기반은 promise 다. async 함수는 promise를 반환하고 promise가 함수로부터 반환할 값을 resolve 한다.<br>setState는 promise를 리턴하지 않기에 await와 함께 사용할 수 없다.</p>
+<p>그렇다면 setState는 어떤식으로 작동할까?<br>setState는 항상 즉시 컴포넌트를 업데이트 하지 않는다. 비동기적으로 작동하기 때문에 setState() 를 호출하고 바로 다음에 this.state를 읽으려하면 원하는 결과가 나오지 않는다.<br>componentDidUpdate 나 setState 콜백을 사용해야 원하는 결과를 얻을 수 있다.</p>
+<p>‘’’</p>
+<p>// 원하는 결과가 안나옴<br>This.setState({ myCabinet: ‘beer’ });<br>console.log(this.state.myCabinet);</p>
+<p>// 원하는 결과가 나옴<br>this.setState({ myCabinet: ‘beer’ }, () =&gt; console.log(this.state.myCabinet));</p>
+<p>‘’’</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/01/16/%EB%B0%A9%EB%B2%95/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2021/01/16/%EC%A0%9C%EC%96%B4%ED%95%98%EA%B8%B0/"
+                            aria-label=": enum으로 오류 제어하기"
+                        >
+                            enum으로 오류 제어하기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-16T08:29:44-08:00">
+	
+		    Jan 16, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EA%B0%9C%EB%B0%9C%EB%85%B8%ED%8A%B8/">개발노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="오류를-제어에-필요한-enum-만들기"><a href="#오류를-제어에-필요한-enum-만들기" class="headerlink" title="오류를 제어에 필요한 enum 만들기"></a>오류를 제어에 필요한 enum 만들기</h1><h2 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h2><h3 id="backend-Exception-code-declear"><a href="#backend-Exception-code-declear" class="headerlink" title="backend Exception code declear"></a>backend Exception code declear</h3><p>‘’’<br>package com.imaslab.fms.enums.exception;</p>
+<p>import lombok.AllArgsConstructor;<br>import lombok.Getter;</p>
+<p>@AllArgsConstructor<br>@Getter<br>public enum ExceptionCode<br>{<br>    // @formatter:off<br>    // DEVICE - CAR_CONTROL<br>    IGNITION_CONTROL_NOT_SUPPORTED(40201),<br>    IGNITION_CONTROL_ALREADY_REQUESTED(40202),<br>    IGNITION_CONTROL_REQUEST_FAILED(40203),<br>    IGNITION_CONTROL_NOT_REQUESTED(40204),</p>
+<pre><code>UPDATE_DEVICE_REQUEST_FAILED(40301),
+ALREADY_INSTALLED_DEVICE(40302),
+NOT_YET_INSTALLED_DEVICE(40303),
+
+NOT_YET_FOTA_PACKET_RECEIVED(40304),
+NOT_YET_ACTIVATION_OR_RT_PACKET_RECEIVED(40305)
+;
+// @formatter:on
+
+Integer value;
+
+private ExceptionCode(int value)
+&#123;
+    this.value = value;
+&#125;
+
+public int getValue()
+&#123;
+    return value;
+&#125;</code></pre>
+<p>}<br>‘’’</p>
+<h3 id="backend-Exception-Error-Code-Using"><a href="#backend-Exception-Error-Code-Using" class="headerlink" title="backend Exception Error Code Using"></a>backend Exception Error Code Using</h3><p>‘’’<br>throw new InvalidParameterException();</p>
+<p>public class InvalidParameterException extends AbstractException<br>{</p>
+<pre><code> public InvalidParameterException()
+&#123;
+    super(&quot;Invalid Parameter&quot;, &quot;&quot;, ExceptionCode.INVALID_PARAMETER, null);
+&#125;
+
+public InvalidParameterException(String parameterName)x
+&#123;
+    super(&quot;Invalid Parameter&quot;, parameterName, ExceptionCode.INVALID_PARAMETER);
+&#125;
+
+public InvalidParameterException(String parameterName, ExceptionCode exceptionCode)
+&#123;
+    super(&quot;Invalid Parameter&quot;, parameterName, exceptionCode);
+&#125;</code></pre>
+<p>}</p>
+<p>‘’’</p>
+<h3 id="backend-Exception-extends-AbstractException"><a href="#backend-Exception-extends-AbstractException" class="headerlink" title="backend Exception extends AbstractException"></a>backend Exception extends AbstractException</h3><p>‘’’<br> @Data<br> @EqualsAndHashCode(callSuper = true)<br> public abstract class AbstractException extends RuntimeException<br> {</p>
+<pre><code>String description;
+ExceptionCode code;
+Throwable t;
+
+public AbstractException(String message, String description, ExceptionCode code, Throwable t)
+&#123;
+    super(message);
+    this.description = description;
+    this.code = code;
+    this.t = t;
+&#125;</code></pre>
+<p>}</p>
+<p>‘’’</p>
+<h2 id="FrontEnd"><a href="#FrontEnd" class="headerlink" title="FrontEnd"></a>FrontEnd</h2><h3 id="FrontEnd-Exception-code-declear"><a href="#FrontEnd-Exception-code-declear" class="headerlink" title="FrontEnd Exception code declear"></a>FrontEnd Exception code declear</h3><p>‘’’<br>export enum constants {</p>
+<pre><code>INTERNAL_SERVER_ERROR = &#39;서버에 오류가 발생하였습니다.&#39;,
+REQUEST_TIMEOUT = &#39;요청 시간을 초과하였습니다.&#39;,
+
+REQUIRE_AUTHENTICATION = &#39;인증이 필요합니다.&#39;,
+INVALID_JWT_TOKEN = &#39;유효하지 않은 토큰입니다.&#39;,
+EXPIRED_TOKEN = &#39;만료된 토큰입니다.&#39;,
+EXPIRED_REFRESH_TOKEN = &#39;장기 미접속 상태로 로그인이 필요합니다.&#39;,
+
+MISMATCH_EMAIL = &#39;아이디가 존재하지 않습니다.&#39;,
+MISMATCH_PASSWORD = &#39;비밀번호가 일치하지 않습니다.&#39;,
+BLOCKING_ACCOUNT = &#39;서비스가 정지된 이용자입니다.&#39;,
+
+THINGPLUG_RPC_FAILED = &#39;ThingPlug RPC 요청을 실패하였습니다.&#39;,
+
+CAR_DB_INSTALLATION_FAILURE_CASE = &#39;차량 DB 적용 실패&#39;,
+CAR_DB_FORMAT_ERROR = &#39;차량 DB 형식 오류&#39;,
+
+ALREADY_CONNECTED_CAR = &#39;이미 현장서비스에 등록된 예약 입니다. 차량번호를 다시 확인해주세요&#39;</code></pre>
+<p>  }<br>‘’’</p>
+<h3 id="frontend-Exception-Error-Code-Using"><a href="#frontend-Exception-Error-Code-Using" class="headerlink" title="frontend Exception Error Code Using"></a>frontend Exception Error Code Using</h3><p>‘’’</p>
+<p>import { constants } from ‘../../../enum/ExceptionCode’;</p>
+<p>Api.saveOnsiteService(appCtx.getAuthToken(),onsiteServiceforPost).then(<br>                        resp=&gt; {<br>                            if (resp.ok) {<br>                                IMASWindow.alert(‘현장서비스 등록이 완료되었습니다!’)<br>                                window.history.back()<br>                            } else {<br>                                if(resp.code = 30109) {<br>                                    IMASWindow.alert( constants.ALREADY_CONNECTED_CAR )<br>                                    return;<br>                                }<br>                                IMASWindow.alert(‘현장서비스 등록을 실패하였습니다.(‘ + resp.code + ‘)’)<br>                            }<br>                        }<br>                    ).catch(e =&gt; {IMASWindow.alert(‘현장서비스 등록을 실패하였습니다.(‘ + e + ‘)’)}</p>
+<p>‘’’</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/01/16/%EC%A0%9C%EC%96%B4%ED%95%98%EA%B8%B0/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2021/01/16/JPQL/"
+                            aria-label=": JPQL"
+                        >
+                            JPQL
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-16T08:28:32-08:00">
+	
+		    Jan 16, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="JPQL-Java-Persistence-Query-Language"><a href="#JPQL-Java-Persistence-Query-Language" class="headerlink" title="JPQL ( Java Persistence Query Language )"></a>JPQL ( Java Persistence Query Language )</h1><p>JPQL은 SQL과 비슷한 문법을 가진 객체 지향 쿼리입니다.</p>
+<p>JPQL의 탄생 배경은 JPA에서 제공하는 메서드 호출만으로 섬세한 쿼리 작성이 어렵다는 것에 있습니다.<br>이전 글 CURD에서는 SELECT 쿼리를 위해 JPQL을 사용했지만, EntityManager 객체의 find() 메서드를 호출하여 SELECT 쿼리를 수행 할 수도 있습니다.<br>Book book = em.find(Book.class, 1);<br>find() 메서드는 식별자를 통해서만 데이터 조회를 하며, 조건문도 없고 모든 칼럼을 조회하는 메서드입니다.<br>이것만 가지고는 조금이라도 복잡한 검색을 수행할 수가 없습니다.<br>따라서 여러 조건을 통해 검색을 하는 방법이 필요했고, 그래서 JPQL이 개발되었습니다.</p>
+<p>JPQL 특징</p>
+<ol>
+<li>테이블이 아닌 객체를 검색하는 객체지향 쿼리</li>
+<li>SQL을 추상화 했기 때문에 특정 벤더에 종속적이지 않음</li>
+<li>JPA는 JPQL을 분석하여 SQL을 생성한 후 DB에서 조회</li>
+</ol>
+<p>기본 문법<br>String jpql = “select c from Category c “;<br>JPQL은 SQL과 문법이 매우 유사하지만 몇 가지 다른 점이 있습니다.</p>
+<ol>
+<li><p>대소문자 구분<br>엔티티와 속성은 대소문자를 구분합니다.<br>예를 들어 엔티티 이름인 User, User 엔티티의 속성인 email은 대소문자를 구분합니다.<br>반면에 SELECT , FROM , AS 같은 JPQL 키워드는 대소문자를 구분하지 않습니다.</p>
+</li>
+<li><p>엔티티 이름<br>위의 예제에서 select c from 뒤에 나오는 Category는 엔티티 이름입니다.<br>Category가 클래스 이름이라고 착각할 수 있는데, 그것이 아니라 @Entity( name=”Category” )로 설정한 엔티티 이름입니다.<br>참고로 name 속성을 생략하면 기본 값으로 클래스 이름을 사용합니다.</p>
+</li>
+<li><p>별칭<br>select c from Category c 에서 c라는 별칭을 주었습니다.<br>JPQL에서 엔티티의 별칭은 필수적으로 명시해야 합니다.<br>별칭을 명시하는 AS 키워드는 생략할 수 있습니다.</p>
+</li>
+</ol>
+<p>JPQL은 복잡한 검색을 위해 사용되기 때문에 INSERT , UPDATE , DELETE 쿼리는 엔티티 매니저가 직접 호출하도록 하는 것이 좋습니다.<br>그래서 이 글에서도 SELECT 쿼리에 초점을 맞춰 JPQL을 알아보도록 하겠습니다.</p>
+<p>TypedQuery</p>
+<p>‘’’<br>public static void typedQuery(EntityManager em) {<br>    String jpql = “SELECT b FROM Book b “;<br>    TypedQuery<Book> query = em.createQuery(jpql, Book.class);</p>
+<pre><code>List&lt;Book&gt; bookList = query.getResultList();
+for( Book book : bookList) &#123;
+    System.out.println(book.getTitle());
+&#125;</code></pre>
+<p>}<br>‘’’<br>모든 책 리스트를 조회하는 쿼리입니다.</p>
+<p>EntityManager 객체에서 createQuery() 메서드를 호출하면 쿼리가 생성됩니다.<br>TypedQuery는 반환되는 엔티티가 정해져 있을 때 사용하는 타입이며,<br>em.createQuery 메서드를 호출할 때 두 번째 인자로 엔티티 클래스를 넘겨줍니다.</p>
+<p>TypedQuery 객체의 getResultList() 메서드를 호출하면 작성한 JPQL에 의해 데이터를 검색하며, List 타입으로 반환합니다.</p>
+<p>Query</p>
+<p>‘’’<br>public static void Query(EntityManager em) {<br>    String jpql = “SELECT b.no, b.title FROM Book b”;<br>    Query query = em.createQuery(jpql);</p>
+<pre><code>List&lt;Object&gt; list = query.getResultList();
+for( Object object : list ) &#123;
+      Object[] results = (Object[]) object;
+
+      for( Object result : results ) &#123;
+          System.out.print ( result );
+     &#125;
+     System.out.println();
+  &#125;</code></pre>
+<p>}<br>‘’’</p>
+<p>TypedQuery와 달리 Query 타입은 데이터 검색 결과의 타입을 명시하지 않습니다.<br>그래서 List의 제네릭 타입으로 Object를 작성했습니다.</p>
+<p>그리고 변수 jpql에서 SELECT 하는 칼럼을 선택적으로 명시한 점을 주목해주세요.<br>Query 타입을 사용하면 이런 식으로 여러 개의 칼럼을 선택적으로 명시할 수 있습니다.</p>
+<p>‘’’<br>public static void Query(EntityManager em) {<br>    String jpql = “SELECT b.no, b.title FROM Book b”;<br>    TypedQuery<Book> query = em.createQuery(jpql, Book.class);</p>
+<pre><code>List&lt;Book&gt; bookList = query.getResultList();
+for( Book book : bookList ) &#123;
+    System.out.println(book.getTitle());
+&#125;</code></pre>
+<p>}<br>‘’’<br>위와 같이 여러 개의 칼럼을 선택적으로 명시한 후, TypedQuery를 선언하면 에러가 발생합니다.</p>
+<p>setParameter (1) - 이름 기준 파라미터 바인딩<br>‘’’<br>public static void namedParameter(EntityManager em, String param1) {<br>    String jpql = “SELECT b FROM Book b WHERE title = :foo”;<br>    TypedQuery<Book> query = em.createQuery(jpql, Book.class);<br>    query.setParameter(“foo”, param1);</p>
+<pre><code>List&lt;Book&gt; bookList = query.getResultList();
+for( Book book : bookList) &#123;
+    System.out.println(book.getTitle());
+&#125;</code></pre>
+<p>}<br>‘’’<br>SELECT 쿼리를 수행할 때 항상 고정된 데이터를 조회하지 않을 수 있습니다.<br>예를들어 게시판에서 글 제목을 검색할 때 사용자가 검색하는 키워드는 유동적입니다.<br>따라서 동적으로 데이터가 바인딩 되기 위한 방법이 필요합니다.</p>
+<p>위의 예제에서 사용한 방법은 이름을 기준으로 파라미터를 바인딩 하는 방법입니다.<br>콜론( : )을 사용하여 데이터가 추가될 곳을 지정해주고,<br>query.setParameter() 메서드를 호출하여 데이터를 동적으로 바인딩 합니다.</p>
+<p>이제 DTO를 사용하는 방법에 대해 알아보겠습니다.</p>
+<p>‘’’<br>// DTO 사용 ( new 명령어 )<br>public static void useDTO (EntityManager em) {<br>    String jpql = “SELECT new com.victolee.example.dto.BookDTO(b.no, b.title) FROM Book b”;<br>    TypedQuery<BookDTO> query = em.createQuery(jpql, BookDTO.class);</p>
+<pre><code>List&lt;BookDTO&gt; list = query.getResultList();
+for( BookDTO dto : list) &#123;
+    System.out.println(dto.getTitle());
+&#125;</code></pre>
+<p>}<br>‘’’</p>
+<p>JPQL이 조금 지저분합니다.<br>SELECT와 FROM 사이에 new라는 키워드로 BookDTO를 생성하는 것처럼 보입니다.<br>( new 키워드 뒤에 DTO의 패키지명까지 작성해야 한다는 것에 주의하세요. )<br>이 때 new는 객체를 생성하라는 의미가 아니라 JPQL에서 지원하는 new 키워드입니다.</p>
+<p>BookDTO에서 생성자를 오버로딩한 이유는 위와 같이 JPQL을 작성하기 위함입니다.<br>즉 BookDTO 객체 필드 값으로 쿼리의 결과 값을 할당합니다.</p>
+<p>조인</p>
+<p>‘’’<br>// 방법1<br>String jpql = “SELECT b.title, c.name FROM Book b, Category c WHERE b.no = b.category.no”;<br>// 방법2<br>String jpql = “SELECT b, c FROM Book b JOIN b.category c”;</p>
+<p>Query query = em.createQuery(jpql);</p>
+<p>List&lt;Object[]&gt; list = query.getResultList();<br>for( Object[] row : list ) {<br>     Book book = (Book)row[0];<br>     Category category = (Category)row[1];<br>}<br>‘’’</p>
+<p>Book과 Category 엔티티가 관계를 맺고 있을 때, 조인을 하는 방법입니다.<br>아직 두 엔티티를 매핑하는 연관 관계 매핑에 대해 다루지 않았지만 JPQL을 다룰 때 한꺼번에 정리를 하려고 합니다.</p>
+<p>서로 다른 두 엔티티를 조회 했으므로 TypedQuery 타입으로 반환할 수 없습니다.</p>
+<p>방법2에서 주의할 것은 join 할 때 FROM Book b JOIN Category c 와 같이 SQL처럼 작성하면 안됩니다.</p>
+<p>그런데 join 조회 결과를 캐스팅하여 사용하는 것이 번거로우므로 DTO를 사용하는 것이 훨씬 깔끔할 것 같습니다.<br>어쨋든 조인은 이런 식으로 사용할 수 있습니다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/01/16/JPQL/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2021/01/16/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/"
+                            aria-label=": JPA에서의 Sort 문제해결"
+                        >
+                            JPA에서의 Sort 문제해결
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-16T08:27:09-08:00">
+	
+		    Jan 16, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EA%B0%9C%EB%B0%9C%EB%85%B8%ED%8A%B8/">개발노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="JPA-안의-sort-사용-시-자동으로-테이블을-지정-할-때-다른-테이블로-바꾸는-방법"><a href="#JPA-안의-sort-사용-시-자동으로-테이블을-지정-할-때-다른-테이블로-바꾸는-방법" class="headerlink" title="JPA 안의 sort 사용 시 자동으로 테이블을 지정 할 때, 다른 테이블로 바꾸는 방법"></a>JPA 안의 sort 사용 시 자동으로 테이블을 지정 할 때, 다른 테이블로 바꾸는 방법</h1><p> Sort sort = Sort.by(Collections.emptyList());</p>
+<pre><code>    for (Sort.Order order : pageable.getSort())
+    &#123;
+        switch (order.getProperty())
+        &#123;
+            case &quot;requestedCompanyName&quot;:
+                sort = sort.and(JpaSort.unsafe(order.getDirection(), &quot;FU.company.name&quot;));
+                break;
+            case &quot;requestedBranchName&quot;:
+                sort = sort.and(JpaSort.unsafe(order.getDirection(), &quot;FU.branch.name&quot;));
+                break;
+            case &quot;requestedUserName&quot;:
+                sort = sort.and(JpaSort.unsafe(order.getDirection(), &quot;FU.name&quot;));
+                break;
+            default:
+                sort = sort.and(Sort.by(order.getDirection(), order.getProperty()));
+                break;
+        &#125;
+    &#125;
+
+    return userReportRepository.fetchAllByParameters
+        (
+            type, step, reportedUserId, reportedCompanyId, reportedBranchId, processedUserId, searchKeyword,
+            reportedDateTimeFrom, reportedDateTimeTo, processedDateTimeFrom, processedDateTimeTo,
+            PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort)
+        );
+
+
+
+JpaSort.unsafe : 자동으로 테이블으 지정하는 것으 막아준다
+JpaSort.unsafe (a,b) : a는 desc, asc 같은것들 , b는 테이블 지정
+order.getDirection() : 원래의 a를 가져온다
+order.getProperty() : 원래의 b를 가져온다
+PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort) : 위의 조건을 사용 할 시 넘겨주는 파라미터 형태</code></pre>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/01/16/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2021/01/16/JPA/"
+                            aria-label=": JPA"
+                        >
+                            JPA
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-16T08:25:11-08:00">
+	
+		    Jan 16, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="Jpa"><a href="#Jpa" class="headerlink" title="Jpa"></a>Jpa</h1><ol>
+<li>JPA(Java Persistence API)?</li>
+</ol>
+<p>RDBMS 와 OOP 객체 사이의 불일치에서 오는 패러다임을 해결하기 위해<br>자바는 ORM(Object-Relational Mapping) 기술을 만들어 냈다.<br>문자 그대로 ORM 은 객체와 RDBMS 를 매핑하는 역할을 한다.<br>￼<br>ORM 기술을 구현하기 위해 만들어져 사용되어 온 프레임워크가 Hibernate 이고,<br>시간이 지나면서 Hibernate 이외에도 ORM 기술을 구현하는 프레임워크(TopLink, CoCobase) 가 등장하였다.<br>그리고 이런 ORM 기술을 구현한 프레임워크에 대한 표준화가 이루어 졌는데,<br>그 결과로 만들어진 것이 JPA 인 것이다.<br> <br>JDBC API 가 어플리케이션과 DMBS 사이에서 인터페이스 역할을 해 주기 때문에,<br>개발자는 사용할 DB 의 드라이버만 변경해 주면 되는 것처럼,<br>(DB 드라이버는 JDBC 표준에 맞추어 DB 관련 처리가 구현되어 있고, DB 드라이버는 각 DB 회사가 알아서 만들어 놓았다)<br>개발자는 ORM 을 기술을 사용할 때, JPA 인터페이스에 맞추어 구현되어 있는 <br>Hibernate, TopLink, CoCoBase 프레임워크 중 골라서 사용하면 된다.<br>만약, JPA 같은 표준 인터페이스가 없다면, <br>ORM 기술을 사용하기 위한 Hibernate, TopLink, CoCoBase 의 필드와 메소드가 다를 것이다.<br>같은 기능을 가지는 메소드인데 Hibernate 에서는 냥냥고고( ), TopLink 에서는 멍멍고고( )로 정의되어 있다면,<br>사용하는 개발자가 ORM 프레임워크를 변경해야 할 때 난감할 것이다.<br>그래서 JPA API 가 이 기능은 통일해서 냥이최고( ) 로 구현하라고 강제하는 것이다(인터페이스의 중요 기능).<br> <br>ORM 프레임워크를 사용하면 개발자가 객체를 데이터베이스에 저장할 때 SQL을 직접 작성할 필요 없이,<br>자바 컬렉션에 저장하는 것처럼 ORM 프레임워크에 저장하면 된다.<br>객체를 받은 ORM 프레임워크는 저장된 자바 객체를 분석해서 적절한 SQL을 생성하고 데이터베이스에 저장시킨다.  <br> <br> 지연 로딩과 즉시 로딩</p>
+<ol>
+<li>지연 로딩 : 객체가 실제 사용될 때 로딩</li>
+<li>즉시 로딩 : JOIN SQL로 한번에 연관된 객체까지 미리 조회</li>
+</ol>
+<ol start="2">
+<li>영속성(Persistence)</li>
+</ol>
+<p>(1) Entity Class<br>엔티티 클래스는 자바 클래스에 @Entity 어노테이션을 붙여, 테이블과 매핑한다고 JPA 에게 알려주는 클래스다.<br>그리고 엔티티 클래스에서 만들어진 객체를 엔티티라고 한다.</p>
+<p>(2) 영속성 컨텍스트(Persistence Context)<br>영속성 컨텍스트는 엔티티 클래스에서 만들어지는 엔티티를 영구 저장하고 관리하는 환경이다.</p>
+<p>영속성 컨텍스트 와 관련한 엔티티의 4가지 상태<br> ① 비영속(new/transient) - 엔티티 객체가 만들어져서 아직 저장되지 않은 상태로, 영속성 컨텍스트와 전혀 관계가 없는 상태<br> ② 영속(managed) - 엔티티가 영속성 컨텍스트에 저장되어, 영속성 컨텍스트가 관리할 수 있는 상태<br> ③ 준영속(detached) - 엔티티가 영속성 컨텍스트에 저장되어 있다가 분리된 상태로, 영속성 컨텍스트가 더 이상 관리하지 않는 상태<br> ④ 삭제(removed) - 엔티티를 영속성 컨텍스트와 데이터베이스에서 삭제</p>
+<p>영속성 컨텍스트의 특징<br> ① 영속성 컨텍스트는 엔티티를 식별자 값(@Id로 테이블의 기본키와 매핑한 필드 값)으로 구분한다. <br>     그렇기 때문에 영속 상태는 식별자 값이 반드시 있어야 한다.<br> ② 영속성 컨텍스트에 엔티티를 저장하면 바로 데이터베이스에 저장되는 것이 아니라, 1차 캐시에 엔티티를 생성하고,<br>     쓰기 지연 SQL 저장소에 쿼리문을 생성해서 저장한다. 이렇게 쌓인 쿼리문은 flush( )가 실행될 때 데이터베이스에 반영된다.</p>
+<p>(3) 엔티티 생성</p>
+<ol>
+<li>자바 어플리케이션에서 어떤 엔티티가 만들어져서 JPA에게 데이터베이스 저장을 부탁하면,</li>
+<li>만들어진 엔티티는 1차적으로 영속성 컨텍스트에 저장된다. 1차 캐시 정도라고 생각하면 된다.<br>   그리고, 저장한 엔티티를 데이터베이스에 저장하기 위한 쿼리문을 생성시켜 쓰기 지연 SQL 저장소에  저장한다.<br>   계속해서 엔티티를 넘기면 엔티티들과 쿼리문들은 차곡차곡 영속성 컨텍스트에 저장된다.</li>
+<li>그러다가 자바 어플리케이션에서 커밋 명령이 내려지면 영속 컨텍스트에는 자동으로 flush( )가 호출되고,</li>
+<li>영속성 컨텍스트의 변경내용을 데이터베이스와 동기(flush)화 한다(SQL 저장소의 쿼리를 실행시킨다).</li>
+<li>마지막으로 데이터베이스에게 commit 쿼리문을 명령한다.<br>￼
+ </li>
+</ol>
+<p>(4) 엔티티 조회 </p>
+<ol>
+<li>자바 어플리케이션에서 JPA에게 데이터베이스 조회를 부탁하면,<br>   1차적으로 영속성 컨텍스트에서 엔티티를 찾는다. </li>
+<li>있으면 자바 어플리케이션에 엔티티를 넘긴다.</li>
+<li>영속성 컨텍스트에 없는 엔티티 조회를 부탁하면</li>
+<li>쿼리문을 사용해 데이터베이스에서 찾아와 </li>
+<li>영속성 컨텍스트에 엔티티로 저장하고</li>
+<li>자바 어플리케이션에 그 엔티티를 넘긴다.<br>￼
+ </li>
+</ol>
+<p>(5) 엔티티 변경<br>JPA는 엔티티를 영속성 컨텍스트에 보관할 때, 최초의 상태를 복사해서 저장해 두는데,<br>이것을 스냅샷이라 한다.</p>
+<ol>
+<li>자바 어플리케이션에서 커밋 명령이 들어오면, 영속 컨텍스트에는 자동으로 flush( )가 호출되고,</li>
+<li>엔티티와 스냅샷을 비교해서 변경된 엔티티를 찾는다.</li>
+<li>변경된 엔티티가 있으면 데이터베이스에 변경사항을 저장하기 위해 쿼리를 생성하고,</li>
+<li>영속성 컨텍스트의 변경내용을 데이터베이스와 동기(flush)화 한다(SQL 저장소의 쿼리를 실행시킨다).</li>
+<li>마지막으로 데이터베이스에게 commit 쿼리문을 명령한다.<br>￼<br>이렇게 엔티티의 변경사항을 데이터베이스에 자동으로 반영하는 기능을 변경감지(Dirty Checking)이라 한다.<br> <br> <br>(6) 엔티티 삭제<br>앞의 과정과 마찬가지로, 자바 어플리케이션에서 엔티티 삭제 명령이 들어오면,<br>엔티티를 찾고 쓰기 지연 SQL 저장소에 delete 쿼리를 생성한다.<br>그리고 자바 어플리케이션에서 커밋 명령이 들어오면, 자동으로 flush( )가 호출되고,<br>영속성 컨텍스트의 변경내용을 데이터베이스와 동기(flush)화 한다(SQL 저장소의 쿼리를 실행시킨다).<br>마지막으로 데이터베이스에게 commit 쿼리문을 명령한다. 
+ </li>
+<li>JPA 메소드<br>(1) flush( )<br>영속성 컨텍스트의 변경 내용을 데이터베이스에 반영한다.</li>
+</ol>
+<p>실행되었을 때 일어나는 일<br>  ① 변경 감지가 동작해서 영속성 컨텍스트에 있는 모든 엔티티를 스냅샵과 비교해서 수정된 엔티티를 찾고,<br>      수정된 엔티티를 데이터베이스에 반영하기 위해 수정 쿼리를 생성하여 지연 SQL 저장소에 등록<br>  ② 쓰기 지연 SQL 저장소의 쿼리를 데이터 베이스에 전송(등록, 수정, 삭제 쿼리)<br>  <br>보통 직접 사용하지 않고, 자바 어플리케이션에서 커밋 명령이 들어왔을 때, 자동으로 실행된다.<br> <br>(2) detach( ) <br>특정 엔티티를 준영속 상태로 만든다. <br>준영속 상태가 된 엔티티는 더이상 영속 컨텍스트의 관리를 받지 않으며,<br>영속 컨텍스트가 지원하는 어떤 기능도 동작하지 않게 된다.<br>영속 상태가 영속성 컨텍스트로에게 관리(managed)되는 상태라고 하면,<br>준영속 상태는 영속성 컨텍스트로부터 분리(detached)된 상태이다.<br> <br>(3) clear( )<br>영속성 컨텍스트를 초기화 한다.<br>영속성 컨텍스트의 모든 엔티티를 준영속 상태로 만든다.<br> <br>(4) close( )<br>영속성 컨텍스트를 종료한다.<br>영속성 컨텍스트가 관리하던 영속 상태의 엔티티가 모둔 준영속 상태가 된다.<br> <br>영속 상태의 엔티티는 주로 영속성 컨텍스트가 종료되면서 준영속 상태가 된다.<br>개발자가 직접 준영속 상태로 만드는 일은 거의 없다.<br> <br>(5) merge( )<br>준영속 상태의 엔티티의 특징<br> ① 거의 비영속 상태에 가깝다. 영속성 컨텍스트가 관리하지 않으므로 영속성 컨텍스트가 제공하는 어떠한 기능도 동작하지 않는다.<br> ② 식별자 값을 가지고 있다. 비영속 상태의 엔티티는 식별자(엔티티를 구분하기 위한 유일한 값, ID)를 가지지 않고 있을 수도 있지만,<br>     준영속 상태는 이미 한 번 영속 상태였기 때문에, 식별자 값을 가지고 있다.<br> <br>merge( )는 준영속 상태의 엔티티를 이용해서 새로운 영속 상태의 엔티티를 반환한다.<br> <br>실행되었을 때 일어나는 일<br> ① 파라미터로 넘어온 준영속 엔티티의 식별자 값으로 1차 캐시에서 엔티티를 조회<br>     (1차 캐시에 엔티티가 없으면 데이터베이스에서 엔티티를 조회하고 1차 캐시에 저장)<br> ② 조회한 영속 엔티티에 준영속 엔티티의 값을 채워 넣는다.<br> ③ 생성된 새로운 영속 엔티티를 반환한다.<br>새롭게 생성된 영속 상태의 엔티티를 가지고 이제 영속성 컨텍스트가 지원하는 기능을 사용할 수 있다.<br> <br>준영속 상태의 엔티티를 영속 상태로 변경하는 것이 아니라, 새로운 영속 상태의 엔티티를 만들어서,<br>준영속 상태의 엔티티 값을 영속 상태의 엔티티에 채워 넣어서 반환하는 점에 주의해야 한다.<br>그리고, 준영속 뿐만 아니라, 비영속 상태의 엔티티도 병합하여 새로운 영속 상태의 엔티티를 만들어 반환한다.<br> <br>자세한 내용은 위의 엔티티 변경 참조.<br> <br>(6) find( )<br>식별자 값을 가지고 엔티티를 찾아서 반환한다.<br>자세한 내용은 위의 엔티티 조회 참조<br> <br>(7) persist( )<br>자바 어플리케이션에서 생성된 엔티티를 영속성 컨텍스트와 데이터베이스에 저장한다.<br>자세한 내용은 위의 엔티티 생성 참조<br> <br>(8) remove( )<br>식별자 값을 가지고 엔티티를 찾아서 삭제한다.<br>자세한 내용은 위의 엔티티 삭제 참조</p>
+<p>Query <br> 플랫폼 독립적인 객체지향 쿼리 언어를 사용하며, Query 인터페이스는 관계형 데이터베이스의 엔티티에 대한 쿼리를 만든다.</p>
+<ul>
+<li>특징<ul>
+<li>JPQL : SQL문과 비슷하지만 데이터베이스의 테이블에 직접 연결되는 것이 아니라 JPA 엔티티에 대해 동작하게 된다.<ul>
+<li>JPQL 쿼리의 칼럼은 엔티티의 필드 이름을 사용한다.</li>
+</ul>
+</li>
+<li>Query Creation 매카니즘 : JPA에서의 쿼리 생성 매카니즘. 일반적으로 쿼리 메소드(Query method) 방식을 가장 많이 사용한다.<ul>
+<li>JPA reference :  <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-data/jpa/docs/1.10.1.RELEASE/reference/html/#jpa.sample-app.finders.strategies">https://docs.spring.io/spring-data/jpa/docs/1.10.1.RELEASE/reference/html/#jpa.sample-app.finders.strategies</a></li>
+</ul>
+</li>
+<li>메타정보에 정의된 관계 정보를 이용하면 복잡한 Join 설정 등이 필요하지 않기 떄문에 훨씬 간결하다.</li>
+</ul>
+</li>
+</ul>
+<p>이 메소드 시그니처는 다음의 설정을 사용하여 스프링 MVC가 요청 파라미터로부터 Pageable 인스턴스를 만들어내게 시도합니다.<br>표 1. Pageable 인스턴스를 위해 평가된 요청파라미터 Request parameters evaluated for Pageable instances<br>page<br>얻기 원하는 페이지, 0 indexed and 기본은 0.<br>size<br>얻기 원하는 페이지 크기, 기본 20.<br>sort<br>다음의 형식으로 정렬될 형식 property,property(,ASC|DESC). 기본 정렬 방향은 오름차순(asc). 만약 방향을 바꾸고 싶은 여러개의sort 파라미터가 있다면 다음과 같이.., e.g. ?sort=firstname&amp;sort=lastname,asc.<br>이러한 행동을 커스터마이징 하고 싶다면 @Enable-어노테이션을 사용하는 대신에 SpringDataWebConfiguration를 상속하거나 HATEOAS-활성화 같은 것을 하거나, pageableResolver()나sortResolver()메소드를 오버라이드하고 당신의 커스터마이징된 설정파일을 임포트하세요.</p>
+<p>이러한 경우 당신은 여러개의 테이블을 위해서, 요청으로부터 여러개의 Pageable 나 Sort 인스턴스가 resolved되기를 필요로 할지도 모릅니다. 예를 들자면 당신은 스프링의 @Qualifier어노테이션을 사용하여 다른 것들끼리 구별을 할 수도 있습니다. 요청파라미터는 그러면 ${qualifier}_로 prefixed됩니다. 그래서 메소드 시그니처가 다음과 같이 됩니다</p>
+<p>JPA 함수 규칙</p>
+<p>KeywordSampleJPQL snippet</p>
+<p>And<br>findByLastnameAndFirstname<br>… where x.lastname = ?1 and x.firstname = ?2</p>
+<p>Or<br>findByLastnameOrFirstname<br>… where x.lastname = ?1 or x.firstname = ?2</p>
+<p>Is,Equals<br>findByFirstname,findByFirstnameIs,findByFirstnameEquals<br>… where x.firstname = ?1</p>
+<p>Between<br>findByStartDateBetween<br>… where x.startDate between ?1 and ?2</p>
+<p>LessThan<br>findByAgeLessThan<br>… where x.age &lt; ?1</p>
+<p>LessThanEqual<br>findByAgeLessThanEqual<br>… where x.age &lt;= ?1</p>
+<p>GreaterThan<br>findByAgeGreaterThan<br>… where x.age &gt; ?1</p>
+<p>GreaterThanEqual<br>findByAgeGreaterThanEqual<br>… where x.age &gt;= ?1</p>
+<p>After<br>findByStartDateAfter<br>… where x.startDate &gt; ?1</p>
+<p>Before<br>findByStartDateBefore<br>… where x.startDate &lt; ?1</p>
+<p>IsNull<br>findByAgeIsNull<br>… where x.age is null</p>
+<p>IsNotNull,NotNull<br>findByAge(Is)NotNull<br>… where x.age not null</p>
+<p>Like<br>findByFirstnameLike<br>… where x.firstname like ?1</p>
+<p>NotLike<br>findByFirstnameNotLike<br>… where x.firstname not like ?1</p>
+<p>StartingWith<br>findByFirstnameStartingWith<br>… where x.firstname like ?1 (parameter bound with appended %)</p>
+<p>EndingWith<br>findByFirstnameEndingWith<br>… where x.firstname like ?1 (parameter bound with prepended %)</p>
+<p>Containing<br>findByFirstnameContaining<br>… where x.firstname like ?1 (parameter bound wrapped in %)</p>
+<p>OrderBy<br>findByAgeOrderByLastnameDesc<br>… where x.age = ?1 order by x.lastname desc</p>
+<p>Not<br>findByLastnameNot<br>… where x.lastname &lt;&gt; ?1</p>
+<p>In<br>findByAgeIn(Collection<Age> ages)<br>… where x.age in ?1</p>
+<p>NotIn<br>findByAgeNotIn(Collection<Age> ages)<br>… where x.age not in ?1</p>
+<p>True<br>findByActiveTrue()<br>… where x.active = true</p>
+<p>False<br>findByActiveFalse()<br>… where x.active = false</p>
+<p>IgnoreCase<br>findByFirstnameIgnoreCase<br>… where UPPER(x.firstame) = UPPER(?1)</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/01/16/JPA/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/2021/01/09/%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/"
                             aria-label=": 생명주기"
                         >
@@ -420,7 +1072,7 @@
 <p>obj의 sayHello()를 다르게 출력해보면 undefined가 출력되는 것을 확인할 수 있다.<br>이 이유는 변수 reference에 담길 때 obj와의 관계가 상실되게 때문이다.<br>이럴 때 필요한 것이 “바.인.딩” 이다.</p>
 <p>Var reference = obj.sayHello.bind(obj);<br>reference();</p>
 <p>obj.sayHello()를 전달할 때 obj까지 바인딩시켜서 보내면 된다.<br>리액트에서도 마찬가지로 자바스크립트의 this가 사용되기때문에 바인딩이 필요하다.</p>
-<p>리액트에서 바인딩 (React Binding) <br>React에서 컴포넌트에 이벤트메서드를 연결하는 방법 (=바인딩(binding))<br>다양한 방법이 있지만 리액트에서 주로 사용하는 방법은 컴포넌트의 생성자에서 바인딩 하기다.</p>
+<p>리액트에서 바인딩 (React Binding)<br>React에서 컴포넌트에 이벤트메서드를 연결하는 방법 (=바인딩(binding))<br>다양한 방법이 있지만 리액트에서 주로 사용하는 방법은 컴포넌트의 생성자에서 바인딩 하기다.</p>
 <p>class App extends React.Component {<br>    constructor() {<br>        super();<br>        this.state = {<br>              hidden: false,<br>        };<br>        this.update = this.update.bind(this);<br>    }<br>    update() {<br>        this.setState({<br>            hidden: true<br>        });<br>    }<br> <br>    render() {<br>        return &lt;div<br>            onClick={ this.update }<br>        /&gt;;<br>    }<br> <br>}</p>
 <p>constructor() 에서 this.update = this.update.bind(this); 문장을 집어넣어서 바인딩시키면 render()에서 onClick={this.update}를 할 때 this가 App컴포넌트의 this라는 것을 알게 되는 것이다.</p>
 <p>바인딩하는 방법중에 ‘autobind-decorator’를 사용해서 바인딩할 수 도 있다.<br>import autobind from ‘autobind-decorator’</p>
@@ -654,544 +1306,6 @@
                         <p>
                             <a
                                 href="/2021/01/09/%EB%B9%84%EB%8F%99%EA%B8%B0/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2021/01/09/%EA%B8%B0%EC%B4%88/"
-                            aria-label=": 리액트 기초"
-                        >
-                            리액트 기초
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2021-01-09T12:42:00-08:00">
-	
-		    Jan 09, 2021
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="리액트"><a href="#리액트" class="headerlink" title="리액트"></a>리액트</h1><p>리액트는 Component를 외부에서 사용자가 정의하고 그 Component들을 불러옴 으로써 웹을 구성한다.</p>
-<p>이러한 사용방식으로 얻는 방법에서 크게 3가지의 장점이 존재한다.</p>
-<ol>
-<li>코드의 가독성을 늘려준다.</li>
-<li>코드의 재사용성을 늘려준다.</li>
-<li>유지보수 시 큰 이득이 있다.</li>
-</ol>
-<p>리액트를 사용하면서 자신이 Component를 만들 수 있고, 남이 작성해 놓은 Component를 사용 할 수도 있다!</p>
-<p>리액트를 작업할 때 webpack 이나 parcel 같은 번들러를 이용해서 작업을 합니다. 모든 모듈이나 여러가지 라이브러리를 동시에 합쳐서 하나의 .js 파일로 내보내는거죠. 또한 리액트 파일은 JSX 문법으로 작성되거나 최신 JS 문법으로 작성되기 때문에, babel 을 사용해서 브라우저 호환성을 생각해야 합니다.</p>
-<h1 id="리액트-특징"><a href="#리액트-특징" class="headerlink" title="리액트 특징"></a>리액트 특징</h1><ol>
-<li>JSX 문법</li>
-</ol>
-<p>자바스크립트 안에서 HTML 문법을 사용해서 View를 구성 할 수 있게 도와주는 자바스크립트 문법</p>
-<ol start="2">
-<li>Component 기반</li>
-</ol>
-<p>웹 페이지를 작성 할 때 여러부분을 분할해서 코드의 재사용성과 유지보수성을 증가</p>
-<ol start="3">
-<li>Virtual DOM</li>
-</ol>
-<p>가성 DOM을 만들어서 수정 된 사항이 있을 때 전체 코들르 검토하는 것이 아닌 수정된 일부만 수정하게 되어 효율적으로 코딩을 할 수 있게 도와주며 완성된 DOM은 실제 DOM으로 옮겨 유저에게 보여주는 프론트를 제공한다.</p>
-<h1 id="리액트-폴더"><a href="#리액트-폴더" class="headerlink" title="리액트 폴더"></a>리액트 폴더</h1><ol>
-<li>public</li>
-</ol>
-<p>가상 DOM이 들어갈 빈 껍데기 html이 존재하는 폴더</p>
-<ol start="2">
-<li>Src</li>
-</ol>
-<ol>
-<li><p>index.js<br>app.js 에서 생성된 리액트 코드를 index.js에서 불러온 후, public에 있는 index.html의 id가 Root인 곳에다가 넣어줌</p>
-</li>
-<li><p>App.js<br>리액트, 리액트 컴포넌트를 부른 후에 App이라는 클래스를 생성한 후, 리액트 컴포넌트를 상속받습니다. 그렇게되면 리액트 컴포넌트 메소드를 사용 할 수 있습니다.</p>
-</li>
-</ol>
-<p>render() 메소드는 리액트 컴포넌트인데, 화면서 html뷰를 생성해주는 역할을 합니다. reture으로 받는 값들은 나중에 html코드로 바뀌게됩니다.</p>
-<p>그리고 export 문법을 이용해서 내보냅니다.</p>
-<p><strong>html 코드를 여러 개의 리액트 파일로 분할해서 작업을 할 수가 있다는 것 입니다. 또한 그렇게 되면 여러 사람이 협업을 하는 것도 쉬워지고, 코드의 수정도 특정 부분만 하면 되기 때문에 이점이 많아지게 됩니다.</strong></p>
-<h1 id="props와-state"><a href="#props와-state" class="headerlink" title="props와 state"></a>props와 state</h1><ol>
-<li>State는 현재 컴포넌트 내에서 변경이 가능하다.</li>
-<li>Props는 현재 컴포넌트 내에서 변경이 불가능하다.<br>(예전 리액트 버전에서는 가능했으나 현재 버전에서는 사용하지 않는 것을 추천)</li>
-<li>Props와 State 모두 하위 컴포넌트에 상속이 가능하다.</li>
-</ol>
-<p>props와 state는 데이터를 다룰 때 사용하는 개념입니다.</p>
-<p>state는 하나의 컴포넌트가 가질 수 있는 변경 가능한 데이터이다.</p>
-<ul>
-<li>컴포넌트를 렌더링 할 때 새로운 데이터를 생성해야 한다던지, 아니면 기존의 데이터를 참고해서 새로운 데이터를 만들어야 할 때 사용할 수 있습니다<br>즉, 현재 컴포넌트 안에서 새로운 데이터를 만들어 낼 때 사용합니다.</li>
-</ul>
-<p>props는 변경이 불가능한 데이터이지만, 상속을 통해 바꿔 줄 수는 있다.</p>
-<h1 id="리액트-생명주기"><a href="#리액트-생명주기" class="headerlink" title="리액트 생명주기"></a>리액트 생명주기</h1><p>Mounting: 리액트 코드 첫 렌더링의 시작</p>
-<ol>
-<li><p>constructor : 생성자가 먼저 동작함.</p>
-</li>
-<li><p>render : 렌더링을 위해 작성해둔 JSX를 return 해주는 메소드가 작동</p>
-</li>
-<li><p>componentDidMount : 리액트 코드가 HTML로 변환되어 화면에 나타남. (첫 렌더링 직후에만 한번 일어남!)</p>
-</li>
-</ol>
-<p>Updateing : 리액트 state나 props가 업데이트 되었을 때</p>
-<p>(: setState 메소드 : state를 업데이트 하려면 반드시 setState를 수행해야 합니다.)</p>
-<p>(: props : 부모 컴포넌트에서 setState를 수행하여 현재 컴포넌트가 가지고 있는 props가 업데이트 되었을 때)</p>
-<ol>
-<li><p>render : state나 props 같잉 보여주어야 하는 데이터가 업데이트 되었으면 다시 render를 수행</p>
-</li>
-<li><p>componentDidUpdate: 컴포넌트가 업데이트 되었을 때 수행되는 메소드로 인자를 받는다. prevProps , prevState를 받는다!</p>
-</li>
-</ol>
-<p>Unmounting : 컴포넌트가 사라질 때</p>
-<p>컴포넌트에 setInterval과 같은 작업을 진행했을 때에 이 부분은 컴포넌트가 단순히 사라진다고 해서 없어지지 않습니다. 메모리에 좀비처럼 상주할 가능성이 있는 변수들을 여기서 null 을 할당함으로 사용되지 않을 작업들을 해제해줄 수 있습니다</p>
-<p>componentWillUnMount : 컴포넌트가 사라질 떄에만 수행됩니다. 이 때 setInterval과 같은 작ㅇ버을 했을 경우에 여기서 해제시켜 주면된다!</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2021/01/09/%EA%B8%B0%EC%B4%88/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/11/03/%EB%AC%B8%EC%A0%9C/"
-                            aria-label=": Linked list (2)"
-                        >
-                            Linked list (2)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-11-03T04:39:36-08:00">
-	
-		    Nov 03, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="단방향-LinkedList의-끝에서-k번째-노드를-찾는-알고리즘을-구현하시오"><a href="#단방향-LinkedList의-끝에서-k번째-노드를-찾는-알고리즘을-구현하시오" class="headerlink" title="단방향 LinkedList의 끝에서 k번째 노드를 찾는 알고리즘을 구현하시오."></a>단방향 LinkedList의 끝에서 k번째 노드를 찾는 알고리즘을 구현하시오.</h1><h2 id="2-gt-3-gt-1-gt-4"><a href="#2-gt-3-gt-1-gt-4" class="headerlink" title="2 -&gt; 3 -&gt; 1 -&gt; 4"></a>2 -&gt; 3 -&gt; 1 -&gt; 4</h2><br>
-
-<p><strong>방법1</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int k &#x3D; 2;</span><br><span class="line">Node kth &#x3D; kthToLast(first, k) ;</span><br><span class="line">Node kthToLast(Node first, int k) &#123;</span><br><span class="line"></span><br><span class="line"> Node n &#x3D; first ;</span><br><span class="line"> int total &#x3D; 1 ;</span><br><span class="line"></span><br><span class="line"> while (n.next !&#x3D; null) &#123;</span><br><span class="line"></span><br><span class="line"> total ++ ;</span><br><span class="line"> n &#x3D; n.next ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> n &#x3D; first;</span><br><span class="line"> for ( int i &#x3D; 0 ; i &lt; total - k + 1 ; i ++ ) &#123;</span><br><span class="line"></span><br><span class="line"> n &#x3D; n.next ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">return n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p><strong>방법 2 재귀호출</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int k &#x3D; 1;</span><br><span class="line">KthToLast( ll.getFirst(), k ) ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Reference &#123;</span><br><span class="line"> public int count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private static void KthToLast(Node n, int k, Reference r) &#123;</span><br><span class="line">if ( in &#x3D;&#x3D; null ) &#123;</span><br><span class="line">return null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int k &#x3D;2;</span><br><span class="line">Reference r &#x3D; new Reference();</span><br><span class="line"></span><br><span class="line">Node found &#x3D; KthToLas(n.next, k, r) ;</span><br><span class="line">r.count ++ ;</span><br><span class="line">if ( r.count &#x3D;&#x3D; k) &#123;</span><br><span class="line">return n;</span><br><span class="line">&#125;</span><br><span class="line">return found;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>방법 3 포인터</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static Node KthToLast( Node first, int k) &#123;</span><br><span class="line">Node p1 &#x3D; first;</span><br><span class="line">Node p2 &#x3D; first;</span><br><span class="line"></span><br><span class="line">for ( int i &#x3D; 0 ; i &lt; k ; i++ ) &#123;</span><br><span class="line">if ( p1 &#x3D;&#x3D; null;) return null;</span><br><span class="line">p1 &#x3D; p1.next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">while ( p1 !&#x3D; null) &#123;</span><br><span class="line">p1 &#x3D; p1.next;</span><br><span class="line">p2 &#x3D; p2.next;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return p2</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><br><br></p>
-<h3 id="단방향-Linked-List에서-중간에-있는-노드를-삭제하시오-단-당신은-첫번째-노드가-어딨는지-모르고-오직-삭제-할-노드만-가지고-있다"><a href="#단방향-Linked-List에서-중간에-있는-노드를-삭제하시오-단-당신은-첫번째-노드가-어딨는지-모르고-오직-삭제-할-노드만-가지고-있다" class="headerlink" title="단방향 Linked List에서 중간에 있는 노드를 삭제하시오 (단, 당신은 첫번째 노드가 어딨는지 모르고, 오직 삭제 할 노드만 가지고 있다)"></a>단방향 Linked List에서 중간에 있는 노드를 삭제하시오 (단, 당신은 첫번째 노드가 어딨는지 모르고, 오직 삭제 할 노드만 가지고 있다)</h3><p><br><br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">deleteNode ( ll.get(2));</span><br><span class="line">ll.retrieve();</span><br><span class="line"></span><br><span class="line">private static boolean deleteNode(Node n) &#123;</span><br><span class="line"> if ( n &#x3D;&#x3D; null || n.next &#x3D;&#x3D; null) &#123;</span><br><span class="line"></span><br><span class="line"> return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Node next &#x3D; n.next</span><br><span class="line">n.data &#x3D; next.data;</span><br><span class="line">n.next &#x3D; next.next;</span><br><span class="line">return true;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/11/03/%EB%AC%B8%EC%A0%9C/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/11/02/%EC%B0%BE%EA%B8%B0-1/"
-                            aria-label=": 자음 찾기"
-                        >
-                            자음 찾기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-11-02T05:44:19-08:00">
-	
-		    Nov 02, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/97954610-df8fc180-1d58-11eb-944a-6d4d14bfc18e.png" alt="자음"></p>
-<br>
-
-<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><ol>
-<li><p>입력받은 글의 길이를 잰다</p>
-</li>
-<li><p>길이 만큼 반복문을 돌리고 각 index의 글자를 가져온다</p>
-</li>
-<li><p>그 글자가 자음인 경우는 count를 올려서 숫자를 센다</p>
-</li>
-</ol>
-<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"> </span><br><span class="line">public class Problem1102 &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        &#x2F;&#x2F; BufferedReader로 입력 받기</span><br><span class="line">        BufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        </span><br><span class="line">       String str &#x3D; br.readLine();</span><br><span class="line">       int result &#x3D; 0 ;</span><br><span class="line">       for (int i &#x3D; 0 ; i &lt; str.length() ; i++) &#123;</span><br><span class="line">    	   </span><br><span class="line">    	   if (str.charAt(i) &#x3D;&#x3D; &#39;a&#39; || str.charAt(i) &#x3D;&#x3D; &#39;e&#39; || str.charAt(i) &#x3D;&#x3D; &#39;o&#39; || str.charAt(i) &#x3D;&#x3D; &#39;i&#39; || str.charAt(i) &#x3D;&#x3D; &#39;u&#39;) </span><br><span class="line">				result ++;</span><br><span class="line">       	 </span><br><span class="line">       	&#125;</span><br><span class="line">       	</span><br><span class="line">       	System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<br>
-
-<p><img src="https://user-images.githubusercontent.com/62025746/97954608-de5e9480-1d58-11eb-95b5-e41aeea198b8.png" alt="자음 답"></p>
-<br>
-
-<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
-<li>charat를 사용해서 각 index의 글자를 가져오고 자음과 같은것인지 비교한다.</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/11/02/%EC%B0%BE%EA%B8%B0-1/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/11/01/%EC%A4%84%EC%84%9C%EA%B8%B0/"
-                            aria-label=": 줄서기"
-                        >
-                            줄서기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-11-01T22:11:37-08:00">
-	
-		    Nov 01, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/97835636-77c17400-1c8f-11eb-8038-5e01cbf837b6.png" alt="줄서기"></p>
-<br>
-
-<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><ol>
-<li><p>arr[입력크기]를 만들고 각 인덱스는 N키를, 인덱스의 값은 N키에서 왼쪽에 있는 자기보다 키가 큰 사람의 수.</p>
-</li>
-<li><p>arr[]에서 인덱스의 값이 0인 부분은 자신보다 키가 큰 부분.</p>
-</li>
-<li><p>단, arr[0]부터 arr.length까지 반복하면서, 인덱스의 값이 0이면 M(입력받은 값)을 하나 빼준다. 그리고 M=0이면, 나보다 큰 값을 모두 건너왔음을 의미, 해당 인덱스에 N값을 넣어준다.</p>
-</li>
-</ol>
-<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; sc.nextInt();</span><br><span class="line"></span><br><span class="line">        int[] arr &#x3D; new int[n];</span><br><span class="line">        int leftCount;</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">            leftCount &#x3D; sc.nextInt();</span><br><span class="line"></span><br><span class="line">            for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">                </span><br><span class="line">                if (leftCount &#x3D;&#x3D; 0 &amp;&amp; arr[i] &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                    arr[i] &#x3D; i + 1;</span><br><span class="line">                    break;</span><br><span class="line">                    </span><br><span class="line">                &#125; else if (arr[i] &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                    leftCount--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int f : arr) &#123;</span><br><span class="line">            System.out.print(f + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<br>
-
-<p><img src="https://user-images.githubusercontent.com/62025746/97835638-785a0a80-1c8f-11eb-9840-d9dbafb40ad7.png" alt="줄서기 답"></p>
-<br>
-
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/11/01/%EC%A4%84%EC%84%9C%EA%B8%B0/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/11/01/list/"
-                            aria-label=": Linked list (1)"
-                        >
-                            Linked list (1)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-11-01T06:06:29-08:00">
-	
-		    Nov 01, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h1><ul>
-<li>컴퓨터의 자료를 저장하는 여러 구조 중 하나<br>일렬로 연결된 데이터를 저장 할 때 사용한다<br>한 데이터의 마지막에 다음 데이터의 주소를 가지고 있음</li>
-</ul>
-<ul>
-<li><p>배열은 방이 정해져있기 때문에 갯수가 제한적임<br>but 이거는 주소를 넣고 빼고를 통해서 조절을 할 수 있음</p>
-</li>
-<li><p>링크를 끊게되면 자바제외 이 데이터가 남기 때문에 저장공간을 쓸데없이차지함!<br>(그래서 이걸 인위적으로 지워줘야함!)</p>
-</li>
-<li><p>이거는 주소를 하나하나 찾아 다니기 때문에 속도가 느릴수가 있음. 그래서 데이터가 정해지지않는 데이터를 넣을 때 유용함!</p>
-</li>
-</ul>
-<p><br><br></p>
-<h1 id="Linked-list-단방향-양방향"><a href="#Linked-list-단방향-양방향" class="headerlink" title="Linked list 단방향 양방향"></a>Linked list 단방향 양방향</h1><p>단방향 : 주소를 타고 한 방향으로만 이동 가능 <br><br>양방향 : 내 앞에 애가 어디있는지 알 수 있도록 앞의 주소를 가지고있음!</p>
-<p><br><br></p>
-<h1 id="Linked-list-단방향-Java-구현"><a href="#Linked-list-단방향-Java-구현" class="headerlink" title="Linked list 단방향 Java 구현"></a>Linked list 단방향 Java 구현</h1><p><strong>Node class 생성</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class node &#123; </span><br><span class="line"> int data;</span><br><span class="line"> Node next &#x3D; null ; </span><br><span class="line"> Node ( int d ) &#123;</span><br><span class="line"> this.data &#x3D; d</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Node추가 하는 메서드</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void append(int d) &#123;</span><br><span class="line">  Node end &#x3D; new Node (d)</span><br><span class="line">  node n &#x3D; this ;</span><br><span class="line">while ( n.next !&#x3D; null ) &#123;</span><br><span class="line">	n &#x3D; n.next</span><br><span class="line">&#125;</span><br><span class="line"> 	n.next &#x3D; end ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Node 삭제하는 메서드</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void delete(int d) &#123;</span><br><span class="line"> Node n &#x3D; this ;</span><br><span class="line"> while ( n.next !&#x3D; null) &#123;</span><br><span class="line">    if ( n.next.data &#x3D;&#x3D; d) &#123;</span><br><span class="line">     n.next &#x3D; n.next.next;	    	</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    n &#x3D; n.next ;</span><br><span class="line">&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><strong>Node속 데이터 호출하는 코드</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void retrieve() &#123;</span><br><span class="line"></span><br><span class="line">Node n &#x3D; this;</span><br><span class="line">while ( n.next !&#x3D; null ) &#123;</span><br><span class="line">system.out.println(n.data + &quot;-&gt;&quot;);</span><br><span class="line">n &#x3D; n.next ;</span><br><span class="line">&#125;</span><br><span class="line">system.put.println(n.data);</span><br></pre></td></tr></table></figure>
-<p><br><br></p>
-<h1 id="LinkedList-활용"><a href="#LinkedList-활용" class="headerlink" title="LinkedList 활용"></a>LinkedList 활용</h1><p>앞서 작성한 단방향 코드작성은 취약점이 있다.<br>첫 번쨰로 시작한 header 노드가 삭제되거나 실행이 불가능하게 된다면 전체의 노드에 영향을 주기 때문이다.</p>
-<p>이를 보완하는 방법이 존재한다. Node Class를 Linked List라는 class로 감싸서 Linked List의 header를 데이터가 아닌 시작을 알리는 용도로만 사용하도록 만든다!</p>
-<p>그리고 그 안에 node class를 만든다!</p>
-<br>
-
-<p><strong>LinkedList 활용</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class LinkedList &#123;</span><br><span class="line">Node header ;</span><br><span class="line"></span><br><span class="line">static calss Node &#123;</span><br><span class="line">int data;</span><br><span class="line">Node next &#x3D; null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LinkdList() &#123;</span><br><span class="line">header &#x3D; new Node() ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Linked-List-중복값-삭제"><a href="#Linked-List-중복값-삭제" class="headerlink" title="Linked List 중복값 삭제"></a>Linked List 중복값 삭제</h2><p>정렬되지 않는 LinkedList 노드중 중복값을 제거하시오.<br>(단 , 버퍼는 사용하지 않고!)</p>
-<p>3 -&gt; 2 -&gt; 1 -&gt; 2 -&gt; 4</p>
-<ol>
-<li>버퍼를 사용할 때</li>
-</ol>
-<p>HashSet에 하나의 방에 넣고, 해당 방에 이미 노드가 존재하면 삭제한다.<br>( space : O(N) )<br>( Time : O(N) )</p>
-<ol start="2">
-<li>버퍼를 사용하지 않을 때</li>
-</ol>
-<p>Pointer와 Node를 생성해서 사용한다!</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void removeDups() &#123;</span><br><span class="line"> Node n &#x3D; header;</span><br><span class="line">while ( n !&#x3D; null &amp;&amp; n.next !&#x3D; null ) &#123;</span><br><span class="line"> Node r &#x3D; n ;</span><br><span class="line">while ( r.next !&#x3D; null ) &#123;</span><br><span class="line"> if (n.data &#x3D;&#x3D; r.next.data) &#123;</span><br><span class="line"> r.next &#x3D; r.next.next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">	r &#x3D; r.next;</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br><span class="line">	n &#x3D; n.next;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>( space : O(1) )<br>( Time : O(N^2) )</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/11/01/list/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/11/01/%EB%93%A3%EB%B3%B4%EC%9E%A1/"
-                            aria-label=": 듣보잡"
-                        >
-                            듣보잡
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-11-01T05:12:01-08:00">
-	
-		    Nov 01, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/97835632-76904700-1c8f-11eb-93ca-8299d8ac7168.png" alt="듣보잡"></p>
-<br>
-
-<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><ol>
-<li><p>입력한 값에 띄어쓰기를 하기 때문에 split 함수를 이용해서 띄어쓰기 양 옆의 값을 가져온 뒤, int 타입으로 변경함 <br></p>
-</li>
-<li><p>양 옆의 값을 이용하여 A타입 B타입의 갯수를 정하고, 각 타입의 String 타입을 입력한다. <br></p>
-</li>
-<li><p>두 타입의 String을 배열에 넣은 뒤, 하나의 배열에서 하나씩 꺼내어 다른 타입에 들어있는 String의 값과 같은지 파악하고 같다면 count를 늘려주고 list 변수에 담아준다!</p>
-</li>
-</ol>
-<br>
-
-<ol start="4">
-<li>마지막으로 list를 sort 함수로 사전식을 배열하고 list의 size만큼 반복문을 돌려 안의 요소들을 전부 출력한다</li>
-</ol>
-<br>
-
-<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.eleven;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Collections;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"> </span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">	</span><br><span class="line">	BufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">		</span><br><span class="line">	String N  &#x3D; br.readLine();</span><br><span class="line">	int count &#x3D; 0;</span><br><span class="line">	List&lt;String&gt; result &#x3D; new ArrayList&lt;String&gt;();</span><br><span class="line">	String[] list ;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	list &#x3D; N.split(&quot; &quot;);</span><br><span class="line">	</span><br><span class="line">	int N_1 &#x3D; Integer.parseInt(list[0]);</span><br><span class="line">    int N_2 &#x3D; Integer.parseInt(list[1]);</span><br><span class="line">    </span><br><span class="line">	String[] check &#x3D; new String[N_1]  ;</span><br><span class="line">	String[] check2 &#x3D; new String[N_2]  ;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    for(int i &#x3D; 0 ; i &lt; N_1 ; i++) &#123;</span><br><span class="line">    check[i] &#x3D;	br.readLine();</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    for(int i &#x3D; 0 ; i &lt; N_2 ; i++) &#123;</span><br><span class="line">    	</span><br><span class="line">    	 check2[i] &#x3D; br.readLine();</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	for(int i &#x3D; 0 ; i &lt; N_1 ; i++) &#123;</span><br><span class="line">		for(int j &#x3D; 0 ; j &lt; N_2 ; j++) &#123;</span><br><span class="line">			</span><br><span class="line">			if(check[i].equals(check2[j])) &#123;</span><br><span class="line">				count++;</span><br><span class="line">				result.add(check[i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Collections.sort(result);</span><br><span class="line">	</span><br><span class="line">System.out.println(count);</span><br><span class="line">	for(int i &#x3D; 0 ; i &lt; result.size() ; i ++) &#123;</span><br><span class="line">		System.out.println(result.get(i));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<br>
-
-<p><img src="https://user-images.githubusercontent.com/62025746/97835634-77c17400-1c8f-11eb-8164-64793bcbbefa.png" alt="듣보잡 답"></p>
-<br>
-
-<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
-<li>Collections.sort 함수를 이용하여 정렬하기</li>
-<li>두 개의 String 배열을 만들어서 서로를 비교하여 true false 판단하기</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/11/01/%EB%93%A3%EB%B3%B4%EC%9E%A1/#post-footer"
                                 class="postShorten-excerpt_link link"
                                 aria-label=""
                             >

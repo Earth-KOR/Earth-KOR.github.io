@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>Tag: JPA - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{}</script>
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="이상권의 개발노트">
+<meta property="og:url" content="https://earth-kor.github.io/tags/JPA/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="이상권">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="2">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="2">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/index"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="2"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+    <section class="postShorten-group main-content-wrap">
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2021/01/16/JPA/"
+                            aria-label=": JPA"
+                        >
+                            JPA
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-16T08:25:11-08:00">
+	
+		    Jan 16, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="Jpa"><a href="#Jpa" class="headerlink" title="Jpa"></a>Jpa</h1><ol>
+<li>JPA(Java Persistence API)?</li>
+</ol>
+<p>RDBMS 와 OOP 객체 사이의 불일치에서 오는 패러다임을 해결하기 위해<br>자바는 ORM(Object-Relational Mapping) 기술을 만들어 냈다.<br>문자 그대로 ORM 은 객체와 RDBMS 를 매핑하는 역할을 한다.<br>￼<br>ORM 기술을 구현하기 위해 만들어져 사용되어 온 프레임워크가 Hibernate 이고,<br>시간이 지나면서 Hibernate 이외에도 ORM 기술을 구현하는 프레임워크(TopLink, CoCobase) 가 등장하였다.<br>그리고 이런 ORM 기술을 구현한 프레임워크에 대한 표준화가 이루어 졌는데,<br>그 결과로 만들어진 것이 JPA 인 것이다.<br> <br>JDBC API 가 어플리케이션과 DMBS 사이에서 인터페이스 역할을 해 주기 때문에,<br>개발자는 사용할 DB 의 드라이버만 변경해 주면 되는 것처럼,<br>(DB 드라이버는 JDBC 표준에 맞추어 DB 관련 처리가 구현되어 있고, DB 드라이버는 각 DB 회사가 알아서 만들어 놓았다)<br>개발자는 ORM 을 기술을 사용할 때, JPA 인터페이스에 맞추어 구현되어 있는 <br>Hibernate, TopLink, CoCoBase 프레임워크 중 골라서 사용하면 된다.<br>만약, JPA 같은 표준 인터페이스가 없다면, <br>ORM 기술을 사용하기 위한 Hibernate, TopLink, CoCoBase 의 필드와 메소드가 다를 것이다.<br>같은 기능을 가지는 메소드인데 Hibernate 에서는 냥냥고고( ), TopLink 에서는 멍멍고고( )로 정의되어 있다면,<br>사용하는 개발자가 ORM 프레임워크를 변경해야 할 때 난감할 것이다.<br>그래서 JPA API 가 이 기능은 통일해서 냥이최고( ) 로 구현하라고 강제하는 것이다(인터페이스의 중요 기능).<br> <br>ORM 프레임워크를 사용하면 개발자가 객체를 데이터베이스에 저장할 때 SQL을 직접 작성할 필요 없이,<br>자바 컬렉션에 저장하는 것처럼 ORM 프레임워크에 저장하면 된다.<br>객체를 받은 ORM 프레임워크는 저장된 자바 객체를 분석해서 적절한 SQL을 생성하고 데이터베이스에 저장시킨다.  <br> <br> 지연 로딩과 즉시 로딩</p>
+<ol>
+<li>지연 로딩 : 객체가 실제 사용될 때 로딩</li>
+<li>즉시 로딩 : JOIN SQL로 한번에 연관된 객체까지 미리 조회</li>
+</ol>
+<ol start="2">
+<li>영속성(Persistence)</li>
+</ol>
+<p>(1) Entity Class<br>엔티티 클래스는 자바 클래스에 @Entity 어노테이션을 붙여, 테이블과 매핑한다고 JPA 에게 알려주는 클래스다.<br>그리고 엔티티 클래스에서 만들어진 객체를 엔티티라고 한다.</p>
+<p>(2) 영속성 컨텍스트(Persistence Context)<br>영속성 컨텍스트는 엔티티 클래스에서 만들어지는 엔티티를 영구 저장하고 관리하는 환경이다.</p>
+<p>영속성 컨텍스트 와 관련한 엔티티의 4가지 상태<br> ① 비영속(new/transient) - 엔티티 객체가 만들어져서 아직 저장되지 않은 상태로, 영속성 컨텍스트와 전혀 관계가 없는 상태<br> ② 영속(managed) - 엔티티가 영속성 컨텍스트에 저장되어, 영속성 컨텍스트가 관리할 수 있는 상태<br> ③ 준영속(detached) - 엔티티가 영속성 컨텍스트에 저장되어 있다가 분리된 상태로, 영속성 컨텍스트가 더 이상 관리하지 않는 상태<br> ④ 삭제(removed) - 엔티티를 영속성 컨텍스트와 데이터베이스에서 삭제</p>
+<p>영속성 컨텍스트의 특징<br> ① 영속성 컨텍스트는 엔티티를 식별자 값(@Id로 테이블의 기본키와 매핑한 필드 값)으로 구분한다. <br>     그렇기 때문에 영속 상태는 식별자 값이 반드시 있어야 한다.<br> ② 영속성 컨텍스트에 엔티티를 저장하면 바로 데이터베이스에 저장되는 것이 아니라, 1차 캐시에 엔티티를 생성하고,<br>     쓰기 지연 SQL 저장소에 쿼리문을 생성해서 저장한다. 이렇게 쌓인 쿼리문은 flush( )가 실행될 때 데이터베이스에 반영된다.</p>
+<p>(3) 엔티티 생성</p>
+<ol>
+<li>자바 어플리케이션에서 어떤 엔티티가 만들어져서 JPA에게 데이터베이스 저장을 부탁하면,</li>
+<li>만들어진 엔티티는 1차적으로 영속성 컨텍스트에 저장된다. 1차 캐시 정도라고 생각하면 된다.<br>   그리고, 저장한 엔티티를 데이터베이스에 저장하기 위한 쿼리문을 생성시켜 쓰기 지연 SQL 저장소에  저장한다.<br>   계속해서 엔티티를 넘기면 엔티티들과 쿼리문들은 차곡차곡 영속성 컨텍스트에 저장된다.</li>
+<li>그러다가 자바 어플리케이션에서 커밋 명령이 내려지면 영속 컨텍스트에는 자동으로 flush( )가 호출되고,</li>
+<li>영속성 컨텍스트의 변경내용을 데이터베이스와 동기(flush)화 한다(SQL 저장소의 쿼리를 실행시킨다).</li>
+<li>마지막으로 데이터베이스에게 commit 쿼리문을 명령한다.<br>￼
+ </li>
+</ol>
+<p>(4) 엔티티 조회 </p>
+<ol>
+<li>자바 어플리케이션에서 JPA에게 데이터베이스 조회를 부탁하면,<br>   1차적으로 영속성 컨텍스트에서 엔티티를 찾는다. </li>
+<li>있으면 자바 어플리케이션에 엔티티를 넘긴다.</li>
+<li>영속성 컨텍스트에 없는 엔티티 조회를 부탁하면</li>
+<li>쿼리문을 사용해 데이터베이스에서 찾아와 </li>
+<li>영속성 컨텍스트에 엔티티로 저장하고</li>
+<li>자바 어플리케이션에 그 엔티티를 넘긴다.<br>￼
+ </li>
+</ol>
+<p>(5) 엔티티 변경<br>JPA는 엔티티를 영속성 컨텍스트에 보관할 때, 최초의 상태를 복사해서 저장해 두는데,<br>이것을 스냅샷이라 한다.</p>
+<ol>
+<li>자바 어플리케이션에서 커밋 명령이 들어오면, 영속 컨텍스트에는 자동으로 flush( )가 호출되고,</li>
+<li>엔티티와 스냅샷을 비교해서 변경된 엔티티를 찾는다.</li>
+<li>변경된 엔티티가 있으면 데이터베이스에 변경사항을 저장하기 위해 쿼리를 생성하고,</li>
+<li>영속성 컨텍스트의 변경내용을 데이터베이스와 동기(flush)화 한다(SQL 저장소의 쿼리를 실행시킨다).</li>
+<li>마지막으로 데이터베이스에게 commit 쿼리문을 명령한다.<br>￼<br>이렇게 엔티티의 변경사항을 데이터베이스에 자동으로 반영하는 기능을 변경감지(Dirty Checking)이라 한다.<br> <br> <br>(6) 엔티티 삭제<br>앞의 과정과 마찬가지로, 자바 어플리케이션에서 엔티티 삭제 명령이 들어오면,<br>엔티티를 찾고 쓰기 지연 SQL 저장소에 delete 쿼리를 생성한다.<br>그리고 자바 어플리케이션에서 커밋 명령이 들어오면, 자동으로 flush( )가 호출되고,<br>영속성 컨텍스트의 변경내용을 데이터베이스와 동기(flush)화 한다(SQL 저장소의 쿼리를 실행시킨다).<br>마지막으로 데이터베이스에게 commit 쿼리문을 명령한다. 
+ </li>
+<li>JPA 메소드<br>(1) flush( )<br>영속성 컨텍스트의 변경 내용을 데이터베이스에 반영한다.</li>
+</ol>
+<p>실행되었을 때 일어나는 일<br>  ① 변경 감지가 동작해서 영속성 컨텍스트에 있는 모든 엔티티를 스냅샵과 비교해서 수정된 엔티티를 찾고,<br>      수정된 엔티티를 데이터베이스에 반영하기 위해 수정 쿼리를 생성하여 지연 SQL 저장소에 등록<br>  ② 쓰기 지연 SQL 저장소의 쿼리를 데이터 베이스에 전송(등록, 수정, 삭제 쿼리)<br>  <br>보통 직접 사용하지 않고, 자바 어플리케이션에서 커밋 명령이 들어왔을 때, 자동으로 실행된다.<br> <br>(2) detach( ) <br>특정 엔티티를 준영속 상태로 만든다. <br>준영속 상태가 된 엔티티는 더이상 영속 컨텍스트의 관리를 받지 않으며,<br>영속 컨텍스트가 지원하는 어떤 기능도 동작하지 않게 된다.<br>영속 상태가 영속성 컨텍스트로에게 관리(managed)되는 상태라고 하면,<br>준영속 상태는 영속성 컨텍스트로부터 분리(detached)된 상태이다.<br> <br>(3) clear( )<br>영속성 컨텍스트를 초기화 한다.<br>영속성 컨텍스트의 모든 엔티티를 준영속 상태로 만든다.<br> <br>(4) close( )<br>영속성 컨텍스트를 종료한다.<br>영속성 컨텍스트가 관리하던 영속 상태의 엔티티가 모둔 준영속 상태가 된다.<br> <br>영속 상태의 엔티티는 주로 영속성 컨텍스트가 종료되면서 준영속 상태가 된다.<br>개발자가 직접 준영속 상태로 만드는 일은 거의 없다.<br> <br>(5) merge( )<br>준영속 상태의 엔티티의 특징<br> ① 거의 비영속 상태에 가깝다. 영속성 컨텍스트가 관리하지 않으므로 영속성 컨텍스트가 제공하는 어떠한 기능도 동작하지 않는다.<br> ② 식별자 값을 가지고 있다. 비영속 상태의 엔티티는 식별자(엔티티를 구분하기 위한 유일한 값, ID)를 가지지 않고 있을 수도 있지만,<br>     준영속 상태는 이미 한 번 영속 상태였기 때문에, 식별자 값을 가지고 있다.<br> <br>merge( )는 준영속 상태의 엔티티를 이용해서 새로운 영속 상태의 엔티티를 반환한다.<br> <br>실행되었을 때 일어나는 일<br> ① 파라미터로 넘어온 준영속 엔티티의 식별자 값으로 1차 캐시에서 엔티티를 조회<br>     (1차 캐시에 엔티티가 없으면 데이터베이스에서 엔티티를 조회하고 1차 캐시에 저장)<br> ② 조회한 영속 엔티티에 준영속 엔티티의 값을 채워 넣는다.<br> ③ 생성된 새로운 영속 엔티티를 반환한다.<br>새롭게 생성된 영속 상태의 엔티티를 가지고 이제 영속성 컨텍스트가 지원하는 기능을 사용할 수 있다.<br> <br>준영속 상태의 엔티티를 영속 상태로 변경하는 것이 아니라, 새로운 영속 상태의 엔티티를 만들어서,<br>준영속 상태의 엔티티 값을 영속 상태의 엔티티에 채워 넣어서 반환하는 점에 주의해야 한다.<br>그리고, 준영속 뿐만 아니라, 비영속 상태의 엔티티도 병합하여 새로운 영속 상태의 엔티티를 만들어 반환한다.<br> <br>자세한 내용은 위의 엔티티 변경 참조.<br> <br>(6) find( )<br>식별자 값을 가지고 엔티티를 찾아서 반환한다.<br>자세한 내용은 위의 엔티티 조회 참조<br> <br>(7) persist( )<br>자바 어플리케이션에서 생성된 엔티티를 영속성 컨텍스트와 데이터베이스에 저장한다.<br>자세한 내용은 위의 엔티티 생성 참조<br> <br>(8) remove( )<br>식별자 값을 가지고 엔티티를 찾아서 삭제한다.<br>자세한 내용은 위의 엔티티 삭제 참조</p>
+<p>Query <br> 플랫폼 독립적인 객체지향 쿼리 언어를 사용하며, Query 인터페이스는 관계형 데이터베이스의 엔티티에 대한 쿼리를 만든다.</p>
+<ul>
+<li>특징<ul>
+<li>JPQL : SQL문과 비슷하지만 데이터베이스의 테이블에 직접 연결되는 것이 아니라 JPA 엔티티에 대해 동작하게 된다.<ul>
+<li>JPQL 쿼리의 칼럼은 엔티티의 필드 이름을 사용한다.</li>
+</ul>
+</li>
+<li>Query Creation 매카니즘 : JPA에서의 쿼리 생성 매카니즘. 일반적으로 쿼리 메소드(Query method) 방식을 가장 많이 사용한다.<ul>
+<li>JPA reference :  <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-data/jpa/docs/1.10.1.RELEASE/reference/html/#jpa.sample-app.finders.strategies">https://docs.spring.io/spring-data/jpa/docs/1.10.1.RELEASE/reference/html/#jpa.sample-app.finders.strategies</a></li>
+</ul>
+</li>
+<li>메타정보에 정의된 관계 정보를 이용하면 복잡한 Join 설정 등이 필요하지 않기 떄문에 훨씬 간결하다.</li>
+</ul>
+</li>
+</ul>
+<p>이 메소드 시그니처는 다음의 설정을 사용하여 스프링 MVC가 요청 파라미터로부터 Pageable 인스턴스를 만들어내게 시도합니다.<br>표 1. Pageable 인스턴스를 위해 평가된 요청파라미터 Request parameters evaluated for Pageable instances<br>page<br>얻기 원하는 페이지, 0 indexed and 기본은 0.<br>size<br>얻기 원하는 페이지 크기, 기본 20.<br>sort<br>다음의 형식으로 정렬될 형식 property,property(,ASC|DESC). 기본 정렬 방향은 오름차순(asc). 만약 방향을 바꾸고 싶은 여러개의sort 파라미터가 있다면 다음과 같이.., e.g. ?sort=firstname&amp;sort=lastname,asc.<br>이러한 행동을 커스터마이징 하고 싶다면 @Enable-어노테이션을 사용하는 대신에 SpringDataWebConfiguration를 상속하거나 HATEOAS-활성화 같은 것을 하거나, pageableResolver()나sortResolver()메소드를 오버라이드하고 당신의 커스터마이징된 설정파일을 임포트하세요.</p>
+<p>이러한 경우 당신은 여러개의 테이블을 위해서, 요청으로부터 여러개의 Pageable 나 Sort 인스턴스가 resolved되기를 필요로 할지도 모릅니다. 예를 들자면 당신은 스프링의 @Qualifier어노테이션을 사용하여 다른 것들끼리 구별을 할 수도 있습니다. 요청파라미터는 그러면 ${qualifier}_로 prefixed됩니다. 그래서 메소드 시그니처가 다음과 같이 됩니다</p>
+<p>JPA 함수 규칙</p>
+<p>KeywordSampleJPQL snippet</p>
+<p>And<br>findByLastnameAndFirstname<br>… where x.lastname = ?1 and x.firstname = ?2</p>
+<p>Or<br>findByLastnameOrFirstname<br>… where x.lastname = ?1 or x.firstname = ?2</p>
+<p>Is,Equals<br>findByFirstname,findByFirstnameIs,findByFirstnameEquals<br>… where x.firstname = ?1</p>
+<p>Between<br>findByStartDateBetween<br>… where x.startDate between ?1 and ?2</p>
+<p>LessThan<br>findByAgeLessThan<br>… where x.age &lt; ?1</p>
+<p>LessThanEqual<br>findByAgeLessThanEqual<br>… where x.age &lt;= ?1</p>
+<p>GreaterThan<br>findByAgeGreaterThan<br>… where x.age &gt; ?1</p>
+<p>GreaterThanEqual<br>findByAgeGreaterThanEqual<br>… where x.age &gt;= ?1</p>
+<p>After<br>findByStartDateAfter<br>… where x.startDate &gt; ?1</p>
+<p>Before<br>findByStartDateBefore<br>… where x.startDate &lt; ?1</p>
+<p>IsNull<br>findByAgeIsNull<br>… where x.age is null</p>
+<p>IsNotNull,NotNull<br>findByAge(Is)NotNull<br>… where x.age not null</p>
+<p>Like<br>findByFirstnameLike<br>… where x.firstname like ?1</p>
+<p>NotLike<br>findByFirstnameNotLike<br>… where x.firstname not like ?1</p>
+<p>StartingWith<br>findByFirstnameStartingWith<br>… where x.firstname like ?1 (parameter bound with appended %)</p>
+<p>EndingWith<br>findByFirstnameEndingWith<br>… where x.firstname like ?1 (parameter bound with prepended %)</p>
+<p>Containing<br>findByFirstnameContaining<br>… where x.firstname like ?1 (parameter bound wrapped in %)</p>
+<p>OrderBy<br>findByAgeOrderByLastnameDesc<br>… where x.age = ?1 order by x.lastname desc</p>
+<p>Not<br>findByLastnameNot<br>… where x.lastname &lt;&gt; ?1</p>
+<p>In<br>findByAgeIn(Collection<Age> ages)<br>… where x.age in ?1</p>
+<p>NotIn<br>findByAgeNotIn(Collection<Age> ages)<br>… where x.age not in ?1</p>
+<p>True<br>findByActiveTrue()<br>… where x.active = true</p>
+<p>False<br>findByActiveFalse()<br>… where x.active = false</p>
+<p>IgnoreCase<br>findByFirstnameIgnoreCase<br>… where UPPER(x.firstame) = UPPER(?1)</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/01/16/JPA/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    <div class="pagination-bar">
+    <ul class="pagination">
+        
+        
+        <li class="pagination-number">page 1 of 1</li>
+    </ul>
+</div>
+
+</section>
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2021 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+
+
+
+    </body>
+</html>
