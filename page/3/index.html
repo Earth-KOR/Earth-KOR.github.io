@@ -243,6 +243,147 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/2020/10/23/%EB%AC%B8%EC%9E%90%EC%97%B4/"
+                            aria-label=": 문자열"
+                        >
+                            문자열
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-23T12:01:12-07:00">
+	
+		    Oct 23, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/97293071-60a30200-1809-11eb-96ee-c1bcd4e74a2d.png" alt="문자열"></p>
+<br>
+
+<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>주어진 A를 B와 일치하는 알파벳이 가장 많은 곳에 위치시키고, 나머지를 B와 동일한 알파벳으로 채우면 차이가 최소가 된다.<br><br><br>A의 앞뒤를 B와 동일하게 만들면 새로 추가한 부분에 대한 차이값은 0이므로, 별도로 고려해주지 않아도 된다.<br>즉, A와 B가 가장 많이 일치하는 위치를 찾고, 그 때의 차이값을 출력해주면 된다.<br><br><br>B에서 A의 길이만큼의 부분문자열을 얻어와 A와 비교하는 방법을 사용한다</p>
+<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.twoten;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class String_3 &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String [] args)&#123;</span><br><span class="line">        Scanner scanner &#x3D; new Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        String a &#x3D; scanner.next();</span><br><span class="line">        String b &#x3D; scanner.next();</span><br><span class="line"></span><br><span class="line">        int result &#x3D; a.length();</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;0;i&lt;b.length()-a.length()+1;i++)&#123;</span><br><span class="line">            int tmp&#x3D;0;</span><br><span class="line"></span><br><span class="line">            for(int j&#x3D;0;j&lt;a.length();j++)&#123;</span><br><span class="line">                if(a.charAt(j)!&#x3D;b.charAt(j+i))&#123;</span><br><span class="line">                    tmp++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(result &gt; tmp)&#123;</span><br><span class="line">                result &#x3D; tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<br>
+
+<p><img src="https://user-images.githubusercontent.com/62025746/97293072-60a30200-1809-11eb-9aa5-40b6359580fe.png" alt="문자열 답"></p>
+<br>
+
+<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
+<li>A와 B의 가장 공통적인 위치 찾기</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/23/%EB%AC%B8%EC%9E%90%EC%97%B4/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/10/23/ROT13/"
+                            aria-label=": ROT13"
+                        >
+                            ROT13
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-23T12:00:53-07:00">
+	
+		    Oct 23, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/97293069-600a6b80-1809-11eb-9c58-045805e77462.png" alt="rot"></p>
+<br>
+
+<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>아스키 코드표를 참고하여 소문자, 대문자의 번호를 체크한다<br><br><br>알파벳 마지막 z가 끝나면 다시 a로 돌아가야 함으로 그 점을 고려한다<br><br><br>입력한 값은 13만큼 밀어서 출력한다</p>
+<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.twoten;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line"> </span><br><span class="line">public class String_2 &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line"> </span><br><span class="line">        BufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        BufferedWriter bw &#x3D; new BufferedWriter(new OutputStreamWriter(System.out));</span><br><span class="line"> </span><br><span class="line">        String input &#x3D; br.readLine();</span><br><span class="line"> </span><br><span class="line">        for (int i &#x3D; 0; i &lt; input.length(); i++) &#123;</span><br><span class="line"> </span><br><span class="line">            if (input.charAt(i) &gt;&#x3D; &#39;a&#39; &amp;&amp; input.charAt(i) &lt;&#x3D; &#39;z&#39;) &#123;</span><br><span class="line">                &#x2F;&#x2F; 소문자일 경우</span><br><span class="line">                if (&#39;z&#39; &lt; input.charAt(i) + 13) &#123;</span><br><span class="line">                    &#x2F;&#x2F; 13 옮겼을 때 알파벳 소문자의 범위를 벗어나면</span><br><span class="line">                    bw.write((&#39;a&#39; - 1) + ((input.charAt(i) + 13) - &#39;z&#39;));</span><br><span class="line">                    &#x2F;&#x2F; 차이만큼 a-1부터 다시 더해서 출력</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    &#x2F;&#x2F; 아니면</span><br><span class="line">                    bw.write(input.charAt(i) + 13);</span><br><span class="line">                    &#x2F;&#x2F; 그냥 출력</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">            &#125; else if (input.charAt(i) &gt;&#x3D; &#39;A&#39; &amp;&amp; input.charAt(i) &lt;&#x3D; &#39;Z&#39;) &#123;</span><br><span class="line">                &#x2F;&#x2F; 대문자일 경우</span><br><span class="line">                if (&#39;Z&#39; &lt; input.charAt(i) + 13) &#123;</span><br><span class="line">                    &#x2F;&#x2F; 13 옮겼을 때 알파벳 대문자의 범위를 벗어나면</span><br><span class="line">                    bw.write((&#39;A&#39; - 1) + ((input.charAt(i) + 13) - &#39;Z&#39;));</span><br><span class="line">                    &#x2F;&#x2F; 상동</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    &#x2F;&#x2F; 아니면</span><br><span class="line">                    bw.write(input.charAt(i) + 13);</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                &#x2F;&#x2F; 소문자나 대문자 아니면 그냥 출력</span><br><span class="line">                bw.write(input.charAt(i));</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        bw.flush();</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<br>
+
+<p><img src="https://user-images.githubusercontent.com/62025746/97293070-600a6b80-1809-11eb-9265-c4de63ea1a19.png" alt="rot 답"></p>
+<br>
+
+<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
+<li>아스키 코드표 활용</li>
+<li>소문자, 대문자 이외의 문자 처리</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/10/23/ROT13/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/2020/10/23/%EB%B0%B0%EC%97%B4/"
                             aria-label=": 접미사 배열"
                         >
@@ -804,149 +945,6 @@
                         <p>
                             <a
                                 href="/2020/10/17/%EC%84%B8%EB%A1%9C%EC%9D%BD%EA%B8%B0/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/10/17/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/"
-                            aria-label=": 명령 프롬프트"
-                        >
-                            명령 프롬프트
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-10-17T10:47:56-07:00">
-	
-		    Oct 17, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/96364608-31e1a900-10f0-11eb-8e86-3184925c54e0.png" alt="괄호"></p>
-<br>
-
-<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>일단 입력받을 값을 하나씩 하나씩 하는 것이 아닌 모든 문자열을 배열에 넣고 시작해서 비교한다! <br> 그다음 모든 분자열의 index 0번부터 차례대로 비교하고, 모든 문자열이 같을때 까지 비교한다! <br> 모든 문자열이 공통된 부분이 존재하지 않을 때, ? 기호를 문자열의 길이에 맞게 출력시킨다</p>
-<br>
-
-<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.seventen;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line"> </span><br><span class="line">public class Main2 &#123;</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">    public static void main(String[] args) throws NumberFormatException, IOException &#123;</span><br><span class="line">        </span><br><span class="line">    	String[] Arr;</span><br><span class="line">        int count;</span><br><span class="line">        String str&#x3D;&quot;&quot;;</span><br><span class="line">        boolean Same&#x3D;true;</span><br><span class="line">        </span><br><span class="line">        BufferedReader br&#x3D;new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        </span><br><span class="line">        int n&#x3D;Integer.parseInt(br.readLine());</span><br><span class="line">        Arr&#x3D;new String[n];</span><br><span class="line">        </span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++) &#123;</span><br><span class="line">            Arr[i]&#x3D;br.readLine();</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;0;i&lt;Arr[0].length();i++) &#123;</span><br><span class="line">        	</span><br><span class="line">            for(int j&#x3D;1;j&lt;n;j++) &#123;</span><br><span class="line">            	</span><br><span class="line">                if(Arr[0].charAt(i)&#x3D;&#x3D;Arr[j].charAt(i)) &#123;</span><br><span class="line">                	</span><br><span class="line">                    Same&#x3D;true;</span><br><span class="line">                    </span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                	</span><br><span class="line">                    Same&#x3D;false;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(Same&#x3D;&#x3D;false) &#123;</span><br><span class="line">                str+&#x3D;&quot;?&quot;;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                str+&#x3D;Arr[0].charAt(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(str);</span><br><span class="line">        br.close();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<br>
-
-<p><img src="https://user-images.githubusercontent.com/62025746/96364609-3312d600-10f0-11eb-88e0-37ce574f0a1a.png" alt="괄호답"></p>
-<br>
-
-<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><p>하나의 문자열을 다루는 것이 아닌, 여러개의 문자열을 다룰 수 있는지 묻는 문제!</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/10/17/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2020/10/17/%EA%B4%84%ED%98%B8/"
-                            aria-label=": 읽어버린 괄호"
-                        >
-                            읽어버린 괄호
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-10-17T10:46:23-07:00">
-	
-		    Oct 17, 2020
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>, <a class="category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%AC%B8%EC%9E%90%EC%97%B4/">문자열</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p><img src="https://user-images.githubusercontent.com/62025746/96364101-8afc0d80-10ed-11eb-8d1b-5afad757925a.png" alt="괄호"></p>
-<br>
-
-<h1 id="접근-방법"><a href="#접근-방법" class="headerlink" title="접근 방법"></a>접근 방법</h1><p>최솟값이 되려면 최대한 - 값을 크게 만들어야 한다고 판단함.<br><br><br>그래서 - 부호를 전후로 괄호를 넣어서 전부 더 한뒤, 그 더한 값을 빼줌으로써 최소값을 만든다!</p>
-<br>
-
-<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">package org.coding.seventen;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"> </span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">	</span><br><span class="line">	BufferedReader br &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">		</span><br><span class="line">		String input &#x3D; br.readLine();</span><br><span class="line">		int Plus_zero_sum &#x3D; 0 ;</span><br><span class="line">		int Plus_sum &#x3D; 0 ;</span><br><span class="line">		</span><br><span class="line">		String[] Plus &#x3D;  input.split(&quot;-&quot;);</span><br><span class="line">		</span><br><span class="line">		String[] indexzero &#x3D; Plus[0].split(&quot;\\+&quot;);</span><br><span class="line">		</span><br><span class="line">		for(int i &#x3D; 0 ; i &lt; indexzero.length ; i ++) &#123;</span><br><span class="line">		</span><br><span class="line">			Plus_zero_sum +&#x3D; Integer.parseInt( indexzero[i] ) ;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">		for ( int i &#x3D; 1 ; i &lt; Plus.length ; i++) &#123;</span><br><span class="line">		</span><br><span class="line">		 String[] Plus_1 &#x3D; Plus[i].split(&quot;\\+&quot;);</span><br><span class="line">		 	for( int j &#x3D; 0 ; j &lt; Plus_1.length ; j ++ ) &#123;</span><br><span class="line">		 		Plus_sum +&#x3D; Integer.parseInt( Plus_1[j] ) ;</span><br><span class="line">		 		</span><br><span class="line">		 	&#125;</span><br><span class="line">		 </span><br><span class="line">		 </span><br><span class="line">		&#125;</span><br><span class="line">	   </span><br><span class="line">		System.out.println(Plus_zero_sum - Plus_sum);</span><br><span class="line">	 </span><br><span class="line">		</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<br>
-
-<p><img src="https://user-images.githubusercontent.com/62025746/96364099-89cae080-10ed-11eb-8ba4-cfd84aa78a7b.png" alt="괄호답"></p>
-<br>
-
-<h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
-<li>split를 이용하여 문자열 쪼개기</li>
-<li>기본적인 사고력, 수리력, 창의력을 요구하는 문제</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2020/10/17/%EA%B4%84%ED%98%B8/#post-footer"
                                 class="postShorten-excerpt_link link"
                                 aria-label=""
                             >

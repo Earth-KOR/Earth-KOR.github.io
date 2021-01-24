@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>Tag: JAVA 작동원리 - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{}</script>
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="이상권의 개발노트">
+<meta property="og:url" content="https://earth-kor.github.io/tags/JAVA-%EC%9E%91%EB%8F%99%EC%9B%90%EB%A6%AC/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="이상권">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="2">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="2">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/index"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="2"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+    <section class="postShorten-group main-content-wrap">
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2021/01/23/%EC%9E%91%EB%8F%99%EC%9B%90%EB%A6%AC/"
+                            aria-label=": JAVA 작동원리"
+                        >
+                            JAVA 작동원리
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-23T08:15:05-08:00">
+	
+		    Jan 23, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="JAVA-작동원리"><a href="#JAVA-작동원리" class="headerlink" title="JAVA 작동원리"></a>JAVA 작동원리</h1><p>자바는 ‘운영체제에 상관없이 사용될 수 있는 언어’라는 말을 들어보셨나요? 가상머신을 사용하여, 운영체제의 도움없이 자체적으로 메모리를 할당하여 프로그램이 운영될수 있도록 합니다. 또한 바이트 코드를 만든 뒤 프로그램을 실행하기 때문에 여러 운영체제에서도 사용이 될 수 있는데요 그 이유는 무엇일까요?</p>
+<h2 id="JAVA의-작동-원리"><a href="#JAVA의-작동-원리" class="headerlink" title="JAVA의 작동 원리"></a>JAVA의 작동 원리</h2><p>자바의 작동원리를 간단하게 말씀드리겠습니다. java compiler는 소스파일을 컴파일하여 바이트코드로 변환시켜줍니다. 그리고 자바 가상머신은 필요한 때에 바이트 코드를 분석하여 주기억장치(메모리)에 올려줍니다. 이러한 과정을 통해서 소스파일이 실행될 수 있습니다. 잘 이해가 안가실 수 있으니 이클립스를 통해서 설명하겠습니다.</p>
+<p>소스파일은 사용자가 읽거나 수정하기 쉬운 코드로 작성이 되며 작성 후 컴파일을 하면, 클래스 파일이 생성됩니다. 아래의 경로를 보시면 소스파일은 src 폴더 하위에 있지만, 클래스 파일은 build폴더 하위에 생성되는 것을 확인할 수 있습니다. 해당 경로에 들어가 클래스 파일을 열어보면 파일을 제대로 볼 수 없습니다. 기계어로 번역되어 있기 때문에 이클립스 확장 프로그램을 설치하거나 다른 방법을 사용하여 열어야 합니다. </p>
+<h2 id="바이트-코드"><a href="#바이트-코드" class="headerlink" title="바이트 코드"></a>바이트 코드</h2><p>[클래스 파일과 실행]</p>
+<p>바이트 코드로 작성된 클래스파일(.class)은 기계가 읽기 편하도록 만들어 놓은 파일입니다. 이 파일을 JVM이 읽어들여 실행합니다. 이 때, 클래스 파일을 실행하기 위해 필요한 모든 class 파일을 불러들이고 코드를 검증한 뒤 메모리로 올리는 작업을 합니다. 만약 클래스가 없거나 오류가 있다면 오류가 발생하고 그렇지 않다면 정상적으로 실행됩니다. </p>
+<p>[클래스 파일과 이클립스]</p>
+<p>클래스 파일은 이클립스에서 소스파일을 생성하거나 저장할 때 이클립스에서 자동으로 생성 및 변경해줍니다. 사용자가 해야하는 컴파일 과정을 “이클립스”라는 툴로 간편하게 실행할 수 있는 것입니다. 실제로 사용자가 자바를 이용해 컴파일을 하려면, CMD창에서 “javac 파일명.java”를 입력하여 필요한 파일을 컴파일해주어야 합니다. 이러한 과정을 이클립스가 대신 해줌으로써 개발자는 편하게 작업이 가능합니다.</p>
+<p>[클래스 파일과 웹 프로젝트 ]</p>
+<p>웹에서는 사용자의 요청이 있을 때, 클래스 파일이 있는지, 소스파일이 변경되었는지 확인을 합니다. 클래스 파일이 없으면 컴파일하여 클래스 파일을 생성하고, 소스파일이 변경되었으면 클래스 파일을 다시 생성합니다. 이렇게 생성된 클래스 파일을 사용하여 사용자의 요청을 처리하는데 사용합니다. 하지만, 자바는 한 번 실행되었던 클래스 파일을 캐싱하여 사용하므로 소스파일을 변경해도 클래스 파일은 기존의 것을 사용하는 경우가 있습니다. 이러한 경우에는 서버를 재실행하거나, 다른 방법을 찾아야 합니다.</p>
+<h2 id="Heap-Stack-Static"><a href="#Heap-Stack-Static" class="headerlink" title="Heap/Stack/Static"></a>Heap/Stack/Static</h2><p>스택 영역<br>● heap영역에 생성된 Object 타입의 데이터 들에 대한 참조를 위한 값들이 할당. (즉, heap영역의 값에 도달하기 위한 주소값이 stack영역에 저장됨)<br>● 8가지 원시타입(byte, short, int, long, float, double, char, boolean)에 해당되는 지역변수, 매개변수 의 데이터 값이 저장되는 공간.<br>● 메소드가 호출될 때 메모리에 할당되고 종료되면 메모리가 해제.<br>LIFO(Last In First Out) 마지막에 들어간 것이 처음으로 나오는 구조.<br>● 각각의 스레드(Thread)는 각자의 stack을 가짐.</p>
+<p>힙 영역<br>● 흔히 ‘new’ 명령을 통해서 생성된 인스턴스 변수가 저장됨.<br>● 스택영역에서와 달리 힙 영역에 보관되면 메소드 호출이 끝나도 사라지지 않고 유지된다.(가비지 컬렉터에 의해서 지워지거나 JVM이 종료될때까지)<br>● 스레드(Thread)수에 상관없이 하나의 Heap 영역만 존재.<br>● 모든 Object 타입(Integer, String, ArrayList, …)은 heap 영역에 생성된다.</p>
+<p>스태틱 영역<br>● 메모리에 고정적으로 할당되어, 프로그램이 종료될 때 해제되는 변수<br>● Static 변수와 class들이 저장되어 있음</p>
+<h2 id="java-호출-순서"><a href="#java-호출-순서" class="headerlink" title="java 호출 순서"></a>java 호출 순서</h2><ol>
+<li>전체가 compile되면서 선언된 class를 static에 올리고 class안에 선언되어 있는 static 변수들을 static에 올려준다.</li>
+<li>public class의 main method를 먼저 호출한다.</li>
+<li>밑에 순서에 따라 코드를 순차적으로 실행한다.</li>
+</ol>
+<p>@ static으로 선언된 변수는 클래스 변수이다. 이것은 어떤 클래스에서도 사용가능하다! 속해있는 class에 먼저 접근하고, 그 안에 static안에 담겨져있는 변수 및 메서드를 호출하면 된다!<br>@ static없이 선언된 변수는 인스턴트 변수이다. 이것을 사용하기 위해서는 new로 객체를 생성한 다음에 꺼내 쓸 수 있다!</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/01/23/%EC%9E%91%EB%8F%99%EC%9B%90%EB%A6%AC/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    <div class="pagination-bar">
+    <ul class="pagination">
+        
+        
+        <li class="pagination-number">page 1 of 1</li>
+    </ul>
+</div>
+
+</section>
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2021 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+
+
+
+    </body>
+</html>
