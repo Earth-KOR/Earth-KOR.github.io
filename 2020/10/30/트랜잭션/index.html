@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"트랜잭션이란 ?DB의 상태를 변화시키기 위한 쪼개질 수 없는 하나의 단위 작업\n특징\n\n원자성 : 하나의 트랜잭션 단위의 처리결과는 동일해야 한다\n일관성 : 트랜잭션 성공 시 DB의 모든 데이터는 일관서을 유지한다\n격리성 : 트랜잭션 도중 외부 간섭이 없어야 한다\n영속성 : 트랜잭션 성공 시 결과는 DB에 영속적을 보관한다\n\n\n\n트랜잭션의 사용게시판 구현 시, 한 게시물의 댓글의 수를 표시하는 기능을 추가한다고 할 때, 게시판의 테이블과 댓글의 테이블이 정규화가 완료되었을 때에는 트랜잭션이 필요가 없지만 그렇지 않을 경우에는 트랜잭션이 필요하다!\n\n  \n\n\n\n게시물에 댓글을 달았을 때 동시에 댓글의 수를 업데이트(+1) 하기위해서 기존의 게시판 코드에 댓글갯수를 나타내는 코드를 추가한다. (Table, VO 인스턴스, Mapper, xml 등)\n\n  \n\n\n그 후 클래스에 @Transactional을 선언함으로써 이 클래스는 두 가지 행동을 모두 성공해야만 결과값을 반영하도록 만들어 준다\n트랜잭션에 실패할 경우에는 데이터 일관성을 위해 하나의 @Transational으로 묶인 모든 작업을 rollback한다!\n  ","dateCreated":"2020-10-30T07:34:08-07:00","dateModified":"2020-10-30T23:46:06-07:00","datePublished":"2020-10-30T07:34:08-07:00","description":"","headline":"트랜잭션","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/30/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/30/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/","keywords":"이론노트, 트랜잭션"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"트랜잭션이란 ?DB의 상태를 변화시키기 위한 쪼개질 수 없는 하나의 단위 작업\n특징\n\n원자성 : 하나의 트랜잭션 단위의 처리결과는 동일해야 한다\n일관성 : 트랜잭션 성공 시 DB의 모든 데이터는 일관서을 유지한다\n격리성 : 트랜잭션 도중 외부 간섭이 없어야 한다\n영속성 : 트랜잭션 성공 시 결과는 DB에 영속적을 보관한다\n\n\n\n트랜잭션의 사용게시판 구현 시, 한 게시물의 댓글의 수를 표시하는 기능을 추가한다고 할 때, 게시판의 테이블과 댓글의 테이블이 정규화가 완료되었을 때에는 트랜잭션이 필요가 없지만 그렇지 않을 경우에는 트랜잭션이 필요하다!\n\n  \n\n\n\n게시물에 댓글을 달았을 때 동시에 댓글의 수를 업데이트(+1) 하기위해서 기존의 게시판 코드에 댓글갯수를 나타내는 코드를 추가한다. (Table, VO 인스턴스, Mapper, xml 등)\n\n  \n\n\n그 후 클래스에 @Transactional을 선언함으로써 이 클래스는 두 가지 행동을 모두 성공해야만 결과값을 반영하도록 만들어 준다\n트랜잭션에 실패할 경우에는 데이터 일관성을 위해 하나의 @Transational으로 묶인 모든 작업을 rollback한다!\n  ","dateCreated":"2020-10-30T07:34:08-07:00","dateModified":"2021-03-07T02:57:23-08:00","datePublished":"2020-10-30T07:34:08-07:00","description":"","headline":"트랜잭션","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2020/10/30/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2020/10/30/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/","keywords":"이론노트, 트랜잭션"}</script>
     <meta name="description" content="트랜잭션이란 ?DB의 상태를 변화시키기 위한 쪼개질 수 없는 하나의 단위 작업 특징  원자성 : 하나의 트랜잭션 단위의 처리결과는 동일해야 한다 일관성 : 트랜잭션 성공 시 DB의 모든 데이터는 일관서을 유지한다 격리성 : 트랜잭션 도중 외부 간섭이 없어야 한다 영속성 : 트랜잭션 성공 시 결과는 DB에 영속적을 보관한다    트랜잭션의 사용게시판 구현 시">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="트랜잭션">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97773042-dd83f380-1b09-11eb-9cd9-bf5f5e4733fa.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/62025746/97773043-deb52080-1b09-11eb-8f97-f28e0fb16e27.png">
 <meta property="article:published_time" content="2020-10-30T14:34:08.000Z">
-<meta property="article:modified_time" content="2020-10-31T06:46:06.784Z">
+<meta property="article:modified_time" content="2021-03-07T10:57:23.201Z">
 <meta property="article:author" content="이상권">
 <meta property="article:tag" content="이론노트">
 <meta property="article:tag" content="트랜잭션">
@@ -264,7 +264,7 @@
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/Spring/">Spring</a>
 
 
     
@@ -323,9 +323,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/11/01/%EB%93%A3%EB%B3%B4%EC%9E%A1/"
-                    data-tooltip="듣보잡"
-                    aria-label="PREVIOUS: 듣보잡"
+                    href="/2020/11/01/list/"
+                    data-tooltip="Linked list (1)"
+                    aria-label="PREVIOUS: Linked list (1)"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -399,9 +399,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/11/01/%EB%93%A3%EB%B3%B4%EC%9E%A1/"
-                    data-tooltip="듣보잡"
-                    aria-label="PREVIOUS: 듣보잡"
+                    href="/2020/11/01/list/"
+                    data-tooltip="Linked list (1)"
+                    aria-label="PREVIOUS: Linked list (1)"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>

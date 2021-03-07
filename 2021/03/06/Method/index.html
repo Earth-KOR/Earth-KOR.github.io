@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>Array Method - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"Array MethodArray.from()console.log(Array.from(‘foo’));// expected output: Array [“f”, “o”, “o”]\nconsole.log(Array.from([1, 2, 3], x =&gt; x + x));// expected output: Array [2, 4, 6]\nconsole.log(Array.from({ a: ‘1’, b: ‘2’ }));// [] : object는 빈 배열로 리턴된다.\nlet obj = { a: ‘1’, b: ‘2’ };Array.from(Object.keys(obj));// [“a”, “b”]Array.from(Object.values(obj));// [“1”, “2”]\nArray.of()Array.of(7);       // [7]Array.of(1, 2, 3); // [1, 2, 3]Array.of(undefined); // [undefined]\nArray(7);          // [ , , , , , , ]Array(1, 2, 3);    // [1, 2, 3]\nArray.prototype.concat()기존배열을 변경하지 않습니다.추가된 새로운 배열을 반환합니다.중첩 배열 내부로 재귀하지 않습니다.\nconst alpha = [‘a’, ‘b’, ‘c’];const numeric = [1, 2, 3];\nalpha.concat(numeric);// 결과: [‘a’, ‘b’, ‘c’, 1, 2, 3]\nlet b = [1, 2, 3];let c = [4, 5, [6, 7]];b.concat(c);// [1, 2, 3, 4, 5, [6, 7]]\nArray.prototype.fill()배열의 시작 인덱스부터 끝 인덱스의 이전까지 정적인 값 하나로 채웁니다.\nvar array1 = [1, 2, 3, 4];\n// fill with 0 from position 2 until position 4console.log(array1.fill(0, 2, 4));// expected output: [1, 2, 0, 0]\n// fill with 5 from position 1console.log(array1.fill(5, 1));// expected output: [1, 5, 5, 5]\nconsole.log(array1.fill(6));// expected output: [6, 6, 6, 6]\nArray.prototype.filter()주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환합니다.원본 배열은 그대로 유지.\nvar words = [‘spray’, ‘limit’, ‘elite’, ‘exuberant’, ‘destruction’, ‘present’];\nconst result = words.filter(word =&gt; word.length &gt; 6);\nconsole.log(words);console.log(result);// Array [“spray”, “limit”, “elite”, “exuberant”, “destruction”, “present”]// Array [“exuberant”, “destruction”, “present”]\nArray.prototype.find()주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다. 그런 요소가 없다면 undefined를 반환합니다.\nvar array1 = [5, 12, 8, 130, 44];\nvar found = array1.find(function(element) {    return element &gt; 10;});\nconsole.log(found);// expected output: 12\nconst inventory = [    {name: ‘apples’, quantity: 2},    {name: ‘bananas’, quantity: 0},    {name: ‘cherries’, quantity: 5}];\nconst result = inventory.find(fruit =&gt; fruit.name === ‘cherries’);\nconsole.log(result) // { name: ‘cherries’, quantity: 5 }\nArray.prototype.forEach()주어진 함수를 배열 요소 각각에 대해 실행합니다.forEach()는 배열을 변형하지 않습니다. 그러나 callback이 변형할 수는 있습니다.예외를 던지지 않고는 forEach()를 중간에 멈출 수 없습니다.\nArray.prototype.includes()includes() 메서드는 배열이 특정 요소를 포함하고 있는지 판별합니다.\narr.includes(valueToFind[, fromIndex])valueToFind : 탐색할 요소. 문자나 문자열을 비교할 때, includes()는 대소문자를 구분합니다.fromIndex (Optional) : 이 배열에서 searchElement 검색을 시작할 위치입니다. 음의 값은 array.length + fromIndex의 인덱스를 asc로 검색합니다. 기본값은 0입니다.// array length is 3// fromIndex is -1// computed index is 3 + (-1) = 2\nvar arr = [‘a’, ‘b’, ‘c’];\narr.includes(‘a’, -1); // falsearr.includes(‘a’, -2); // falsearr.includes(‘a’, -3); // true\nvar ary = [    { a: ‘a’, b: ‘b’},    { a: ‘aa’, b: ‘bb’}];ary.includes({ a: ‘a’, b: ‘b’}); // false. 객체는 확인 불가\nArray.prototype.keys()keys() 메서드는 배열의 각 인덱스를 키 값으로 가지는 새로운 Array Iterator 객체를 반환합니다.\nArray.prototype.map()map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다.map이 처리할 요소의 범위는 첫 callback을 호출하기 전에 정해집니다. map이 시작한 이후 배열에 추가되는 요소들은 callback을 호출하지 않습니다.\nvar array1 = [1, 4, 9, 16];\n// pass a function to mapconst map1 = array1.map(x =&gt; x * 2);\nconsole.log(map1); // expected output: Array [2, 8, 18, 32]console.log(array1); // Array [1, 4, 9, 16] 원본 유지\n// 아래 라인을 보시면…[‘1’, ‘2’, ‘3’].map(parseInt);// 결과를 [1, 2, 3] 으로 기대할 수 있습니다.// 그러나 실제 결과는 [1, NaN, NaN] 입니다.\n// parseInt 함수는 보통 하나의 인자만 사용하지만, 두 개를 받을 수 있습니다.// 첫 번째 인자는 변환하고자 하는 표현이고 두 번째는 숫자로 변환할 때 사용할 진법입니다.// Array.prototype.map은 콜백에 세 가지 인자를 전달합니다.// 배열의 값, 값의 인덱스, 그리고 배열// 세 번째 인자는 parseInt가 무시하지만 두 번째 인자는 아닙니다.\nArray.prototype.reduce()reduce() 메서드는 배열의 각 요소에 대해 주어진 리듀서(reducer) 함수를 실행하고, 하나의 결과값을 반환합니다.\n[0, 1, 2, 3, 4].reduce(function(accumulator, currentValue, currentIndex, array) {    return accumulator + currentValue;});\nArray.prototype.shift()shift() 메서드는 배열에서 첫 번째 요소를 제거하고, 제거된 요소를 반환합니다. 이 메서드는 배열의 길이를 변하게 합니다.\nArray.prototype.slice()slice() 메서드는 어떤 배열의 begin부터 end까지(end 미포함)에 대한 얕은 복사본을 새로운 배열 객체로 반환합니다. 원본 배열은 수정되지 않습니다.\nvar animals = [‘ant’, ‘bison’, ‘camel’, ‘duck’, ‘elephant’];\nconst ary1 = animals.slice(2);const ary2 = animals.slice(2, 4)\nconsole.log(animals);console.log(ary1);console.log(ary2);\nanimals[0] = ‘aaaaa’;console.log(animals);console.log(ary1);\n// Array [“ant”, “bison”, “camel”, “duck”, “elephant”]// Array [“camel”, “duck”, “elephant”]// Array [“camel”, “duck”]// Array [“aaaaa”, “bison”, “camel”, “duck”, “elephant”]// Array [“camel”, “duck”, “elephant”]\nArray.prototype.sort()sort() 메서드는 배열의 요소를 적절한 위치에 정렬한 후 그 배열을 반환합니다. 정렬은 stable sort가 아닐 수 있습니다.기본 정렬 순서는 문자열의 유니코드 코드 포인트를 따릅니다.(오름차순)\nstable sort : 졍렬시 같은 값에 대하여 원본 순서가 유지되는 정렬unstable sort : 졍렬시 같은 값에 대하여 원본 순서가 유지되지 않는 정렬\nArray.prototype.splice()splice() 메서드는 배열의 기존 요소를 삭제 또는 교체하거나 새 요소를 추가하여 배열의 내용을 변경합니다.만약 제거할 요소의 수와 추가할 요소의 수가 다른 경우 배열의 길이는 달라집니다.\nvar months = [‘Jan’, ‘March’, ‘April’, ‘June’];months.splice(1, 0, ‘Feb’);// inserts at index 1console.log(months);// expected output: Array [‘Jan’, ‘Feb’, ‘March’, ‘April’, ‘June’]\nmonths.splice(4, 1, ‘May’);// replaces 1 element at index 4console.log(months);// expected output: Array [‘Jan’, ‘Feb’, ‘March’, ‘April’, ‘May’]\nmonths.splice(1, 2, ‘May’);console.log(months);// expected output: Array [“Jan”, “May”, “April”, “May”]\nArray.prototype.toString()toString() 메서드는 지정된 배열 및 그 요소를 나타내는 문자열을 반환합니다.\nvar array1 = [1, 2, ‘a’, ‘1a’];\nconsole.log(array1.toString());// expected output: “1,2,a,1a”\nArray.prototype.unshift()unshift() 메서드는 새로운 요소를 배열의 맨 앞쪽에 추가하고, 새로운 길이를 반환합니다.\nvar array1 = [1, 2, 3];\nconsole.log(array1.unshift(4, 5));// expected output: 5\nconsole.log(array1);// expected output: Array [4, 5, 1, 2, 3]\nvar arr = [1, 2];\narr.unshift(0); // result of call is 3, the new array length// arr is [0, 1, 2]\narr.unshift(-2, -1); // = 5// arr is [-2, -1, 0, 1, 2]\narr.unshift([-3]);// arr is [[-3], -2, -1, 0, 1, 2]\n","dateCreated":"2021-03-06T10:20:21-08:00","dateModified":"2021-03-07T03:21:22-08:00","datePublished":"2021-03-06T10:20:21-08:00","description":"","headline":"Array Method","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2021/03/06/Method/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2021/03/06/Method/","keywords":"Java, 이론노트"}</script>
+    <meta name="description" content="Array MethodArray.from()console.log(Array.from(‘foo’));&#x2F;&#x2F; expected output: Array [“f”, “o”, “o”] console.log(Array.from([1, 2, 3], x &#x3D;&gt; x + x));&#x2F;&#x2F; expected output: Array [2, 4, 6] console.log(Array">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Array Method">
+<meta property="og:url" content="https://earth-kor.github.io/2021/03/06/Method/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:description" content="Array MethodArray.from()console.log(Array.from(‘foo’));&#x2F;&#x2F; expected output: Array [“f”, “o”, “o”] console.log(Array.from([1, 2, 3], x &#x3D;&gt; x + x));&#x2F;&#x2F; expected output: Array [2, 4, 6] console.log(Array">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-06T18:20:21.000Z">
+<meta property="article:modified_time" content="2021-03-07T11:21:22.113Z">
+<meta property="article:author" content="이상권">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="이론노트">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/index"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Array Method
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2021-03-06T10:20:21-08:00">
+	
+		    Mar 06, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/Java/">Java</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="Array-Method"><a href="#Array-Method" class="headerlink" title="Array Method"></a>Array Method</h1><p>Array.from()<br>console.log(Array.from(‘foo’));<br>// expected output: Array [“f”, “o”, “o”]</p>
+<p>console.log(Array.from([1, 2, 3], x =&gt; x + x));<br>// expected output: Array [2, 4, 6]</p>
+<p>console.log(Array.from({ a: ‘1’, b: ‘2’ }));<br>// [] : object는 빈 배열로 리턴된다.</p>
+<p>let obj = { a: ‘1’, b: ‘2’ };<br>Array.from(Object.keys(obj));<br>// [“a”, “b”]<br>Array.from(Object.values(obj));<br>// [“1”, “2”]</p>
+<p>Array.of()<br>Array.of(7);       // [7]<br>Array.of(1, 2, 3); // [1, 2, 3]<br>Array.of(undefined); // [undefined]</p>
+<p>Array(7);          // [ , , , , , , ]<br>Array(1, 2, 3);    // [1, 2, 3]</p>
+<p>Array.prototype.concat()<br>기존배열을 변경하지 않습니다.<br>추가된 새로운 배열을 반환합니다.<br>중첩 배열 내부로 재귀하지 않습니다.</p>
+<p>const alpha = [‘a’, ‘b’, ‘c’];<br>const numeric = [1, 2, 3];</p>
+<p>alpha.concat(numeric);<br>// 결과: [‘a’, ‘b’, ‘c’, 1, 2, 3]</p>
+<p>let b = [1, 2, 3];<br>let c = [4, 5, [6, 7]];<br>b.concat(c);<br>// [1, 2, 3, 4, 5, [6, 7]]</p>
+<p>Array.prototype.fill()<br>배열의 시작 인덱스부터 끝 인덱스의 이전까지 정적인 값 하나로 채웁니다.</p>
+<p>var array1 = [1, 2, 3, 4];</p>
+<p>// fill with 0 from position 2 until position 4<br>console.log(array1.fill(0, 2, 4));<br>// expected output: [1, 2, 0, 0]</p>
+<p>// fill with 5 from position 1<br>console.log(array1.fill(5, 1));<br>// expected output: [1, 5, 5, 5]</p>
+<p>console.log(array1.fill(6));<br>// expected output: [6, 6, 6, 6]</p>
+<p>Array.prototype.filter()<br>주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환합니다.<br>원본 배열은 그대로 유지.</p>
+<p>var words = [‘spray’, ‘limit’, ‘elite’, ‘exuberant’, ‘destruction’, ‘present’];</p>
+<p>const result = words.filter(word =&gt; word.length &gt; 6);</p>
+<p>console.log(words);<br>console.log(result);<br>// Array [“spray”, “limit”, “elite”, “exuberant”, “destruction”, “present”]<br>// Array [“exuberant”, “destruction”, “present”]</p>
+<p>Array.prototype.find()<br>주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다. 그런 요소가 없다면 undefined를 반환합니다.</p>
+<p>var array1 = [5, 12, 8, 130, 44];</p>
+<p>var found = array1.find(function(element) {<br>    return element &gt; 10;<br>});</p>
+<p>console.log(found);<br>// expected output: 12</p>
+<p>const inventory = [<br>    {name: ‘apples’, quantity: 2},<br>    {name: ‘bananas’, quantity: 0},<br>    {name: ‘cherries’, quantity: 5}<br>];</p>
+<p>const result = inventory.find(fruit =&gt; fruit.name === ‘cherries’);</p>
+<p>console.log(result) // { name: ‘cherries’, quantity: 5 }</p>
+<p>Array.prototype.forEach()<br>주어진 함수를 배열 요소 각각에 대해 실행합니다.<br>forEach()는 배열을 변형하지 않습니다. 그러나 callback이 변형할 수는 있습니다.<br>예외를 던지지 않고는 forEach()를 중간에 멈출 수 없습니다.</p>
+<p>Array.prototype.includes()<br>includes() 메서드는 배열이 특정 요소를 포함하고 있는지 판별합니다.</p>
+<p>arr.includes(valueToFind[, fromIndex])<br>valueToFind : 탐색할 요소. 문자나 문자열을 비교할 때, includes()는 대소문자를 구분합니다.<br>fromIndex (Optional) : 이 배열에서 searchElement 검색을 시작할 위치입니다. 음의 값은 array.length + fromIndex의 인덱스를 asc로 검색합니다. 기본값은 0입니다.<br>// array length is 3<br>// fromIndex is -1<br>// computed index is 3 + (-1) = 2</p>
+<p>var arr = [‘a’, ‘b’, ‘c’];</p>
+<p>arr.includes(‘a’, -1); // false<br>arr.includes(‘a’, -2); // false<br>arr.includes(‘a’, -3); // true</p>
+<p>var ary = [<br>    { a: ‘a’, b: ‘b’},<br>    { a: ‘aa’, b: ‘bb’}<br>];<br>ary.includes({ a: ‘a’, b: ‘b’}); // false. 객체는 확인 불가</p>
+<p>Array.prototype.keys()<br>keys() 메서드는 배열의 각 인덱스를 키 값으로 가지는 새로운 Array Iterator 객체를 반환합니다.</p>
+<p>Array.prototype.map()<br>map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다.<br>map이 처리할 요소의 범위는 첫 callback을 호출하기 전에 정해집니다. map이 시작한 이후 배열에 추가되는 요소들은 callback을 호출하지 않습니다.</p>
+<p>var array1 = [1, 4, 9, 16];</p>
+<p>// pass a function to map<br>const map1 = array1.map(x =&gt; x * 2);</p>
+<p>console.log(map1); // expected output: Array [2, 8, 18, 32]<br>console.log(array1); // Array [1, 4, 9, 16] 원본 유지</p>
+<p>// 아래 라인을 보시면…<br>[‘1’, ‘2’, ‘3’].map(parseInt);<br>// 결과를 [1, 2, 3] 으로 기대할 수 있습니다.<br>// 그러나 실제 결과는 [1, NaN, NaN] 입니다.</p>
+<p>// parseInt 함수는 보통 하나의 인자만 사용하지만, 두 개를 받을 수 있습니다.<br>// 첫 번째 인자는 변환하고자 하는 표현이고 두 번째는 숫자로 변환할 때 사용할 진법입니다.<br>// Array.prototype.map은 콜백에 세 가지 인자를 전달합니다.<br>// 배열의 값, 값의 인덱스, 그리고 배열<br>// 세 번째 인자는 parseInt가 무시하지만 두 번째 인자는 아닙니다.</p>
+<p>Array.prototype.reduce()<br>reduce() 메서드는 배열의 각 요소에 대해 주어진 리듀서(reducer) 함수를 실행하고, 하나의 결과값을 반환합니다.</p>
+<p>[0, 1, 2, 3, 4].reduce(function(accumulator, currentValue, currentIndex, array) {<br>    return accumulator + currentValue;<br>});</p>
+<p>Array.prototype.shift()<br>shift() 메서드는 배열에서 첫 번째 요소를 제거하고, 제거된 요소를 반환합니다. 이 메서드는 배열의 길이를 변하게 합니다.</p>
+<p>Array.prototype.slice()<br>slice() 메서드는 어떤 배열의 begin부터 end까지(end 미포함)에 대한 얕은 복사본을 새로운 배열 객체로 반환합니다. 원본 배열은 수정되지 않습니다.</p>
+<p>var animals = [‘ant’, ‘bison’, ‘camel’, ‘duck’, ‘elephant’];</p>
+<p>const ary1 = animals.slice(2);<br>const ary2 = animals.slice(2, 4)</p>
+<p>console.log(animals);<br>console.log(ary1);<br>console.log(ary2);</p>
+<p>animals[0] = ‘aaaaa’;<br>console.log(animals);<br>console.log(ary1);</p>
+<p>// Array [“ant”, “bison”, “camel”, “duck”, “elephant”]<br>// Array [“camel”, “duck”, “elephant”]<br>// Array [“camel”, “duck”]<br>// Array [“aaaaa”, “bison”, “camel”, “duck”, “elephant”]<br>// Array [“camel”, “duck”, “elephant”]</p>
+<p>Array.prototype.sort()<br>sort() 메서드는 배열의 요소를 적절한 위치에 정렬한 후 그 배열을 반환합니다. 정렬은 stable sort가 아닐 수 있습니다.<br>기본 정렬 순서는 문자열의 유니코드 코드 포인트를 따릅니다.(오름차순)</p>
+<p>stable sort : 졍렬시 같은 값에 대하여 원본 순서가 유지되는 정렬<br>unstable sort : 졍렬시 같은 값에 대하여 원본 순서가 유지되지 않는 정렬</p>
+<p>Array.prototype.splice()<br>splice() 메서드는 배열의 기존 요소를 삭제 또는 교체하거나 새 요소를 추가하여 배열의 내용을 변경합니다.<br>만약 제거할 요소의 수와 추가할 요소의 수가 다른 경우 배열의 길이는 달라집니다.</p>
+<p>var months = [‘Jan’, ‘March’, ‘April’, ‘June’];<br>months.splice(1, 0, ‘Feb’);<br>// inserts at index 1<br>console.log(months);<br>// expected output: Array [‘Jan’, ‘Feb’, ‘March’, ‘April’, ‘June’]</p>
+<p>months.splice(4, 1, ‘May’);<br>// replaces 1 element at index 4<br>console.log(months);<br>// expected output: Array [‘Jan’, ‘Feb’, ‘March’, ‘April’, ‘May’]</p>
+<p>months.splice(1, 2, ‘May’);<br>console.log(months);<br>// expected output: Array [“Jan”, “May”, “April”, “May”]</p>
+<p>Array.prototype.toString()<br>toString() 메서드는 지정된 배열 및 그 요소를 나타내는 문자열을 반환합니다.</p>
+<p>var array1 = [1, 2, ‘a’, ‘1a’];</p>
+<p>console.log(array1.toString());<br>// expected output: “1,2,a,1a”</p>
+<p>Array.prototype.unshift()<br>unshift() 메서드는 새로운 요소를 배열의 맨 앞쪽에 추가하고, 새로운 길이를 반환합니다.</p>
+<p>var array1 = [1, 2, 3];</p>
+<p>console.log(array1.unshift(4, 5));<br>// expected output: 5</p>
+<p>console.log(array1);<br>// expected output: Array [4, 5, 1, 2, 3]</p>
+<p>var arr = [1, 2];</p>
+<p>arr.unshift(0); // result of call is 3, the new array length<br>// arr is [0, 1, 2]</p>
+<p>arr.unshift(-2, -1); // = 5<br>// arr is [-2, -1, 0, 1, 2]</p>
+<p>arr.unshift([-3]);<br>// arr is [[-3], -2, -1, 0, 1, 2]</p>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Java/" rel="tag">Java</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/" rel="tag">이론노트</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/asd/"
+                    data-tooltip="Java &amp; Javascript 자료구조"
+                    aria-label="PREVIOUS: Java &amp; Javascript 자료구조"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/Naming/"
+                    data-tooltip="Naming"
+                    aria-label="NEXT: Naming"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2021 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/asd/"
+                    data-tooltip="Java &amp; Javascript 자료구조"
+                    aria-label="PREVIOUS: Java &amp; Javascript 자료구조"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/Naming/"
+                    data-tooltip="Naming"
+                    aria-label="NEXT: Naming"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>

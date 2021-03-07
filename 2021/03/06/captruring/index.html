@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>Javascript bubbling captruring - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"JavaScript 버블링 &amp; 캡쳐링버블링(bubbling)의 원리한 요소에 이벤트가 발생하면, 이 요소에 할당된 핸들러가 동작하고, 이어서 부모 요소의 핸들러가 동작합니다. 가장 최상단의 조상 요소를 만날 때까지 이 과정이 반복되면서 요소 각각에 할당된 핸들러가 동작합니다.\n버블링 중단하기이벤트 버블링은 타깃 이벤트에서 시작해서  요소를 거쳐 document 객체를 만날 때까지 각 노드에서 모두 발생합니다. 몇몇 이벤트는 window 객체까지 거슬러 올라가기도 합니다. 이 때도 모든 핸들러가 호출됩니다.\n그런데 핸들러에게 이벤트를 완전히 처리하고 난 후 버블링을 중단하도록 명령할 수도 있습니다.\n이벤트 객체의 메서드인 event.stopPropagation()를 사용하면 됩니다.\n캡처링이벤트엔 버블링 이외에도 ‘캡처링(capturing)’ 이라는 흐름이 존재합니다. 실제 코드에서 자주 쓰이진 않지만, 종종 유용한 경우가 있으므로 알아봅시다.\n표준 DOM 이벤트에서 정의한 이벤트 흐름엔 3가지 단계가 있습니다.\n캡처링 단계 – 이벤트가 하위 요소로 전파되는 단계타깃 단계 – 이벤트가 실제 타깃 요소에 전달되는 단계버블링 단계 – 이벤트가 상위 요소로 전파되는 단계\n캡처링과 버블링을 간단히 정의하면 다음과 같다.\n캡처링 - window 로부터 이벤트가 발생한 요소까지 이벤트를 전파한다.버블링 - 이벤트가 발생한 요소부터 window 까지 이벤트를 전파한다.\n둘의 차이점은 단순히 방향이다.\n하위 =&gt; 상위, 상위 =&gt; 하위 개념으로 보면 된다.\n이벤트 전파를 원하지 않는다. 어떻게 하는가?\n단순히 e.stopPropagation() 메소드를 사용하면 된다.\n출처: https://mygumi.tistory.com/315 [마이구미의 HelloWorld]\n","dateCreated":"2021-03-06T10:17:48-08:00","dateModified":"2021-03-07T03:18:35-08:00","datePublished":"2021-03-06T10:17:48-08:00","description":"","headline":"Javascript bubbling captruring","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2021/03/06/captruring/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2021/03/06/captruring/","keywords":"이론노트, Javascript"}</script>
+    <meta name="description" content="JavaScript 버블링 &amp; 캡쳐링버블링(bubbling)의 원리한 요소에 이벤트가 발생하면, 이 요소에 할당된 핸들러가 동작하고, 이어서 부모 요소의 핸들러가 동작합니다. 가장 최상단의 조상 요소를 만날 때까지 이 과정이 반복되면서 요소 각각에 할당된 핸들러가 동작합니다. 버블링 중단하기이벤트 버블링은 타깃 이벤트에서 시작해서  요소를 거쳐 do">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Javascript bubbling captruring">
+<meta property="og:url" content="https://earth-kor.github.io/2021/03/06/captruring/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:description" content="JavaScript 버블링 &amp; 캡쳐링버블링(bubbling)의 원리한 요소에 이벤트가 발생하면, 이 요소에 할당된 핸들러가 동작하고, 이어서 부모 요소의 핸들러가 동작합니다. 가장 최상단의 조상 요소를 만날 때까지 이 과정이 반복되면서 요소 각각에 할당된 핸들러가 동작합니다. 버블링 중단하기이벤트 버블링은 타깃 이벤트에서 시작해서  요소를 거쳐 do">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-06T18:17:48.000Z">
+<meta property="article:modified_time" content="2021-03-07T11:18:35.680Z">
+<meta property="article:author" content="이상권">
+<meta property="article:tag" content="이론노트">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/index"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Javascript bubbling captruring
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2021-03-06T10:17:48-08:00">
+	
+		    Mar 06, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/Javascript/">Javascript</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="JavaScript-버블링-amp-캡쳐링"><a href="#JavaScript-버블링-amp-캡쳐링" class="headerlink" title="JavaScript 버블링 &amp; 캡쳐링"></a>JavaScript 버블링 &amp; 캡쳐링</h1><h2 id="버블링-bubbling-의-원리"><a href="#버블링-bubbling-의-원리" class="headerlink" title="버블링(bubbling)의 원리"></a>버블링(bubbling)의 원리</h2><p>한 요소에 이벤트가 발생하면, 이 요소에 할당된 핸들러가 동작하고, 이어서 부모 요소의 핸들러가 동작합니다. 가장 최상단의 조상 요소를 만날 때까지 이 과정이 반복되면서 요소 각각에 할당된 핸들러가 동작합니다.</p>
+<h2 id="버블링-중단하기"><a href="#버블링-중단하기" class="headerlink" title="버블링 중단하기"></a>버블링 중단하기</h2><p>이벤트 버블링은 타깃 이벤트에서 시작해서 <html> 요소를 거쳐 document 객체를 만날 때까지 각 노드에서 모두 발생합니다. 몇몇 이벤트는 window 객체까지 거슬러 올라가기도 합니다. 이 때도 모든 핸들러가 호출됩니다.</p>
+<p>그런데 핸들러에게 이벤트를 완전히 처리하고 난 후 버블링을 중단하도록 명령할 수도 있습니다.</p>
+<p>이벤트 객체의 메서드인 event.stopPropagation()를 사용하면 됩니다.</p>
+<h2 id="캡처링"><a href="#캡처링" class="headerlink" title="캡처링"></a>캡처링</h2><p>이벤트엔 버블링 이외에도 ‘캡처링(capturing)’ 이라는 흐름이 존재합니다. 실제 코드에서 자주 쓰이진 않지만, 종종 유용한 경우가 있으므로 알아봅시다.</p>
+<p>표준 DOM 이벤트에서 정의한 이벤트 흐름엔 3가지 단계가 있습니다.</p>
+<p>캡처링 단계 – 이벤트가 하위 요소로 전파되는 단계<br>타깃 단계 – 이벤트가 실제 타깃 요소에 전달되는 단계<br>버블링 단계 – 이벤트가 상위 요소로 전파되는 단계</p>
+<p>캡처링과 버블링을 간단히 정의하면 다음과 같다.</p>
+<p>캡처링 - window 로부터 이벤트가 발생한 요소까지 이벤트를 전파한다.<br>버블링 - 이벤트가 발생한 요소부터 window 까지 이벤트를 전파한다.</p>
+<p>둘의 차이점은 단순히 방향이다.</p>
+<p>하위 =&gt; 상위, 상위 =&gt; 하위 개념으로 보면 된다.</p>
+<p>이벤트 전파를 원하지 않는다. 어떻게 하는가?</p>
+<p>단순히 e.stopPropagation() 메소드를 사용하면 된다.</p>
+<p>출처: <a target="_blank" rel="noopener" href="https://mygumi.tistory.com/315">https://mygumi.tistory.com/315</a> [마이구미의 HelloWorld]</p>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Javascript/" rel="tag">Javascript</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/" rel="tag">이론노트</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/Naming/"
+                    data-tooltip="Naming"
+                    aria-label="PREVIOUS: Naming"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/GPS%20%EC%9D%B4%EB%A0%A5%20%EC%8B%9C%20%ED%98%B8%EC%B6%9C%20%EC%98%A4%EB%A5%98/"
+                    data-tooltip="GPS 이력 시 호출 오류"
+                    aria-label="NEXT: GPS 이력 시 호출 오류"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2021 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/Naming/"
+                    data-tooltip="Naming"
+                    aria-label="PREVIOUS: Naming"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/GPS%20%EC%9D%B4%EB%A0%A5%20%EC%8B%9C%20%ED%98%B8%EC%B6%9C%20%EC%98%A4%EB%A5%98/"
+                    data-tooltip="GPS 이력 시 호출 오류"
+                    aria-label="NEXT: GPS 이력 시 호출 오류"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>GPS 이력 시 호출 오류 - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg"},"articleBody":"GPS 호출하는 메서드에서 한글이 서로 떨어져서 나오는 현상 해결방법 !\n‘’’// 수정전        geocoder.addressSearch(value, function(result, status) {                    if (status === kakao.maps.services.Status.OK &amp;&amp; result.length &gt; 0) {                        console.log(“if문 진입”)                        console.log(result, “result”)                      that.setState({                        Change_Address: value,                        inputGPS: ‘[‘+result[0].y + ‘, ‘ + result[0].x + ‘]’,\n                  &#125;)\n                &#125; else &#123;\n                  that.setState(&#123; Change_Address: value, inputGPS: &#39;&#39;,  &#125;)\n                &#125;\n              &#125;)\n            &#125;else&#123;\n              that.setState(&#123; Change_Address: value, inputGPS: &#39;&#39;,&#125;)\n            &#125;\n‘’’\n‘’’// 수정후   that.setState({Change_Address : value}, () =&gt; {\n  geocoder.addressSearch(value, function(result, status) &#123;\n                    if (status === kakao.maps.services.Status.OK &amp;&amp; result.length &gt; 0) &#123;\n                        console.log(&quot;if문 진입&quot;)\n                        console.log(result, &quot;result&quot;)\n                      that.setState(&#123;\n                        Change_Address: value,\n                        inputGPS: &#39;[&#39;+result[0].y + &#39;, &#39; + result[0].x + &#39;]&#39;,\n\n                      &#125;)\n                    &#125; else &#123;\n                      that.setState(&#123; Change_Address: value, inputGPS: &#39;&#39;,  &#125;)\n                    &#125;\n                  &#125;)\n}\n‘’’\n한 글자를 칠 때 마다 gps를 호출 하는 것이 아닌, 모든 값이 들어왔을 때 호출하는 식으로 변경해주었다.( that.setState({Change_Address : value}, () =&gt; { ) 사용\n","dateCreated":"2021-03-06T10:13:06-08:00","dateModified":"2021-03-07T03:16:44-08:00","datePublished":"2021-03-06T10:13:06-08:00","description":"","headline":"GPS 이력 시 호출 오류","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://earth-kor.github.io/2021/03/06/GPS%20%EC%9D%B4%EB%A0%A5%20%EC%8B%9C%20%ED%98%B8%EC%B6%9C%20%EC%98%A4%EB%A5%98/"},"publisher":{"@type":"Organization","name":"이상권","sameAs":["https://github.com/Earth-KOR","https://www.instagram.com/kwon_27_/?hl=ko","mailto:lsk941017@naver.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://earth-kor.github.io/2021/03/06/GPS%20%EC%9D%B4%EB%A0%A5%20%EC%8B%9C%20%ED%98%B8%EC%B6%9C%20%EC%98%A4%EB%A5%98/","keywords":"개발노트, Javascript"}</script>
+    <meta name="description" content="GPS 호출하는 메서드에서 한글이 서로 떨어져서 나오는 현상 해결방법 ! ‘’’&#x2F;&#x2F; 수정전        geocoder.addressSearch(value, function(result, status) {                    if (status &#x3D;&#x3D;&#x3D; kakao.maps.services.Status.OK &amp;&amp; result.len">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="GPS 이력 시 호출 오류">
+<meta property="og:url" content="https://earth-kor.github.io/2021/03/06/GPS%20%EC%9D%B4%EB%A0%A5%20%EC%8B%9C%20%ED%98%B8%EC%B6%9C%20%EC%98%A4%EB%A5%98/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:description" content="GPS 호출하는 메서드에서 한글이 서로 떨어져서 나오는 현상 해결방법 ! ‘’’&#x2F;&#x2F; 수정전        geocoder.addressSearch(value, function(result, status) {                    if (status &#x3D;&#x3D;&#x3D; kakao.maps.services.Status.OK &amp;&amp; result.len">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-06T18:13:06.000Z">
+<meta property="article:modified_time" content="2021-03-07T11:16:44.125Z">
+<meta property="article:author" content="이상권">
+<meta property="article:tag" content="개발노트">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/index"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            GPS 이력 시 호출 오류
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2021-03-06T10:13:06-08:00">
+	
+		    Mar 06, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EA%B0%9C%EB%B0%9C%EB%85%B8%ED%8A%B8/">개발노트</a>, <a class="category-link" href="/categories/%EA%B0%9C%EB%B0%9C%EB%85%B8%ED%8A%B8/Javascript/">Javascript</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>GPS 호출하는 메서드에서 한글이 서로 떨어져서 나오는 현상 해결방법 !</p>
+<p>‘’’<br>// 수정전<br>        geocoder.addressSearch(value, function(result, status) {<br>                    if (status === kakao.maps.services.Status.OK &amp;&amp; result.length &gt; 0) {<br>                        console.log(“if문 진입”)<br>                        console.log(result, “result”)<br>                      that.setState({<br>                        Change_Address: value,<br>                        inputGPS: ‘[‘+result[0].y + ‘, ‘ + result[0].x + ‘]’,</p>
+<pre><code>                  &#125;)
+                &#125; else &#123;
+                  that.setState(&#123; Change_Address: value, inputGPS: &#39;&#39;,  &#125;)
+                &#125;
+              &#125;)
+            &#125;else&#123;
+              that.setState(&#123; Change_Address: value, inputGPS: &#39;&#39;,&#125;)
+            &#125;</code></pre>
+<p>‘’’</p>
+<p>‘’’<br>// 수정후<br>   that.setState({Change_Address : value}, () =&gt; {</p>
+<pre><code>  geocoder.addressSearch(value, function(result, status) &#123;
+                    if (status === kakao.maps.services.Status.OK &amp;&amp; result.length &gt; 0) &#123;
+                        console.log(&quot;if문 진입&quot;)
+                        console.log(result, &quot;result&quot;)
+                      that.setState(&#123;
+                        Change_Address: value,
+                        inputGPS: &#39;[&#39;+result[0].y + &#39;, &#39; + result[0].x + &#39;]&#39;,
+
+                      &#125;)
+                    &#125; else &#123;
+                      that.setState(&#123; Change_Address: value, inputGPS: &#39;&#39;,  &#125;)
+                    &#125;
+                  &#125;)</code></pre>
+<p>}</p>
+<p>‘’’</p>
+<p>한 글자를 칠 때 마다 gps를 호출 하는 것이 아닌, 모든 값이 들어왔을 때 호출하는 식으로 변경해주었다.<br>( that.setState({Change_Address : value}, () =&gt; { ) 사용</p>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Javascript/" rel="tag">Javascript</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%EA%B0%9C%EB%B0%9C%EB%85%B8%ED%8A%B8/" rel="tag">개발노트</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/captruring/"
+                    data-tooltip="Javascript bubbling captruring"
+                    aria-label="PREVIOUS: Javascript bubbling captruring"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/TDD/"
+                    data-tooltip="TDD"
+                    aria-label="NEXT: TDD"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2021 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/captruring/"
+                    data-tooltip="Javascript bubbling captruring"
+                    aria-label="PREVIOUS: Javascript bubbling captruring"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/03/06/TDD/"
+                    data-tooltip="TDD"
+                    aria-label="NEXT: TDD"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="이상권의 개발노트">
+    <title>Category: 자료구조 - 이상권의 개발노트</title>
+    <meta name="author" content="이상권">
+    
+    
+    
+    <script type="application/ld+json">{}</script>
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="이상권의 개발노트">
+<meta property="og:url" content="https://earth-kor.github.io/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/index.html">
+<meta property="og:site_name" content="이상권의 개발노트">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="이상권">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://earth-kor.github.io/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
+
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="2">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            이상권의 개발노트
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="2">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">이상권</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>미래의 백엔드 개발자</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/index"
+                            
+                            rel="noopener"
+                            title="홈"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">홈</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-code" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tag" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="기록"
+                        >
+                        <i class="sidebar-button-icon fa fa-running" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">기록</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Earth-KOR"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.instagram.com/kwon_27_/?hl=ko"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="instagram"
+                        >
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lsk941017@naver.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="2"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+    <section class="postShorten-group main-content-wrap">
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2021/03/06/asd/"
+                            aria-label=": Java &amp; Javascript 자료구조"
+                        >
+                            Java &amp; Javascript 자료구조
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-03-06T10:22:10-08:00">
+	
+		    Mar 06, 2021
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="Java-And-Javascript-자료구조"><a href="#Java-And-Javascript-자료구조" class="headerlink" title="Java And Javascript 자료구조"></a>Java And Javascript 자료구조</h1><p>Stack<br>가장 단순하게 쓰이는 스택부터 정리해 보자. 스택은 LIFO(Last In, First Out) 구조를 가진다. 자바스크립트에서는 스택 Object가 없으므로 직접 만들어야 하지만 Array.prototype 형태로 스택과 비슷한 메소드들이 구현되어 있어 쉽게 응용이 가능하다. 기본적인 push/pop과 같은 경우는 prototype에 정의된 메소드를 사용하고, peek은 적절하게 배열 접근으로 구현하면 좋다. (사실 Push/pop만으로 웬만한 알고리즘 문제를 푸는 데에는 지장이 없다.) 스택 같은 경우는 괄호 매칭이나 구간합을 구하는 데 응용하면 편리하다.</p>
+<p>const stack = [];</p>
+<p>stack.push(1);<br>stack.push(2);<br>stack.push(3);</p>
+<p>stack[stack.length - 1]; // peek 3<br>stack.pop(); // 3<br>stack.pop(); // 2<br>stack.pop(); // 1</p>
+<p>Queue<br>큐는 FIFO(First In, First Out) 구조를 가진다. 큐 또한 구현체가 없으므로, Array를 이용하여 간단하게 구현할 수 있다. 큐의 주요 메소드에는 euqueue와 dequeue가 있는데 enqueue는 큐에 삽입을 하는 메소드이고 dequeue는 큐에서 제일 처음으로 들어간 값을 빼는 메소드이다. 적절하게 prototype 메소드를 이용하면 된다. 큐는 BRS(Breadh-First Search)를 구현할 때 자주 이용하므로, 잘 기억해 두도록 하자.</p>
+<p>const queue = [];</p>
+<p>queue.push(1); // enqueue 1<br>queue.push(2); // enqueue 2<br>queue.push(3); // enqueue 3</p>
+<p>queue.shift(); // dequeue 1<br>queue.shift(); // dequeue 2<br>queue.shift(); // dequeue 3</p>
+<p>Linked List<br>C++ 에는 있지만 JavaScript에는 없는 포인터. 포인터가 없는 Linked List를 자바스크립트에서 객체를 참조하는 방식으로 구현할 수 있다. (오히려 더 간단하다!)</p>
+<p>function Node(val) {<br>  this.val = val;<br>  this.next = null;<br>}</p>
+<p>let head = new Node(0);<br>let node1 = new Node(1);<br>let node2 = new Node(2);</p>
+<p>head.next = node1;<br>node1.next = node2;<br>물론, 이중 연결 리스트(Double Linked List)도 쉽게 구현이 가능하다. prev만 추가해서 양방향으로 참조하도록 구현하자.</p>
+<p>function Node(val) {<br>  this.val = val;<br>  this.next = null;<br>  this.prev = null;<br>}</p>
+<p>let head = new Node(0);<br>let node1 = new Node(1);<br>let node2 = new Node(2);</p>
+<p>head.next = node1;<br>node1.next = node2;<br>node1.prev = head;<br>node2.prev = node1;<br>리스트 같은 경우엔 다른 자료구조를 표현하는데 많이 사용된다. 또 이중 연결 리스트는 LRU Cache 같은 것을 구현할 때 사용이 되므로 알아 두면 좋다.</p>
+<p>Map<br>Map은 O(1)의 접근성을 가지는 매우 강력한 무기이다. ES5에서는 {}를 사용해서 구현하지만, ES6에는 Map 자료 구조가 추가되었으므로 취향에 따라서 골라 사용하도록 하자. Map은 시간 복잡도를 줄이는데 결정적인 역할을 하는 경우가 많은데, 많은 문제를 풀어보면서 어떻게 활용하는지 알아두면 굉장히 좋다.</p>
+<p>const map = {};<br>map[‘p1’] = 1;<br>map[‘p2’] = 2;</p>
+<p>map[‘p1’]; // 1<br>map[‘p2’]; // 2</p>
+<p>// or<br>const map = new Map();<br>map.set(‘p1’, 1);<br>map.set(‘p2’, 2);</p>
+<p>map.get(‘p1’); // 1<br>map.get(‘p2’); // 2</p>
+<p>Set<br>Set은 Map과 비슷하지만, 중복된 값을 허용하지 않는다. 따라서, 중복이라는 키워드가 떠오른다면 Set을 적절하게 사용하자. 구현은 ES6 Set을 사용하는 게 가장 편하다.</p>
+<p>const set = new Set();<br>set.add(1);<br>set.add(2);</p>
+<p>set.has(1); // true<br>set.has(2); // true<br>set.has(3); // false</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/03/06/asd/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/11/03/%EB%AC%B8%EC%A0%9C/"
+                            aria-label=": Linked list (2)"
+                        >
+                            Linked list (2)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-11-03T04:39:36-08:00">
+	
+		    Nov 03, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="단방향-LinkedList의-끝에서-k번째-노드를-찾는-알고리즘을-구현하시오"><a href="#단방향-LinkedList의-끝에서-k번째-노드를-찾는-알고리즘을-구현하시오" class="headerlink" title="단방향 LinkedList의 끝에서 k번째 노드를 찾는 알고리즘을 구현하시오."></a>단방향 LinkedList의 끝에서 k번째 노드를 찾는 알고리즘을 구현하시오.</h1><h2 id="2-gt-3-gt-1-gt-4"><a href="#2-gt-3-gt-1-gt-4" class="headerlink" title="2 -&gt; 3 -&gt; 1 -&gt; 4"></a>2 -&gt; 3 -&gt; 1 -&gt; 4</h2><br>
+
+<p><strong>방법1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int k &#x3D; 2;</span><br><span class="line">Node kth &#x3D; kthToLast(first, k) ;</span><br><span class="line">Node kthToLast(Node first, int k) &#123;</span><br><span class="line"></span><br><span class="line"> Node n &#x3D; first ;</span><br><span class="line"> int total &#x3D; 1 ;</span><br><span class="line"></span><br><span class="line"> while (n.next !&#x3D; null) &#123;</span><br><span class="line"></span><br><span class="line"> total ++ ;</span><br><span class="line"> n &#x3D; n.next ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> n &#x3D; first;</span><br><span class="line"> for ( int i &#x3D; 0 ; i &lt; total - k + 1 ; i ++ ) &#123;</span><br><span class="line"></span><br><span class="line"> n &#x3D; n.next ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">return n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>방법 2 재귀호출</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int k &#x3D; 1;</span><br><span class="line">KthToLast( ll.getFirst(), k ) ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Reference &#123;</span><br><span class="line"> public int count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private static void KthToLast(Node n, int k, Reference r) &#123;</span><br><span class="line">if ( in &#x3D;&#x3D; null ) &#123;</span><br><span class="line">return null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int k &#x3D;2;</span><br><span class="line">Reference r &#x3D; new Reference();</span><br><span class="line"></span><br><span class="line">Node found &#x3D; KthToLas(n.next, k, r) ;</span><br><span class="line">r.count ++ ;</span><br><span class="line">if ( r.count &#x3D;&#x3D; k) &#123;</span><br><span class="line">return n;</span><br><span class="line">&#125;</span><br><span class="line">return found;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>방법 3 포인터</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static Node KthToLast( Node first, int k) &#123;</span><br><span class="line">Node p1 &#x3D; first;</span><br><span class="line">Node p2 &#x3D; first;</span><br><span class="line"></span><br><span class="line">for ( int i &#x3D; 0 ; i &lt; k ; i++ ) &#123;</span><br><span class="line">if ( p1 &#x3D;&#x3D; null;) return null;</span><br><span class="line">p1 &#x3D; p1.next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">while ( p1 !&#x3D; null) &#123;</span><br><span class="line">p1 &#x3D; p1.next;</span><br><span class="line">p2 &#x3D; p2.next;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return p2</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><br><br></p>
+<h3 id="단방향-Linked-List에서-중간에-있는-노드를-삭제하시오-단-당신은-첫번째-노드가-어딨는지-모르고-오직-삭제-할-노드만-가지고-있다"><a href="#단방향-Linked-List에서-중간에-있는-노드를-삭제하시오-단-당신은-첫번째-노드가-어딨는지-모르고-오직-삭제-할-노드만-가지고-있다" class="headerlink" title="단방향 Linked List에서 중간에 있는 노드를 삭제하시오 (단, 당신은 첫번째 노드가 어딨는지 모르고, 오직 삭제 할 노드만 가지고 있다)"></a>단방향 Linked List에서 중간에 있는 노드를 삭제하시오 (단, 당신은 첫번째 노드가 어딨는지 모르고, 오직 삭제 할 노드만 가지고 있다)</h3><p><br><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">deleteNode ( ll.get(2));</span><br><span class="line">ll.retrieve();</span><br><span class="line"></span><br><span class="line">private static boolean deleteNode(Node n) &#123;</span><br><span class="line"> if ( n &#x3D;&#x3D; null || n.next &#x3D;&#x3D; null) &#123;</span><br><span class="line"></span><br><span class="line"> return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Node next &#x3D; n.next</span><br><span class="line">n.data &#x3D; next.data;</span><br><span class="line">n.next &#x3D; next.next;</span><br><span class="line">return true;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/11/03/%EB%AC%B8%EC%A0%9C/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2020/11/01/list/"
+                            aria-label=": Linked list (1)"
+                        >
+                            Linked list (1)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-11-01T06:06:29-08:00">
+	
+		    Nov 01, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/">이론노트</a>, <a class="category-link" href="/categories/%EC%9D%B4%EB%A1%A0%EB%85%B8%ED%8A%B8/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h1><ul>
+<li>컴퓨터의 자료를 저장하는 여러 구조 중 하나<br>일렬로 연결된 데이터를 저장 할 때 사용한다<br>한 데이터의 마지막에 다음 데이터의 주소를 가지고 있음</li>
+</ul>
+<ul>
+<li><p>배열은 방이 정해져있기 때문에 갯수가 제한적임<br>but 이거는 주소를 넣고 빼고를 통해서 조절을 할 수 있음</p>
+</li>
+<li><p>링크를 끊게되면 자바제외 이 데이터가 남기 때문에 저장공간을 쓸데없이차지함!<br>(그래서 이걸 인위적으로 지워줘야함!)</p>
+</li>
+<li><p>이거는 주소를 하나하나 찾아 다니기 때문에 속도가 느릴수가 있음. 그래서 데이터가 정해지지않는 데이터를 넣을 때 유용함!</p>
+</li>
+</ul>
+<p><br><br></p>
+<h1 id="Linked-list-단방향-양방향"><a href="#Linked-list-단방향-양방향" class="headerlink" title="Linked list 단방향 양방향"></a>Linked list 단방향 양방향</h1><p>단방향 : 주소를 타고 한 방향으로만 이동 가능 <br><br>양방향 : 내 앞에 애가 어디있는지 알 수 있도록 앞의 주소를 가지고있음!</p>
+<p><br><br></p>
+<h1 id="Linked-list-단방향-Java-구현"><a href="#Linked-list-단방향-Java-구현" class="headerlink" title="Linked list 단방향 Java 구현"></a>Linked list 단방향 Java 구현</h1><p><strong>Node class 생성</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class node &#123; </span><br><span class="line"> int data;</span><br><span class="line"> Node next &#x3D; null ; </span><br><span class="line"> Node ( int d ) &#123;</span><br><span class="line"> this.data &#x3D; d</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Node추가 하는 메서드</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void append(int d) &#123;</span><br><span class="line">  Node end &#x3D; new Node (d)</span><br><span class="line">  node n &#x3D; this ;</span><br><span class="line">while ( n.next !&#x3D; null ) &#123;</span><br><span class="line">	n &#x3D; n.next</span><br><span class="line">&#125;</span><br><span class="line"> 	n.next &#x3D; end ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Node 삭제하는 메서드</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void delete(int d) &#123;</span><br><span class="line"> Node n &#x3D; this ;</span><br><span class="line"> while ( n.next !&#x3D; null) &#123;</span><br><span class="line">    if ( n.next.data &#x3D;&#x3D; d) &#123;</span><br><span class="line">     n.next &#x3D; n.next.next;	    	</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    n &#x3D; n.next ;</span><br><span class="line">&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><strong>Node속 데이터 호출하는 코드</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void retrieve() &#123;</span><br><span class="line"></span><br><span class="line">Node n &#x3D; this;</span><br><span class="line">while ( n.next !&#x3D; null ) &#123;</span><br><span class="line">system.out.println(n.data + &quot;-&gt;&quot;);</span><br><span class="line">n &#x3D; n.next ;</span><br><span class="line">&#125;</span><br><span class="line">system.put.println(n.data);</span><br></pre></td></tr></table></figure>
+<p><br><br></p>
+<h1 id="LinkedList-활용"><a href="#LinkedList-활용" class="headerlink" title="LinkedList 활용"></a>LinkedList 활용</h1><p>앞서 작성한 단방향 코드작성은 취약점이 있다.<br>첫 번쨰로 시작한 header 노드가 삭제되거나 실행이 불가능하게 된다면 전체의 노드에 영향을 주기 때문이다.</p>
+<p>이를 보완하는 방법이 존재한다. Node Class를 Linked List라는 class로 감싸서 Linked List의 header를 데이터가 아닌 시작을 알리는 용도로만 사용하도록 만든다!</p>
+<p>그리고 그 안에 node class를 만든다!</p>
+<br>
+
+<p><strong>LinkedList 활용</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class LinkedList &#123;</span><br><span class="line">Node header ;</span><br><span class="line"></span><br><span class="line">static calss Node &#123;</span><br><span class="line">int data;</span><br><span class="line">Node next &#x3D; null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LinkdList() &#123;</span><br><span class="line">header &#x3D; new Node() ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Linked-List-중복값-삭제"><a href="#Linked-List-중복값-삭제" class="headerlink" title="Linked List 중복값 삭제"></a>Linked List 중복값 삭제</h2><p>정렬되지 않는 LinkedList 노드중 중복값을 제거하시오.<br>(단 , 버퍼는 사용하지 않고!)</p>
+<p>3 -&gt; 2 -&gt; 1 -&gt; 2 -&gt; 4</p>
+<ol>
+<li>버퍼를 사용할 때</li>
+</ol>
+<p>HashSet에 하나의 방에 넣고, 해당 방에 이미 노드가 존재하면 삭제한다.<br>( space : O(N) )<br>( Time : O(N) )</p>
+<ol start="2">
+<li>버퍼를 사용하지 않을 때</li>
+</ol>
+<p>Pointer와 Node를 생성해서 사용한다!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void removeDups() &#123;</span><br><span class="line"> Node n &#x3D; header;</span><br><span class="line">while ( n !&#x3D; null &amp;&amp; n.next !&#x3D; null ) &#123;</span><br><span class="line"> Node r &#x3D; n ;</span><br><span class="line">while ( r.next !&#x3D; null ) &#123;</span><br><span class="line"> if (n.data &#x3D;&#x3D; r.next.data) &#123;</span><br><span class="line"> r.next &#x3D; r.next.next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">	r &#x3D; r.next;</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br><span class="line">	n &#x3D; n.next;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>( space : O(1) )<br>( Time : O(N^2) )</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2020/11/01/list/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    <div class="pagination-bar">
+    <ul class="pagination">
+        
+        
+        <li class="pagination-number">page 1 of 1</li>
+    </ul>
+</div>
+
+</section>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2021 이상권. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">이상권</h4>
+        
+            <div id="about-card-bio"><p>미래의 백엔드 개발자</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>개발자</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Busan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover2.png');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+
+
+
+    </body>
+</html>
